@@ -65,6 +65,8 @@
     <Compile Include="TypeParsers\NormalParser.cs" />
     <Compile Include="TypeParsers\NormalParserTests.cs" />
     <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="TypeParsers\TextureParser.cs" />
+    <Compile Include="TypeParsers\TextureParserTests.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
     <Compile Include="TypeParsers\VertexParserTests.cs" />
   </ItemGroup>
