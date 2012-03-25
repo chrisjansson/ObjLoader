@@ -8,8 +8,6 @@ namespace ObjLoader.Loader.TypeParsers
     [TestFixture]
     public class NormalParserTests
     {
-        private const string NormalLine = "vn 1.000000 2.000000 -1.000000";
-
         private NormalParser _normalParser;
         private NormalGroupMock _normalGroupMock;
 
@@ -24,14 +22,16 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void CanParse_returns_true_on_normal_line()
         {
-            bool canParse = _normalParser.CanParse(NormalLine);
+            const string normalLine = "vn";
+
+            bool canParse = _normalParser.CanParse(normalLine);
             canParse.Should().BeTrue();
         }
 
         [Test]
         public void CanParse_returns_false_on_non_normal_line()
         {
-            const string invalidNormal = "vt 0.498993 0.250415";
+            const string invalidNormal = "vt";
 
             bool canParse = _normalParser.CanParse(invalidNormal);
             canParse.Should().BeFalse();
@@ -40,7 +40,8 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly()
         {
-            _normalParser.Parse(NormalLine);
+            const string normalLine = "vn 1.000000 2.000000 -1.000000";
+            _normalParser.Parse(normalLine);
 
             var parsedNormal = _normalGroupMock.ParsedNormal;
             parsedNormal.X.Should().BeApproximately(1, 0.000001f);

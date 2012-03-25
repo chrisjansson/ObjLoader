@@ -1,3 +1,4 @@
+using System;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
 
@@ -14,7 +15,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         public bool CanParse(string line)
         {
-            return line[0] == 'v' && line[1] == 'n';
+            return line.EqualsInvariantCultureIgnoreCase("vn");
         }
         
         public void Parse(string line)
