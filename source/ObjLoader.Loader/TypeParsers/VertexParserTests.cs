@@ -49,7 +49,7 @@ namespace ObjLoader.Loader.TypeParsers
             parsedNormal.Z.Should().BeApproximately(0.345f, 0.000001f);
         }
 
-        public class VertexGroupMock : IVertexGroup
+        class VertexGroupMock : IVertexGroup
         {
             public Vertex ParsedVertex { get; set; }
 

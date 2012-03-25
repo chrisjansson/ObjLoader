@@ -50,7 +50,7 @@ namespace ObjLoader.Loader.TypeParsers
         }
     }
 
-    public class NormalGroupMock : INormalGroup
+    class NormalGroupMock : INormalGroup
     {
         public Normal ParsedNormal { get; set; }
 

@@ -2,7 +2,7 @@
 {
     public interface ITypeParser
     {
+        bool CanParse(string keyword);
         void Parse(string line);
-        bool CanParse(string line);
     }
 }

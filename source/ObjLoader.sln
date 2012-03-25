@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjLoader.Loader", "ObjLoader.Loader\ObjLoader.Loader.csproj", "{1FD37682-98D6-442F-8E15-646247C690DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjLoader.Test", "ObjLoader.Test\ObjLoader.Test.csproj", "{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{1FD37682-98D6-442F-8E15-646247C690DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD37682-98D6-442F-8E15-646247C690DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD37682-98D6-442F-8E15-646247C690DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

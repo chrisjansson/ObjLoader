@@ -13,9 +13,9 @@ namespace ObjLoader.Loader.TypeParsers
             _vertexGroup = vertexGroup;
         }
 
-        public bool CanParse(string line)
+        public bool CanParse(string keyword)
         {
-            return line.EqualsInvariantCultureIgnoreCase("v");
+            return keyword.EqualsInvariantCultureIgnoreCase("v");
         }
 
         public void Parse(string line)

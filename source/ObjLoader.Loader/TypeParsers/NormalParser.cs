@@ -13,9 +13,9 @@ namespace ObjLoader.Loader.TypeParsers
             _normalGroup = normalGroup;
         }
 
-        public bool CanParse(string line)
+        public bool CanParse(string keyword)
         {
-            return line.EqualsInvariantCultureIgnoreCase("vn");
+            return keyword.EqualsInvariantCultureIgnoreCase("vn");
         }
         
         public void Parse(string line)
