@@ -2,6 +2,7 @@
 {
     public interface ITypeParser
     {
-        void Parse(string row);
+        void Parse(string line);
+        bool CanParse(string line);
     }
 }

@@ -40,7 +40,7 @@ namespace ObjLoader.Loader.Data
             return _normals[i];
         }
 
-        public void AddTexture(Normal normal)
+        public void AddNormal(Normal normal)
         {
             _normals.Add(normal);
         }
