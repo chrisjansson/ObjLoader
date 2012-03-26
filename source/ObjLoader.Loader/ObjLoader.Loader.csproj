@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\Face.cs" />
     <Compile Include="Data\Group.cs" />
+    <Compile Include="Data\IFaceGroup.cs" />
     <Compile Include="Data\INormalGroup.cs" />
     <Compile Include="Data\ITextureGroup.cs" />
     <Compile Include="Data\IVertexGroup.cs" />
@@ -59,6 +61,8 @@
     <Compile Include="Data\Texture.cs" />
     <Compile Include="Data\Vertex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeParsers\FaceParser.cs" />
+    <Compile Include="TypeParsers\FaceParserTests.cs" />
     <Compile Include="TypeParsers\GroupParser.cs" />
     <Compile Include="TypeParsers\GroupParserTests.cs" />
     <Compile Include="TypeParsers\ITypeParser.cs" />

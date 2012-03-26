@@ -2,11 +2,12 @@
 
 namespace ObjLoader.Loader.Data
 {
-    public class Group : IVertexGroup, ITextureGroup, INormalGroup
+    public class Group : IVertexGroup, ITextureGroup, INormalGroup, IFaceGroup
     {
         private readonly List<Vertex> _vertices = new List<Vertex>();
         private readonly List<Texture> _textures = new List<Texture>();
         private readonly List<Normal> _normals = new List<Normal>();
+        private readonly List<Face> _faces = new List<Face>();
         
         public Group(string name)
         {
@@ -43,6 +44,16 @@ namespace ObjLoader.Loader.Data
         public void AddNormal(Normal normal)
         {
             _normals.Add(normal);
+        }
+
+        public Face GetFace(int i)
+        {
+            return _faces[i];
+        }
+
+        public void AddFace(Face face)
+        {
+            _faces.Add(face);
         }
     }
 }
