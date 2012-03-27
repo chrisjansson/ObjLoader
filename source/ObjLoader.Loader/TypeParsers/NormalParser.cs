@@ -1,6 +1,7 @@
 using System;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.TypeParsers
 {

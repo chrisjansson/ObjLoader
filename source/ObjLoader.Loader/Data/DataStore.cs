@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.Data
 {
@@ -14,7 +15,7 @@ namespace ObjLoader.Loader.Data
 
         public DataStore()
         {
-            PushGroup("unnamed group");
+            PushGroup("default");
         }
 
         public void PushGroup(string groupName)

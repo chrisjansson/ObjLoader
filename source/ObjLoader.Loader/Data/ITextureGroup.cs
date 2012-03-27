@@ -1,3 +1,5 @@
+using ObjLoader.Loader.Data.VertexData;
+
 namespace ObjLoader.Loader.Data
 {
     public interface ITextureGroup

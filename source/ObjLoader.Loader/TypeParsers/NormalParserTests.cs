@@ -2,6 +2,7 @@
 using ObjLoader.Loader.Data;
 using FluentAssertions;
 using FluentAssertions.Assertions;
+using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.TypeParsers
 {

@@ -1,4 +1,4 @@
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.VertexData
 {
     public struct Normal
     {
