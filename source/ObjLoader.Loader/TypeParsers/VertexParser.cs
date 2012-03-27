@@ -4,7 +4,7 @@ using ObjLoader.Loader.Common;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class VertexParser : ITypeParser
+    public class VertexParser : IVertexParser
     {
         private readonly IVertexGroup _vertexGroup;
 
@@ -20,7 +20,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         public void Parse(string line)
         {
-            string[] parts = line.Split(' ');
+            string[] parts = line.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
 
             var x = parts[1].ParseInvariantFloat();
             var y = parts[2].ParseInvariantFloat();

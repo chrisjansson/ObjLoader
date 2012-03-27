@@ -4,7 +4,7 @@ using ObjLoader.Loader.Data;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class NormalParser : ITypeParser
+    public class NormalParser : INormalParser
     {
         private readonly INormalGroup _normalGroup;
 

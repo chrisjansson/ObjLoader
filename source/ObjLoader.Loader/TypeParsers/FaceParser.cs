@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class FaceParser : ITypeParser
+    public class FaceParser : IFaceParser
     {
         private readonly IFaceGroup _faceGroup;
 
@@ -22,7 +22,7 @@ namespace ObjLoader.Loader.TypeParsers
         public void Parse(string line)
         {
             var args = line.Split(new[]{' '}, 2);
-            var vertices = args[1].Split(' ');
+            var vertices = args[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             var face = new Face();
 

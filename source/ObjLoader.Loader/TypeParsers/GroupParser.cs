@@ -3,7 +3,7 @@ using ObjLoader.Loader.Data;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class GroupParser : ITypeParser
+    public class GroupParser : IGroupParser
     {
         private readonly IGroupDataStore _groupDataStore;
 

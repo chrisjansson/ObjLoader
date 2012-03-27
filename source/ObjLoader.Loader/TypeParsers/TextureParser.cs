@@ -3,7 +3,7 @@ using ObjLoader.Loader.Data;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class TextureParser : ITypeParser
+    public class TextureParser : ITextureParser
     {
         private readonly ITextureGroup _textureGroup;
 

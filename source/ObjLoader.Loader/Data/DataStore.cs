@@ -7,7 +7,7 @@ namespace ObjLoader.Loader.Data
         void PushGroup(string groupName);
     }
 
-    public class DataStore : IGroupDataStore, IVertexGroup, ITextureGroup, INormalGroup
+    public class DataStore : IGroupDataStore, IVertexGroup, ITextureGroup, INormalGroup, IFaceGroup
     {
         private readonly List<Group> _groups = new List<Group>();
         private Group _currentGroup;
@@ -51,6 +51,16 @@ namespace ObjLoader.Loader.Data
         public void AddNormal(Normal normal)
         {
             _currentGroup.AddNormal(normal);
+        }
+
+        public Face GetFace(int i)
+        {
+            return _currentGroup.GetFace(i);
+        }
+
+        public void AddFace(Face face)
+        {
+            _currentGroup.AddFace(face);
         }
     }
 }
