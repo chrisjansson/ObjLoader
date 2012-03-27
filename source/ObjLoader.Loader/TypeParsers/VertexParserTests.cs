@@ -9,15 +9,15 @@ namespace ObjLoader.Loader.TypeParsers
     [TestFixture]
     public class VertexParserTests
     {
-        private VertexGroupMock _vertexGroupMock;
+        private VertexDataStoreMock _vertexDataStoreMock;
         private VertexParser _vertexParser;
 
         [SetUp]
         public void SetUp()
         {
-            _vertexGroupMock = new VertexGroupMock();
+            _vertexDataStoreMock = new VertexDataStoreMock();
 
-            _vertexParser = new VertexParser(_vertexGroupMock);
+            _vertexParser = new VertexParser(_vertexDataStoreMock);
         }
 
         [Test]
@@ -44,13 +44,13 @@ namespace ObjLoader.Loader.TypeParsers
             const string vertexLine = "v 0.123 0.234 0.345";
             _vertexParser.Parse(vertexLine);
 
-            var parsedNormal = _vertexGroupMock.ParsedVertex;
+            var parsedNormal = _vertexDataStoreMock.ParsedVertex;
             parsedNormal.X.Should().BeApproximately(0.123f, 0.000001f);
             parsedNormal.Y.Should().BeApproximately(0.234f, 0.000001f);
             parsedNormal.Z.Should().BeApproximately(0.345f, 0.000001f);
         }
 
-        class VertexGroupMock : IVertexGroup
+        class VertexDataStoreMock : IVertexDataStore
         {
             public Vertex ParsedVertex { get; set; }
 

@@ -7,11 +7,11 @@ namespace ObjLoader.Loader.TypeParsers
 {
     public class VertexParser : IVertexParser
     {
-        private readonly IVertexGroup _vertexGroup;
+        private readonly IVertexDataStore _vertexDataStore;
 
-        public VertexParser(IVertexGroup vertexGroup)
+        public VertexParser(IVertexDataStore vertexDataStore)
         {
-            _vertexGroup = vertexGroup;
+            _vertexDataStore = vertexDataStore;
         }
 
         public bool CanParse(string keyword)
@@ -28,7 +28,7 @@ namespace ObjLoader.Loader.TypeParsers
             var z = parts[3].ParseInvariantFloat();
 
             var vertex = new Vertex(x, y, z);
-            _vertexGroup.AddVertex(vertex);
+            _vertexDataStore.AddVertex(vertex);
         }
     }
 }

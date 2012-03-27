@@ -7,11 +7,11 @@ namespace ObjLoader.Loader.TypeParsers
 {
     public class NormalParser : INormalParser
     {
-        private readonly INormalGroup _normalGroup;
+        private readonly INormalDataStore _normalDataStore;
 
-        public NormalParser(INormalGroup normalGroup)
+        public NormalParser(INormalDataStore normalDataStore)
         {
-            _normalGroup = normalGroup;
+            _normalDataStore = normalDataStore;
         }
 
         public bool CanParse(string keyword)
@@ -28,7 +28,7 @@ namespace ObjLoader.Loader.TypeParsers
             float z = parts[3].ParseInvariantFloat();
 
             var normal = new Normal(x, y, z);
-            _normalGroup.AddNormal(normal);
+            _normalDataStore.AddNormal(normal);
         }
     }
 }

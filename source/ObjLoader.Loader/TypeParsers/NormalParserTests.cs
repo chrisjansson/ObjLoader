@@ -10,14 +10,14 @@ namespace ObjLoader.Loader.TypeParsers
     public class NormalParserTests
     {
         private NormalParser _normalParser;
-        private NormalGroupMock _normalGroupMock;
+        private NormalDataStoreMock _normalDataStoreMock;
 
         [SetUp]
          public void SetUp()
         {
-            _normalGroupMock = new NormalGroupMock();
+            _normalDataStoreMock = new NormalDataStoreMock();
 
-            _normalParser = new NormalParser(_normalGroupMock);
+            _normalParser = new NormalParser(_normalDataStoreMock);
         }
 
         [Test]
@@ -44,14 +44,14 @@ namespace ObjLoader.Loader.TypeParsers
             const string normalLine = "vn 1.000000 2.000000 -1.000000";
             _normalParser.Parse(normalLine);
 
-            var parsedNormal = _normalGroupMock.ParsedNormal;
+            var parsedNormal = _normalDataStoreMock.ParsedNormal;
             parsedNormal.X.Should().BeApproximately(1, 0.000001f);
             parsedNormal.Y.Should().BeApproximately(2, 0.000001f);
             parsedNormal.Z.Should().BeApproximately(-1, 0.000001f);
         }
     }
 
-    class NormalGroupMock : INormalGroup
+    class NormalDataStoreMock : INormalDataStore
     {
         public Normal ParsedNormal { get; set; }
 

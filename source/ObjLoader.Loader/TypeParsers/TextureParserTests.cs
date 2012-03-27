@@ -9,15 +9,15 @@ namespace ObjLoader.Loader.TypeParsers
     [TestFixture]
     public class TextureParserTests
     {
-        private TextureGroupMock _textureGroupMock;
+        private TextureDataStoreMock _textureDataStoreMock;
         private TextureParser _textureParser;
 
         [SetUp]
         public void SetUp()
         {
-            _textureGroupMock = new TextureGroupMock();
+            _textureDataStoreMock = new TextureDataStoreMock();
 
-            _textureParser = new TextureParser(_textureGroupMock);
+            _textureParser = new TextureParser(_textureDataStoreMock);
         }
 
         [Test]
@@ -44,12 +44,12 @@ namespace ObjLoader.Loader.TypeParsers
             const string textureLine = "vt 0.500 -1.352";
             _textureParser.Parse(textureLine);
 
-            var parsedNormal = _textureGroupMock.ParsedTexture;
+            var parsedNormal = _textureDataStoreMock.ParsedTexture;
             parsedNormal.X.Should().BeApproximately(0.5f, 0.000001f);
             parsedNormal.Y.Should().BeApproximately(-1.352f, 0.000001f);
         }
 
-        class TextureGroupMock : ITextureGroup
+        class TextureDataStoreMock : ITextureDataStore
         {
             public Texture ParsedTexture { get; set; }
 

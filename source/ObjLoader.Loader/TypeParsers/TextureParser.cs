@@ -6,11 +6,11 @@ namespace ObjLoader.Loader.TypeParsers
 {
     public class TextureParser : ITextureParser
     {
-        private readonly ITextureGroup _textureGroup;
+        private readonly ITextureDataStore _textureDataStore;
 
-        public TextureParser(ITextureGroup textureGroup)
+        public TextureParser(ITextureDataStore textureDataStore)
         {
-            _textureGroup = textureGroup;
+            _textureDataStore = textureDataStore;
         }
 
         public bool CanParse(string keyword)
@@ -26,7 +26,7 @@ namespace ObjLoader.Loader.TypeParsers
             float y = parts[2].ParseInvariantFloat();
 
             var texture = new Texture(x, y);
-            _textureGroup.AddTexture(texture);
+            _textureDataStore.AddTexture(texture);
         }
     }
 }

@@ -51,15 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataStore.cs" />
-    <Compile Include="Data\Face.cs" />
+    <Compile Include="Data\Elements\Face.cs" />
     <Compile Include="Data\Group.cs" />
     <Compile Include="Data\IFaceGroup.cs" />
-    <Compile Include="Data\INormalGroup.cs" />
-    <Compile Include="Data\ITextureGroup.cs" />
-    <Compile Include="Data\IVertexGroup.cs" />
-    <Compile Include="Data\Normal.cs" />
-    <Compile Include="Data\Texture.cs" />
-    <Compile Include="Data\Vertex.cs" />
+    <Compile Include="Data\INormalDataStore.cs" />
+    <Compile Include="Data\ITextureDataStore.cs" />
+    <Compile Include="Data\IVertexDataStore.cs" />
+    <Compile Include="Data\VertexData\Normal.cs" />
+    <Compile Include="Data\VertexData\Texture.cs" />
+    <Compile Include="Data\VertexData\Vertex.cs" />
     <Compile Include="Loader\ObjLoader.cs" />
     <Compile Include="Loader\ObjLoaderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,7 +76,6 @@
     <Compile Include="TypeParsers\NormalParser.cs" />
     <Compile Include="TypeParsers\NormalParserTests.cs" />
     <Compile Include="Common\StringExtensions.cs" />
-    <Compile Include="TypeParsers\ParserFacade.cs" />
     <Compile Include="TypeParsers\TextureParser.cs" />
     <Compile Include="TypeParsers\TextureParserTests.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
