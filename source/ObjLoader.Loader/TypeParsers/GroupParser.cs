@@ -1,9 +1,8 @@
-﻿using ObjLoader.Loader.Common;
-using ObjLoader.Loader.Data;
+﻿using ObjLoader.Loader.Data;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class GroupParser : IGroupParser
+    public class GroupParser : TypeParserBase, IGroupParser
     {
         private readonly IGroupDataStore _groupDataStore;
 
@@ -12,12 +11,12 @@ namespace ObjLoader.Loader.TypeParsers
             _groupDataStore = groupDataStore;
         }
 
-        public bool CanParse(string keyword)
+        protected override string Keyword
         {
-            return keyword.EqualsInvariantCultureIgnoreCase("g");
+            get { return "g"; }
         }
 
-        public void Parse(string line)
+        public override void Parse(string line)
         {
             string[] parts = line.Split(new[] {' '}, 2);
 

@@ -5,7 +5,7 @@ using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class VertexParser : IVertexParser
+    public class VertexParser : TypeParserBase, IVertexParser
     {
         private readonly IVertexDataStore _vertexDataStore;
 
@@ -14,12 +14,12 @@ namespace ObjLoader.Loader.TypeParsers
             _vertexDataStore = vertexDataStore;
         }
 
-        public bool CanParse(string keyword)
+        protected override string Keyword
         {
-            return keyword.EqualsInvariantCultureIgnoreCase("v");
+            get { return "v"; }
         }
 
-        public void Parse(string line)
+        public override void Parse(string line)
         {
             string[] parts = line.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
 

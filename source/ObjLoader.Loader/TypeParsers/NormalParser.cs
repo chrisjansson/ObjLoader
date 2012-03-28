@@ -1,11 +1,10 @@
-using System;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class NormalParser : INormalParser
+    public class NormalParser : TypeParserBase, INormalParser
     {
         private readonly INormalDataStore _normalDataStore;
 
@@ -14,12 +13,12 @@ namespace ObjLoader.Loader.TypeParsers
             _normalDataStore = normalDataStore;
         }
 
-        public bool CanParse(string keyword)
+        protected override string Keyword
         {
-            return keyword.EqualsInvariantCultureIgnoreCase("vn");
+            get { return "vn"; }
         }
-        
-        public void Parse(string line)
+
+        public override void Parse(string line)
         {
             string[] parts = line.Split(' ');
 

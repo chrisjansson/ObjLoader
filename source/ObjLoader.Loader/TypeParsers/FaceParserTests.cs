@@ -7,15 +7,15 @@ namespace ObjLoader.Loader.TypeParsers
     [TestFixture]
     public class FaceParserTests
     {
-        private FaceGroupMock _faceGroupMock;
+        private FaceGroupSpy _faceGroupSpy;
         private FaceParser _faceParser;
 
         [SetUp]
         public void SetUp()
         {
-            _faceGroupMock = new FaceGroupMock();
+            _faceGroupSpy = new FaceGroupSpy();
 
-            _faceParser = new FaceParser(_faceGroupMock);
+            _faceParser = new FaceParser(_faceGroupSpy);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace ObjLoader.Loader.TypeParsers
             const string faceLine = "f 1 2 3";
             _faceParser.Parse(faceLine);
 
-            var parsedFace = _faceGroupMock.ParsedFace;
+            var parsedFace = _faceGroupSpy.ParsedFace;
 
             parsedFace[0].VertexIndex.Should().Be(1);
             parsedFace[0].TextureIndex.Should().Be(0);
@@ -63,7 +63,9 @@ namespace ObjLoader.Loader.TypeParsers
             const string faceLine = "f 3/1 4/2 5/3";
             _faceParser.Parse(faceLine);
 
-            var parsedFace = _faceGroupMock.ParsedFace;
+            var parsedFace = _faceGroupSpy.ParsedFace;
+
+            parsedFace.Count.Should().Be(3);
 
             parsedFace[0].VertexIndex.Should().Be(3);
             parsedFace[0].TextureIndex.Should().Be(1);
@@ -84,7 +86,9 @@ namespace ObjLoader.Loader.TypeParsers
             const string faceLine = "f 6/4/1 3/5/3 7/6/5";
             _faceParser.Parse(faceLine);
 
-            var parsedFace = _faceGroupMock.ParsedFace;
+            var parsedFace = _faceGroupSpy.ParsedFace;
+
+            parsedFace.Count.Should().Be(3);
 
             parsedFace[0].VertexIndex.Should().Be(6);
             parsedFace[0].TextureIndex.Should().Be(4);
@@ -105,7 +109,9 @@ namespace ObjLoader.Loader.TypeParsers
             const string faceLine = "f 6//1 3//3 7//5";
             _faceParser.Parse(faceLine);
 
-            var parsedFace = _faceGroupMock.ParsedFace;
+            var parsedFace = _faceGroupSpy.ParsedFace;
+
+            parsedFace.Count.Should().Be(3);
 
             parsedFace[0].VertexIndex.Should().Be(6);
             parsedFace[0].TextureIndex.Should().Be(0);
@@ -121,7 +127,7 @@ namespace ObjLoader.Loader.TypeParsers
         }
     }
 
-    public class FaceGroupMock : IFaceGroup
+    public class FaceGroupSpy : IFaceGroup
     {
         public Face ParsedFace { get; private set; }
 

@@ -15,6 +15,11 @@ namespace ObjLoader.Loader.Data
         {
             get { return _vertices[i]; }
         }
+
+        public int Count
+        {
+            get { return _vertices.Count; }
+        }
     }
 
     public struct FaceVertex

@@ -4,7 +4,7 @@ using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class TextureParser : ITextureParser
+    public class TextureParser : TypeParserBase, ITextureParser
     {
         private readonly ITextureDataStore _textureDataStore;
 
@@ -13,12 +13,12 @@ namespace ObjLoader.Loader.TypeParsers
             _textureDataStore = textureDataStore;
         }
 
-        public bool CanParse(string keyword)
+        protected override string Keyword
         {
-            return keyword.EqualsInvariantCultureIgnoreCase("vt");
+            get { return "vt"; }
         }
 
-        public void Parse(string line)
+        public override void Parse(string line)
         {
             string[] parts = line.Split(' ');
 

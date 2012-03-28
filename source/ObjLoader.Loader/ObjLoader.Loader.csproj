@@ -54,6 +54,7 @@
     <Compile Include="Data\Elements\Face.cs" />
     <Compile Include="Data\Group.cs" />
     <Compile Include="Data\IFaceGroup.cs" />
+    <Compile Include="Data\IGroupDataStore.cs" />
     <Compile Include="Data\INormalDataStore.cs" />
     <Compile Include="Data\ITextureDataStore.cs" />
     <Compile Include="Data\IVertexDataStore.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Common\StringExtensions.cs" />
     <Compile Include="TypeParsers\TextureParser.cs" />
     <Compile Include="TypeParsers\TextureParserTests.cs" />
+    <Compile Include="TypeParsers\TypeParserBase.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
     <Compile Include="TypeParsers\VertexParserTests.cs" />
   </ItemGroup>

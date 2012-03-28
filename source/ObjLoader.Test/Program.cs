@@ -19,12 +19,14 @@ namespace ObjLoader.Test
 
             var fileStream = new FileStream("buddha.obj", FileMode.Open, FileAccess.Read);
 
-            var buffer = new byte[fileStream.Length];
-            int read = fileStream.Read(buffer, 0, (int) fileStream.Length);
-            var memoryStream = new MemoryStream(buffer, 0, read);
+            //var buffer = new byte[fileStream.Length];
+            //int read = fileStream.Read(buffer, 0, (int) fileStream.Length);
+            //var memoryStream = new MemoryStream(buffer, 0, read);
 
 
-            objLoader.Load(memoryStream);
+            //objLoader.Load(memoryStream);
+
+            objLoader.Load(fileStream);
 
             stopwatch.Stop();
             Console.WriteLine(stopwatch.Elapsed);

@@ -3,30 +3,15 @@ using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.Data
 {
-    public interface IGroupDataStore
-    {
-        void PushGroup(string groupName);
-    }
-
     public class DataStore : IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup
     {
-        private readonly List<Group> _groups = new List<Group>();
         private Group _currentGroup;
+
+        private readonly List<Group> _groups = new List<Group>();
 
         private readonly List<Vertex> _vertices = new List<Vertex>();
         private readonly List<Texture> _textures = new List<Texture>();
         private readonly List<Normal> _normals = new List<Normal>();
-
-        public DataStore()
-        {
-            PushGroup("default");
-        }
-
-        public void PushGroup(string groupName)
-        {
-            _currentGroup = new Group(groupName);
-            _groups.Add(_currentGroup);
-        }
 
         public Face GetFace(int i)
         {
@@ -35,7 +20,23 @@ namespace ObjLoader.Loader.Data
 
         public void AddFace(Face face)
         {
+            PushGroupIfNeeded();
+
             _currentGroup.AddFace(face);
+        }
+
+        public void PushGroup(string groupName)
+        {
+            _currentGroup = new Group(groupName);
+            _groups.Add(_currentGroup);
+        }
+
+        private void PushGroupIfNeeded()
+        {
+            if (_currentGroup == null)
+            {
+                PushGroup("default");
+            }
         }
 
         public Vertex GetVertex(int i)
