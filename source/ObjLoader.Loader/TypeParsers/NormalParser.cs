@@ -1,6 +1,7 @@
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.VertexData;
+using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.TypeParsers
 {
@@ -22,9 +23,9 @@ namespace ObjLoader.Loader.TypeParsers
         {
             string[] parts = line.Split(' ');
 
-            float x = parts[1].ParseInvariantFloat();
-            float y = parts[2].ParseInvariantFloat();
-            float z = parts[3].ParseInvariantFloat();
+            float x = parts[0].ParseInvariantFloat();
+            float y = parts[1].ParseInvariantFloat();
+            float z = parts[2].ParseInvariantFloat();
 
             var normal = new Normal(x, y, z);
             _normalDataStore.AddNormal(normal);

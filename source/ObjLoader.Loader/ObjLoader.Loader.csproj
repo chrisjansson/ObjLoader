@@ -50,8 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\FileGateway.cs" />
+    <Compile Include="Common\IFileGateway.cs" />
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\Elements\Face.cs" />
+    <Compile Include="Data\IElementGroup.cs" />
     <Compile Include="Data\Material.cs" />
     <Compile Include="Data\Group.cs" />
     <Compile Include="Data\IFaceGroup.cs" />
@@ -75,15 +78,15 @@
     <Compile Include="TypeParsers\FaceParserTests.cs" />
     <Compile Include="TypeParsers\GroupParser.cs" />
     <Compile Include="TypeParsers\GroupParserTests.cs" />
-    <Compile Include="TypeParsers\IFaceParser.cs" />
-    <Compile Include="TypeParsers\IGroupParser.cs" />
-    <Compile Include="TypeParsers\IMaterialLibraryLoaderFacade.cs" />
-    <Compile Include="TypeParsers\IMtlLibParser.cs" />
-    <Compile Include="TypeParsers\INormalParser.cs" />
-    <Compile Include="TypeParsers\ITextureParser.cs" />
-    <Compile Include="TypeParsers\ITypeParser.cs" />
-    <Compile Include="TypeParsers\IVertexParser.cs" />
-    <Compile Include="TypeParsers\MaterialLibraryLoaderFacade.cs" />
+    <Compile Include="TypeParsers\Interfaces\IFaceParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\IGroupParser.cs" />
+    <Compile Include="Loaders\IMaterialLibraryLoaderFacade.cs" />
+    <Compile Include="TypeParsers\Interfaces\IMaterialLibraryParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\INormalParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\ITextureParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\ITypeParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\IVertexParser.cs" />
+    <Compile Include="Loaders\MaterialLibraryLoaderFacade.cs" />
     <Compile Include="TypeParsers\MaterialLibraryParser.cs" />
     <Compile Include="TypeParsers\NormalParser.cs" />
     <Compile Include="TypeParsers\NormalParserTests.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="TypeParsers\TextureParser.cs" />
     <Compile Include="TypeParsers\TextureParserTests.cs" />
     <Compile Include="TypeParsers\TypeParserBase.cs" />
+    <Compile Include="TypeParsers\UseMaterialParser.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
     <Compile Include="TypeParsers\VertexParserTests.cs" />
   </ItemGroup>

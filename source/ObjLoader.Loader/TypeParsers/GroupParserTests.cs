@@ -39,7 +39,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly()
         {
-            const string normalLine = "g test group";
+            const string normalLine = "test group";
             _groupParser.Parse(normalLine);
 
             var parsedGroupName = _groupDataStoreMock.ParsedGroupName;

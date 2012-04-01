@@ -1,6 +1,4 @@
-using ObjLoader.Loader.Data;
-
-namespace ObjLoader.Loader.Loaders
+namespace ObjLoader.Loader.Data
 {
     public interface IMaterialLibrary
     {

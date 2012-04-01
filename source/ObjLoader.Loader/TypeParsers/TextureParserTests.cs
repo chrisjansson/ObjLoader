@@ -41,7 +41,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly()
         {
-            const string textureLine = "vt 0.500 -1.352";
+            const string textureLine = "0.500 -1.352";
             _textureParser.Parse(textureLine);
 
             var parsedNormal = _textureDataStoreMock.ParsedTexture;
@@ -51,7 +51,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         class TextureDataStoreMock : ITextureDataStore
         {
-            public Texture ParsedTexture { get; set; }
+            public Texture ParsedTexture { get; private set; }
 
             public Texture GetTexture(int i)
             {

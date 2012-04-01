@@ -15,7 +15,7 @@ namespace ObjLoader.Test
 
             var objLoaderFactory = new ObjLoaderFactory();
 
-            Loader.Loaders.ObjLoader objLoader = objLoaderFactory.Create();
+            Loader.Loaders.ObjLoader objLoader = objLoaderFactory.Create(fileName => File.Open(fileName, FileMode.Open, FileAccess.Read));
 
             var fileStream = new FileStream("buddha2.obj", FileMode.Open, FileAccess.Read);
 

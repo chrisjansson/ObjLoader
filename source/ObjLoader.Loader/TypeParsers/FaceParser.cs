@@ -1,6 +1,8 @@
 ﻿using System;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.Elements;
+using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.TypeParsers
 {
@@ -20,8 +22,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         public override void Parse(string line)
         {
-            var args = line.Split(new[]{' '}, 2);
-            var vertices = args[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var vertices = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             var face = new Face();
 

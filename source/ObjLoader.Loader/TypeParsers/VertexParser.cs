@@ -2,6 +2,7 @@ using System;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data.VertexData;
+using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.TypeParsers
 {
@@ -23,9 +24,9 @@ namespace ObjLoader.Loader.TypeParsers
         {
             string[] parts = line.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            var x = parts[1].ParseInvariantFloat();
-            var y = parts[2].ParseInvariantFloat();
-            var z = parts[3].ParseInvariantFloat();
+            var x = parts[0].ParseInvariantFloat();
+            var y = parts[1].ParseInvariantFloat();
+            var z = parts[2].ParseInvariantFloat();
 
             var vertex = new Vertex(x, y, z);
             _vertexDataStore.AddVertex(vertex);

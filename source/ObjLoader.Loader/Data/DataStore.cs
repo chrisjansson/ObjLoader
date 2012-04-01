@@ -1,11 +1,14 @@
 ﻿
 using System.Collections.Generic;
+using ObjLoader.Loader.Data.Elements;
 using ObjLoader.Loader.Data.VertexData;
 using ObjLoader.Loader.Loaders;
+using System.Linq;
+using ObjLoader.Loader.Common;
 
 namespace ObjLoader.Loader.Data
 {
-    public class DataStore : IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup, IMaterialLibrary
+    public class DataStore : IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup, IMaterialLibrary, IElementGroup
     {
         private Group _currentGroup;
 
@@ -75,6 +78,12 @@ namespace ObjLoader.Loader.Data
         public void Push(Material material)
         {
             _materials.Add(material);
+        }
+
+        public void SetMaterial(string materialName)
+        {
+            var material = _materials.Single(x => x.Name.EqualsInvariantCultureIgnoreCase(materialName));
+            _currentGroup.Material = material;
         }
     }
 }

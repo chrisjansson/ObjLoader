@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.Elements;
 
 namespace ObjLoader.Loader.TypeParsers
 {
@@ -39,7 +40,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly_1()
         {
-            const string faceLine = "f 1 2 3";
+            const string faceLine = "1 2 3";
             _faceParser.Parse(faceLine);
 
             var parsedFace = _faceGroupSpy.ParsedFace;
@@ -60,7 +61,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly_2()
         {
-            const string faceLine = "f 3/1 4/2 5/3";
+            const string faceLine = "3/1 4/2 5/3";
             _faceParser.Parse(faceLine);
 
             var parsedFace = _faceGroupSpy.ParsedFace;
@@ -83,7 +84,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly_3()
         {
-            const string faceLine = "f 6/4/1 3/5/3 7/6/5";
+            const string faceLine = "6/4/1 3/5/3 7/6/5";
             _faceParser.Parse(faceLine);
 
             var parsedFace = _faceGroupSpy.ParsedFace;
@@ -106,7 +107,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly_4()
         {
-            const string faceLine = "f 6//1 3//3 7//5";
+            const string faceLine = "6//1 3//3 7//5";
             _faceParser.Parse(faceLine);
 
             var parsedFace = _faceGroupSpy.ParsedFace;

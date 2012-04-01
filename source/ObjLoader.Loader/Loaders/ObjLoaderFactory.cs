@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.TypeParsers;
 
@@ -5,7 +7,7 @@ namespace ObjLoader.Loader.Loaders
 {
     public class ObjLoaderFactory
     {
-        public ObjLoader Create()
+        public ObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
         {
             var dataStore = new DataStore();
             
@@ -15,7 +17,11 @@ namespace ObjLoader.Loader.Loaders
             var textureParser = new TextureParser(dataStore);
             var vertexParser = new VertexParser(dataStore);
 
-            return new ObjLoader(faceParser, groupParser, normalParser, textureParser, vertexParser);
+            var materialLibraryLoader = new MaterialLibraryLoader(dataStore);
+            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, openMaterialStreamFunc);
+            var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
+
+            return new ObjLoader(faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser);
         }
     }
 }

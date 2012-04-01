@@ -1,4 +1,5 @@
 ﻿using ObjLoader.Loader.Data;
+using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.TypeParsers
 {
@@ -18,9 +19,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         public override void Parse(string line)
         {
-            string[] parts = line.Split(new[] {' '}, 2);
-
-            _groupDataStore.PushGroup(parts[1]);
+            _groupDataStore.PushGroup(line);
         }
     }
 }

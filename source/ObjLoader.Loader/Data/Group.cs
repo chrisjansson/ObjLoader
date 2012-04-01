@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ObjLoader.Loader.Data.Elements;
 
 namespace ObjLoader.Loader.Data
 {
@@ -12,6 +13,7 @@ namespace ObjLoader.Loader.Data
         }
 
         public string Name { get; private set; }
+        public Material Material { get; set; }
 
         public Face GetFace(int i)
         {

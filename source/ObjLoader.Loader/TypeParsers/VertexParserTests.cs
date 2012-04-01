@@ -41,7 +41,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_vertex_line_correctly()
         {
-            const string vertexLine = "v 0.123 0.234 0.345";
+            const string vertexLine = "0.123 0.234 0.345";
             _vertexParser.Parse(vertexLine);
 
             var parsedNormal = _vertexDataStoreMock.ParsedVertex;

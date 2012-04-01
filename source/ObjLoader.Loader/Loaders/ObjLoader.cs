@@ -1,81 +1,56 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using ObjLoader.Loader.TypeParsers;
+using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.Loaders
 {
-    public class ObjLoader
+    public class ObjLoader : LoaderBase
     {
-        private readonly IFaceParser _faceParser;
-        private readonly IGroupParser _groupParser;
-        private readonly INormalParser _normalParser;
-        private readonly ITextureParser _textureParser;
-        private readonly IVertexParser _vertexParser;
-
-        private List<ITypeParser> _typeParsers;
-        private StreamReader _lineStreamReader;
+        private readonly List<ITypeParser> _typeParsers = new List<ITypeParser>();
 
         private readonly List<string> _unrecognizedLines = new List<string>();
 
         public ObjLoader(
-            IFaceParser faceParser,
-            IGroupParser groupParser,
-            INormalParser normalParser,
-            ITextureParser textureParser,
-            IVertexParser vertexParser)
+            IFaceParser faceParser, 
+            IGroupParser groupParser, 
+            INormalParser normalParser, 
+            ITextureParser textureParser, 
+            IVertexParser vertexParser, 
+            IMaterialLibraryParser materialLibraryParser)
         {
-            _faceParser = faceParser;
-            _groupParser = groupParser;
-            _normalParser = normalParser;
-            _textureParser = textureParser;
-            _vertexParser = vertexParser;
-
-            SetupTypeParsers();
+            SetupTypeParsers(
+                vertexParser, 
+                faceParser, 
+                normalParser, 
+                textureParser, 
+                groupParser, 
+                materialLibraryParser);
         }
 
-        private void SetupTypeParsers()
+        private void SetupTypeParsers(params ITypeParser[] parsers)
         {
-            _typeParsers = new List<ITypeParser>
-                               {
-                                   _vertexParser,
-                                   _faceParser,
-                                   _groupParser,
-                                   _normalParser,
-                                   _textureParser
-                               };
-        }
-
-        public void Load(Stream lineStream)
-        {
-            _lineStreamReader = new StreamReader(lineStream);
-
-            while(!_lineStreamReader.EndOfStream)
+            foreach (var parser in parsers)
             {
-                ParseLine();
+                _typeParsers.Add(parser);
             }
         }
 
-        private void ParseLine()
+        protected override void BeforeLoad() {}
+
+        protected override void ParseLine(string keyword, string data)
         {
-            var currentLine = _lineStreamReader.ReadLine();
-
-            if (string.IsNullOrEmpty(currentLine) || currentLine[0] == '#')
-            {
-                return;
-            }
-
-            var keyword = currentLine.Split(new[] {' '}, 2)[0];
-
             foreach (var typeParser in _typeParsers)
             {
-                if(typeParser.CanParse(keyword))
+                if (typeParser.CanParse(keyword))
                 {
-                    typeParser.Parse(currentLine);
+                    typeParser.Parse(data);
                     return;
                 }
             }
 
-            _unrecognizedLines.Add(currentLine);
+            _unrecognizedLines.Add(keyword + " " + data);
         }
+
+        protected override void AfterLoad() {}
     }
 }

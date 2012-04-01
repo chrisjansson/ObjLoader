@@ -1,4 +1,4 @@
-namespace ObjLoader.Loader.TypeParsers
+namespace ObjLoader.Loader.Loaders
 {
     public interface IMaterialLibraryLoaderFacade
     {

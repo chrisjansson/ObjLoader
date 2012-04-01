@@ -41,7 +41,7 @@ namespace ObjLoader.Loader.TypeParsers
         [Test]
         public void Parses_normal_line_correctly()
         {
-            const string normalLine = "vn 1.000000 2.000000 -1.000000";
+            const string normalLine = "1.000000 2.000000 -1.000000";
             _normalParser.Parse(normalLine);
 
             var parsedNormal = _normalDataStoreMock.ParsedNormal;

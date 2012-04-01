@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.Elements
 {
     public class Face
     {
