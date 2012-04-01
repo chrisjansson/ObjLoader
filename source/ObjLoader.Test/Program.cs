@@ -2,7 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using ObjLoader.Loader.Loader;
-using ObjLoader = ObjLoader.Loader.Loader.ObjLoader;
+using ObjLoader.Loader.Loaders;
+using ObjLoader = ObjLoader.Loader.Loaders.ObjLoader;
 
 namespace ObjLoader.Test
 {
@@ -15,18 +16,18 @@ namespace ObjLoader.Test
 
             var objLoaderFactory = new ObjLoaderFactory();
 
-            Loader.Loader.ObjLoader objLoader = objLoaderFactory.Create();
+            Loader.Loaders.ObjLoader objLoader = objLoaderFactory.Create();
 
-            var fileStream = new FileStream("buddha.obj", FileMode.Open, FileAccess.Read);
+            var fileStream = new FileStream("buddha2.obj", FileMode.Open, FileAccess.Read);
 
-            //var buffer = new byte[fileStream.Length];
-            //int read = fileStream.Read(buffer, 0, (int) fileStream.Length);
-            //var memoryStream = new MemoryStream(buffer, 0, read);
+            var buffer = new byte[fileStream.Length];
+            int read = fileStream.Read(buffer, 0, (int)fileStream.Length);
+            var memoryStream = new MemoryStream(buffer, 0, read);
 
 
-            //objLoader.Load(memoryStream);
+            objLoader.Load(memoryStream);
 
-            objLoader.Load(fileStream);
+            //objLoader.Load(fileStream);
 
             stopwatch.Stop();
             Console.WriteLine(stopwatch.Elapsed);

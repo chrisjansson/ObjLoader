@@ -19,5 +19,10 @@ namespace ObjLoader.Loader.Common
         {
             return str.Equals(s, StringComparison.InvariantCultureIgnoreCase);
         }
+
+        public static bool IsNullOrEmpty(this string str)
+        {
+            return string.IsNullOrEmpty(str);
+        }
     }
 }

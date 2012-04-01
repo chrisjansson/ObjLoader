@@ -2,7 +2,7 @@
 using System.IO;
 using ObjLoader.Loader.TypeParsers;
 
-namespace ObjLoader.Loader.Loader
+namespace ObjLoader.Loader.Loaders
 {
     public class ObjLoader
     {
@@ -37,11 +37,11 @@ namespace ObjLoader.Loader.Loader
         {
             _typeParsers = new List<ITypeParser>
                                {
+                                   _vertexParser,
                                    _faceParser,
                                    _groupParser,
                                    _normalParser,
-                                   _textureParser,
-                                   _vertexParser
+                                   _textureParser
                                };
         }
 
@@ -51,20 +51,15 @@ namespace ObjLoader.Loader.Loader
 
             while(!_lineStreamReader.EndOfStream)
             {
-                HandleLine();
+                ParseLine();
             }
         }
 
-        private void HandleLine()
+        private void ParseLine()
         {
             var currentLine = _lineStreamReader.ReadLine();
 
-            if(currentLine == null)
-            {
-                return;
-            }
-
-            if(currentLine.Length == 0 || currentLine[0] == '#')
+            if (string.IsNullOrEmpty(currentLine) || currentLine[0] == '#')
             {
                 return;
             }
