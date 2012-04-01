@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ObjLoader.Loader.Loader;
 using ObjLoader.Loader.Loaders;
 using ObjLoader = ObjLoader.Loader.Loaders.ObjLoader;
 

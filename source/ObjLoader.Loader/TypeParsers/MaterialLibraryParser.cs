@@ -2,11 +2,11 @@
 {
     public class MaterialLibraryParser : TypeParserBase, IMtlLibParser
     {
-        private readonly IMaterialLoader _loader;
+        private readonly IMaterialLibraryLoaderFacade _libraryLoaderFacade;
 
-        public MaterialLibraryParser(IMaterialLoader loader)
+        public MaterialLibraryParser(IMaterialLibraryLoaderFacade libraryLoaderFacade)
         {
-            _loader = loader;
+            _libraryLoaderFacade = libraryLoaderFacade;
         }
 
         protected override string Keyword
@@ -16,7 +16,7 @@
 
         public override void Parse(string line)
         {
-
+            _libraryLoaderFacade.Load(line);
         }
     }
 }

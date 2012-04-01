@@ -5,7 +5,7 @@ using ObjLoader.Loader.Data;
 
 namespace ObjLoader.Loader.Loaders
 {
-    public class MaterialLibraryLoader : LoaderBase
+    public class MaterialLibraryLoader : LoaderBase, IMaterialLibraryLoader
     {
         private readonly IMaterialLibrary _materialLibrary;
         private Material _currentMaterial;

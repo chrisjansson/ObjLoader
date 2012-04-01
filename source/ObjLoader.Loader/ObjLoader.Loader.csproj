@@ -63,7 +63,8 @@
     <Compile Include="Data\VertexData\Normal.cs" />
     <Compile Include="Data\VertexData\Texture.cs" />
     <Compile Include="Data\VertexData\Vertex.cs" />
-    <Compile Include="Loaders\IMaterialLibrary.cs" />
+    <Compile Include="Data\IMaterialLibrary.cs" />
+    <Compile Include="Loaders\IMaterialLibraryLoader.cs" />
     <Compile Include="Loaders\LoaderBase.cs" />
     <Compile Include="Loaders\MaterialLibraryLoader.cs" />
     <Compile Include="Loaders\MaterialLibraryLoaderTests.cs" />
@@ -76,12 +77,13 @@
     <Compile Include="TypeParsers\GroupParserTests.cs" />
     <Compile Include="TypeParsers\IFaceParser.cs" />
     <Compile Include="TypeParsers\IGroupParser.cs" />
-    <Compile Include="TypeParsers\IMaterialLoader.cs" />
+    <Compile Include="TypeParsers\IMaterialLibraryLoaderFacade.cs" />
     <Compile Include="TypeParsers\IMtlLibParser.cs" />
     <Compile Include="TypeParsers\INormalParser.cs" />
     <Compile Include="TypeParsers\ITextureParser.cs" />
     <Compile Include="TypeParsers\ITypeParser.cs" />
     <Compile Include="TypeParsers\IVertexParser.cs" />
+    <Compile Include="TypeParsers\MaterialLibraryLoaderFacade.cs" />
     <Compile Include="TypeParsers\MaterialLibraryParser.cs" />
     <Compile Include="TypeParsers\NormalParser.cs" />
     <Compile Include="TypeParsers\NormalParserTests.cs" />

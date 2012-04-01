@@ -1,6 +1,6 @@
 namespace ObjLoader.Loader.TypeParsers
 {
-    public interface IMaterialLoader
+    public interface IMaterialLibraryLoaderFacade
     {
         void Load(string materialFileName);
     }

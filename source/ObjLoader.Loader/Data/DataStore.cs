@@ -1,14 +1,16 @@
 ﻿
 using System.Collections.Generic;
 using ObjLoader.Loader.Data.VertexData;
+using ObjLoader.Loader.Loaders;
 
 namespace ObjLoader.Loader.Data
 {
-    public class DataStore : IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup
+    public class DataStore : IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup, IMaterialLibrary
     {
         private Group _currentGroup;
 
         private readonly List<Group> _groups = new List<Group>();
+        private readonly List<Material> _materials = new List<Material>();
 
         private readonly List<Vertex> _vertices = new List<Vertex>();
         private readonly List<Texture> _textures = new List<Texture>();
@@ -68,6 +70,11 @@ namespace ObjLoader.Loader.Data
         public void AddNormal(Normal normal)
         {
             _normals.Add(normal);
+        }
+
+        public void Push(Material material)
+        {
+            _materials.Add(material);
         }
     }
 }
