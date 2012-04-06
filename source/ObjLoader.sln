@@ -1,5 +1,5 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjLoader.Loader", "ObjLoader.Loader\ObjLoader.Loader.csproj", "{1FD37682-98D6-442F-8E15-646247C690DC}"
 EndProject

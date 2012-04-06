@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data;
 
@@ -51,8 +52,6 @@ namespace ObjLoader.Loader.Loaders
             _parseActionDictionary.Add(key.ToLowerInvariant(), action);
         }
 
-        protected override void BeforeLoad() {}
-
         protected override void ParseLine(string keyword, string data)
         {
             var parseAction = GetKeywordAction(keyword);
@@ -74,8 +73,6 @@ namespace ObjLoader.Loader.Loaders
             return action;
         }
 
-        protected override void AfterLoad() {}
-
         private void PushMaterial(string materialName)
         {
             _currentMaterial = new Material(materialName);
@@ -91,6 +88,11 @@ namespace ObjLoader.Loader.Loaders
             float z = parts[2].ParseInvariantFloat();
 
             return new Vec3(x, y, z);
+        }
+
+        public void Load(Stream lineStream)
+        {
+            StartLoad(lineStream);
         }
     }
 }

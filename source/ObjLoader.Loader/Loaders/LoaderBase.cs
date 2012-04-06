@@ -7,18 +7,14 @@ namespace ObjLoader.Loader.Loaders
     {
         private StreamReader _lineStreamReader;
 
-        public void Load(Stream lineStream)
+        protected void StartLoad(Stream lineStream)
         {
             _lineStreamReader = new StreamReader(lineStream);
-
-            BeforeLoad();
 
             while (!_lineStreamReader.EndOfStream)
             {
                 ParseLine();
             }
-
-            AfterLoad();
         }
 
         private void ParseLine()
@@ -37,8 +33,6 @@ namespace ObjLoader.Loader.Loaders
             ParseLine(keyword, data);
         }
 
-        protected abstract void BeforeLoad();
         protected abstract void ParseLine(string keyword, string data);
-        protected abstract void AfterLoad();
     }
 }

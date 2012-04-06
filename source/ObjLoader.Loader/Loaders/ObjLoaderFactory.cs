@@ -7,7 +7,7 @@ namespace ObjLoader.Loader.Loaders
 {
     public class ObjLoaderFactory
     {
-        public ObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
+        public IObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
         {
             var dataStore = new DataStore();
             
@@ -21,7 +21,7 @@ namespace ObjLoader.Loader.Loaders
             var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, openMaterialStreamFunc);
             var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
 
-            return new ObjLoader(faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser);
+            return new ObjLoader(dataStore, faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser);
         }
     }
 }

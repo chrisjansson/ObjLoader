@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
-using ObjLoader.Loader.TypeParsers;
+using System.IO;
 using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.Loaders
 {
-    public class ObjLoader : LoaderBase
+    public class ObjLoader : LoaderBase, IObjLoader
     {
+        private readonly IDataStore _dataStore;
         private readonly List<ITypeParser> _typeParsers = new List<ITypeParser>();
 
         private readonly List<string> _unrecognizedLines = new List<string>();
 
         public ObjLoader(
+            IDataStore dataStore,
             IFaceParser faceParser, 
             IGroupParser groupParser, 
             INormalParser normalParser, 
@@ -18,6 +20,7 @@ namespace ObjLoader.Loader.Loaders
             IVertexParser vertexParser, 
             IMaterialLibraryParser materialLibraryParser)
         {
+            _dataStore = dataStore;
             SetupTypeParsers(
                 vertexParser, 
                 faceParser, 
@@ -35,8 +38,6 @@ namespace ObjLoader.Loader.Loaders
             }
         }
 
-        protected override void BeforeLoad() {}
-
         protected override void ParseLine(string keyword, string data)
         {
             foreach (var typeParser in _typeParsers)
@@ -51,6 +52,24 @@ namespace ObjLoader.Loader.Loaders
             _unrecognizedLines.Add(keyword + " " + data);
         }
 
-        protected override void AfterLoad() {}
+        public ObjLoaderLoaderResult Load(Stream lineStream)
+        {
+            StartLoad(lineStream);
+
+            return CreateResult();
+        }
+
+        private ObjLoaderLoaderResult CreateResult()
+        {
+            var result = new ObjLoaderLoaderResult
+                             {
+                                 Vertices = _dataStore.Vertices,
+                                 Textures = _dataStore.Textures,
+                                 Normals = _dataStore.Normals,
+                                 Groups = _dataStore.Groups,
+                                 Materials = _dataStore.Materials
+                             };
+            return result;
+        }
     }
 }
