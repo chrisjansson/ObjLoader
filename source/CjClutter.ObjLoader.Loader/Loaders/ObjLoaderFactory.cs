@@ -7,6 +7,11 @@ namespace ObjLoader.Loader.Loaders
 {
     public class ObjLoaderFactory : IObjLoaderFactory
     {
+        public IObjLoader Create()
+        {
+            return Create(File.OpenRead);
+        }
+
         public IObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
         {
             var dataStore = new DataStore();

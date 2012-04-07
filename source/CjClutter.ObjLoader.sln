@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CjClutter.ObjLoader.Loader", "ObjLoader.Loader\CjClutter.ObjLoader.Loader.csproj", "{1FD37682-98D6-442F-8E15-646247C690DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CjClutter.ObjLoader.Loader", "CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.csproj", "{1FD37682-98D6-442F-8E15-646247C690DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CjClutter.ObjLoader.Test", "ObjLoader.Test\CjClutter.ObjLoader.Test.csproj", "{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CjClutter.ObjLoader.Test", "CjClutter.ObjLoader.Test\CjClutter.ObjLoader.Test.csproj", "{2FDC8918-CCF7-427C-82CD-BA67A8887C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

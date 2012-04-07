@@ -66,7 +66,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObjLoader.Loader\CjClutter.ObjLoader.Loader.csproj">
+    <ProjectReference Include="..\CjClutter.ObjLoader.Loader\CjClutter.ObjLoader.Loader.csproj">
       <Project>{1FD37682-98D6-442F-8E15-646247C690DC}</Project>
       <Name>CjClutter.ObjLoader.Loader</Name>
     </ProjectReference>
