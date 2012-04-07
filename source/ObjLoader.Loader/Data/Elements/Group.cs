@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ObjLoader.Loader.Data.Elements;
+using ObjLoader.Loader.Data.DataStore;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.Elements
 {
     public class Group : IFaceGroup
     {

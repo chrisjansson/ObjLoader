@@ -1,6 +1,6 @@
 using ObjLoader.Loader.Data.VertexData;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.DataStore
 {
     public interface INormalDataStore
     {

@@ -6,6 +6,7 @@ using ObjLoader.Loader.Data;
 using System.Linq;
 using FluentAssertions;
 using FluentAssertions.Assertions;
+using ObjLoader.Loader.Data.DataStore;
 using ObjLoader.Loader.Loaders;
 
 namespace ObjLoader.Test.Loaders

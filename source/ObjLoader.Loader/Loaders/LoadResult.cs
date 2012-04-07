@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.Elements;
 using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.Loaders

@@ -4,7 +4,7 @@ using ObjLoader.Loader.Common;
 using ObjLoader.Loader.Data.Elements;
 using ObjLoader.Loader.Data.VertexData;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.DataStore
 {
     public class DataStore : IDataStore, IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore,
                              IFaceGroup, IMaterialLibrary, IElementGroup

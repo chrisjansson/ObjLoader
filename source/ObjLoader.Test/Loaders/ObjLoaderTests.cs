@@ -2,6 +2,7 @@
 using System.Text;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.DataStore;
 using ObjLoader.Loader.Loaders;
 using ObjLoader.Loader.TypeParsers;
 using System.Linq;

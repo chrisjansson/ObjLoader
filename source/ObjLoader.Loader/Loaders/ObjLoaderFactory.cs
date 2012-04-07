@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Data.DataStore;
 using ObjLoader.Loader.TypeParsers;
 
 namespace ObjLoader.Loader.Loaders
 {
-    public class ObjLoaderFactory
+    public class ObjLoaderFactory : IObjLoaderFactory
     {
         public IObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
         {

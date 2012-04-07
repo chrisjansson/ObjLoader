@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using ObjLoader.Loader.Data.Elements;
 using ObjLoader.Loader.Data.VertexData;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.DataStore
 {
     public interface IDataStore 
     {

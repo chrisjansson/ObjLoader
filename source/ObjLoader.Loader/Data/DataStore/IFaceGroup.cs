@@ -1,6 +1,6 @@
 using ObjLoader.Loader.Data.Elements;
 
-namespace ObjLoader.Loader.Data
+namespace ObjLoader.Loader.Data.DataStore
 {
     public interface IFaceGroup
     {
