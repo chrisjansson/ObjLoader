@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.TypeParsers;
 using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.Loaders
@@ -13,22 +14,24 @@ namespace ObjLoader.Loader.Loaders
         private readonly List<string> _unrecognizedLines = new List<string>();
 
         public ObjLoader(
-            IDataStore dataStore,
+            IDataStore dataStore, 
             IFaceParser faceParser, 
-            IGroupParser groupParser, 
+            IGroupParser groupParser,
             INormalParser normalParser, 
             ITextureParser textureParser, 
-            IVertexParser vertexParser, 
-            IMaterialLibraryParser materialLibraryParser)
+            IVertexParser vertexParser,
+            IMaterialLibraryParser materialLibraryParser, 
+            UseMaterialParser useMaterialParser)
         {
             _dataStore = dataStore;
             SetupTypeParsers(
-                vertexParser, 
-                faceParser, 
-                normalParser, 
-                textureParser, 
-                groupParser, 
-                materialLibraryParser);
+                vertexParser,
+                faceParser,
+                normalParser,
+                textureParser,
+                groupParser,
+                materialLibraryParser,
+                useMaterialParser);
         }
 
         private void SetupTypeParsers(params ITypeParser[] parsers)

@@ -20,8 +20,9 @@ namespace ObjLoader.Loader.Loaders
             var materialLibraryLoader = new MaterialLibraryLoader(dataStore);
             var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, openMaterialStreamFunc);
             var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
+            var useMaterialParser = new UseMaterialParser(dataStore);
 
-            return new ObjLoader(dataStore, faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser);
+            return new ObjLoader(dataStore, faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser, useMaterialParser);
         }
     }
 }

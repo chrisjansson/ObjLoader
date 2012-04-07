@@ -1,14 +1,13 @@
-﻿
-using System.Collections.Generic;
-using ObjLoader.Loader.Data.Elements;
-using ObjLoader.Loader.Data.VertexData;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ObjLoader.Loader.Common;
-using ObjLoader.Loader.Loaders;
+using ObjLoader.Loader.Data.Elements;
+using ObjLoader.Loader.Data.VertexData;
 
 namespace ObjLoader.Loader.Data
 {
-    public class DataStore : IDataStore, IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore, IFaceGroup, IMaterialLibrary, IElementGroup
+    public class DataStore : IDataStore, IGroupDataStore, IVertexDataStore, ITextureDataStore, INormalDataStore,
+                             IFaceGroup, IMaterialLibrary, IElementGroup
     {
         private Group _currentGroup;
 
@@ -19,11 +18,30 @@ namespace ObjLoader.Loader.Data
         private readonly List<Texture> _textures = new List<Texture>();
         private readonly List<Normal> _normals = new List<Normal>();
 
-        public IList<Vertex> Vertices { get { return _vertices; } }
-        public IList<Texture> Textures { get { return _textures; } }
-        public IList<Normal> Normals { get { return _normals; } }
-        public IList<Material> Materials { get { return _materials; } }
-        public IList<Group> Groups { get { return _groups; } }
+        public IList<Vertex> Vertices
+        {
+            get { return _vertices; }
+        }
+
+        public IList<Texture> Textures
+        {
+            get { return _textures; }
+        }
+
+        public IList<Normal> Normals
+        {
+            get { return _normals; }
+        }
+
+        public IList<Material> Materials
+        {
+            get { return _materials; }
+        }
+
+        public IList<Group> Groups
+        {
+            get { return _groups; }
+        }
 
         public void AddFace(Face face)
         {
@@ -68,7 +86,8 @@ namespace ObjLoader.Loader.Data
 
         public void SetMaterial(string materialName)
         {
-            var material = _materials.Single(x => x.Name.EqualsInvariantCultureIgnoreCase(materialName));
+            var material = _materials.SingleOrDefault(x => x.Name.EqualsInvariantCultureIgnoreCase(materialName));
+            PushGroupIfNeeded();
             _currentGroup.Material = material;
         }
     }

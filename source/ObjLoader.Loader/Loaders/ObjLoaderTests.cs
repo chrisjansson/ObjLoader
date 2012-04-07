@@ -15,23 +15,34 @@ namespace ObjLoader.Loader.Loaders
 
         private string _requestedMaterialLibraryFile;
         private LoadResult _loadResult;
+        private DataStore _textureDataStore;
+        private FaceParser _faceParser;
+        private GroupParser _groupParser;
+        private NormalParser _normalParser;
+        private TextureParser _textureParser;
+        private VertexParser _vertexParser;
+        private MaterialLibraryLoader _materialLibraryLoader;
+        private MaterialLibraryParser _materialLibraryParser;
+        private UseMaterialParser _useMaterialParser;
+        private MaterialLibraryLoaderFacade _materialLibraryLoaderFacade;
 
         [SetUp]
         public void SetUp()
         {
-            var dataStore = new DataStore();
+            _textureDataStore = new DataStore();
 
-            var faceParser = new FaceParser(dataStore);
-            var groupParser = new GroupParser(dataStore);
-            var normalParser = new NormalParser(dataStore);
-            var textureParser = new TextureParser(dataStore);
-            var vertexParser = new VertexParser(dataStore);
+            _faceParser = new FaceParser(_textureDataStore);
+            _groupParser = new GroupParser(_textureDataStore);
+            _normalParser = new NormalParser(_textureDataStore);
+            _textureParser = new TextureParser(_textureDataStore);
+            _vertexParser = new VertexParser(_textureDataStore);
 
-            var materialLibraryLoader = new MaterialLibraryLoader(dataStore);
-            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, OpenMaterialCallbackSpy);
-            var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
+            _materialLibraryLoader = new MaterialLibraryLoader(_textureDataStore);
+            _materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, OpenMaterialCallbackSpy);
+            _materialLibraryParser = new MaterialLibraryParser(_materialLibraryLoaderFacade);
+            _useMaterialParser = new UseMaterialParser(_textureDataStore);
 
-            _loader = new ObjLoader(dataStore, faceParser, groupParser, normalParser, textureParser, vertexParser, materialLibraryParser);
+            _loader = new ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, _materialLibraryParser, _useMaterialParser);
         }
 
         [Test]
@@ -51,6 +62,28 @@ namespace ObjLoader.Loader.Loaders
             var group = _loadResult.Groups.First();
             group.Faces.Should().HaveCount(12);
             group.Material.Name.Should().BeEquivalentTo("cube_material");
+        }
+
+        [Test]
+        public void Loads_object_correctly_when_material_is_not_found()
+        {
+            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, x => (Stream) null);
+            var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
+
+            _loader = new ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, materialLibraryParser, _useMaterialParser);
+
+            Load();
+
+            _loadResult.Vertices.Should().HaveCount(8);
+            _loadResult.Textures.Should().HaveCount(14);
+            _loadResult.Normals.Should().HaveCount(8);
+            _loadResult.Materials.Should().HaveCount(0);
+
+            _loadResult.Groups.Should().HaveCount(1);
+
+            var group = _loadResult.Groups.First();
+            group.Faces.Should().HaveCount(12);
+            group.Material.Should().BeNull();
         }
 
         private void Load()
