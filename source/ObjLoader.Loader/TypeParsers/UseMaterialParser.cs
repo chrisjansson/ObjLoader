@@ -2,7 +2,7 @@
 
 namespace ObjLoader.Loader.TypeParsers
 {
-    public class UseMaterialParser : TypeParserBase
+    public class UseMaterialParser : TypeParserBase, IUseMaterialParser
     {
         private readonly IElementGroup _elementGroup;
 

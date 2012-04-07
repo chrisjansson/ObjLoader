@@ -91,6 +91,7 @@
     <Compile Include="TypeParsers\Interfaces\ITypeParser.cs" />
     <Compile Include="TypeParsers\Interfaces\IVertexParser.cs" />
     <Compile Include="Loaders\MaterialLibraryLoaderFacade.cs" />
+    <Compile Include="TypeParsers\IUseMaterialParser.cs" />
     <Compile Include="TypeParsers\MaterialLibraryParser.cs" />
     <Compile Include="TypeParsers\NormalParser.cs" />
     <Compile Include="TypeParsers\NormalParserTests.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="TypeParsers\TextureParserTests.cs" />
     <Compile Include="TypeParsers\TypeParserBase.cs" />
     <Compile Include="TypeParsers\UseMaterialParser.cs" />
+    <Compile Include="TypeParsers\UseMaterialParserTests.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
     <Compile Include="TypeParsers\VertexParserTests.cs" />
   </ItemGroup>
