@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.TypeParsers;
 
-namespace ObjLoader.Loader.TypeParsers
+namespace ObjLoader.Test.TypeParsers
 {
     [TestFixture]
     public class UseMaterialParserTests
@@ -27,7 +28,7 @@ namespace ObjLoader.Loader.TypeParsers
         }
 
         [Test]
-        public void CanParse_returns_false_on_non_normal_line()
+        public void CanParse_returns_false_on_non_usemtl_line()
         {
             const string invalidKeyword = "vt";
 

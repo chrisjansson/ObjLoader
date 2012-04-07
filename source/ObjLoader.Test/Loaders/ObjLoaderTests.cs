@@ -2,16 +2,17 @@
 using System.Text;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
+using ObjLoader.Loader.Loaders;
 using ObjLoader.Loader.TypeParsers;
 using System.Linq;
 using FluentAssertions;
 
-namespace ObjLoader.Loader.Loaders
+namespace ObjLoader.Test.Loaders
 {
     [TestFixture]
     public class ObjLoaderTests
     {
-        private ObjLoader _loader;
+        private Loader.Loaders.ObjLoader _loader;
 
         private string _requestedMaterialLibraryFile;
         private LoadResult _loadResult;
@@ -42,7 +43,7 @@ namespace ObjLoader.Loader.Loaders
             _materialLibraryParser = new MaterialLibraryParser(_materialLibraryLoaderFacade);
             _useMaterialParser = new UseMaterialParser(_textureDataStore);
 
-            _loader = new ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, _materialLibraryParser, _useMaterialParser);
+            _loader = new Loader.Loaders.ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, _materialLibraryParser, _useMaterialParser);
         }
 
         [Test]
@@ -70,7 +71,7 @@ namespace ObjLoader.Loader.Loaders
             var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, x => (Stream) null);
             var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
 
-            _loader = new ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, materialLibraryParser, _useMaterialParser);
+            _loader = new Loader.Loaders.ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, materialLibraryParser, _useMaterialParser);
 
             Load();
 

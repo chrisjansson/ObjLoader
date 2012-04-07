@@ -3,8 +3,9 @@ using FluentAssertions.Assertions;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.VertexData;
+using ObjLoader.Loader.TypeParsers;
 
-namespace ObjLoader.Loader.TypeParsers
+namespace ObjLoader.Test.TypeParsers
 {
     [TestFixture]
     public class TextureParserTests

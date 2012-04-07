@@ -6,8 +6,9 @@ using ObjLoader.Loader.Data;
 using System.Linq;
 using FluentAssertions;
 using FluentAssertions.Assertions;
+using ObjLoader.Loader.Loaders;
 
-namespace ObjLoader.Loader.Loaders
+namespace ObjLoader.Test.Loaders
 {
     [TestFixture]
     public class MaterialLibraryLoaderTests

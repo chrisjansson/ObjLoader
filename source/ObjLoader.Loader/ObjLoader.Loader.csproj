@@ -32,15 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\packages\FluentAssertions.1.7.1.1\Lib\net40\FluentAssertions.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,16 +63,12 @@
     <Compile Include="Loaders\IObjLoader.cs" />
     <Compile Include="Loaders\LoaderBase.cs" />
     <Compile Include="Loaders\MaterialLibraryLoader.cs" />
-    <Compile Include="Loaders\MaterialLibraryLoaderTests.cs" />
     <Compile Include="Loaders\ObjLoader.cs" />
     <Compile Include="Loaders\ObjLoaderFactory.cs" />
     <Compile Include="Loaders\LoadResult.cs" />
-    <Compile Include="Loaders\ObjLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeParsers\FaceParser.cs" />
-    <Compile Include="TypeParsers\FaceParserTests.cs" />
     <Compile Include="TypeParsers\GroupParser.cs" />
-    <Compile Include="TypeParsers\GroupParserTests.cs" />
     <Compile Include="TypeParsers\Interfaces\IFaceParser.cs" />
     <Compile Include="TypeParsers\Interfaces\IGroupParser.cs" />
     <Compile Include="Loaders\IMaterialLibraryLoaderFacade.cs" />
@@ -91,21 +78,14 @@
     <Compile Include="TypeParsers\Interfaces\ITypeParser.cs" />
     <Compile Include="TypeParsers\Interfaces\IVertexParser.cs" />
     <Compile Include="Loaders\MaterialLibraryLoaderFacade.cs" />
-    <Compile Include="TypeParsers\IUseMaterialParser.cs" />
+    <Compile Include="TypeParsers\Interfaces\IUseMaterialParser.cs" />
     <Compile Include="TypeParsers\MaterialLibraryParser.cs" />
     <Compile Include="TypeParsers\NormalParser.cs" />
-    <Compile Include="TypeParsers\NormalParserTests.cs" />
     <Compile Include="Common\StringExtensions.cs" />
     <Compile Include="TypeParsers\TextureParser.cs" />
-    <Compile Include="TypeParsers\TextureParserTests.cs" />
     <Compile Include="TypeParsers\TypeParserBase.cs" />
     <Compile Include="TypeParsers\UseMaterialParser.cs" />
-    <Compile Include="TypeParsers\UseMaterialParserTests.cs" />
     <Compile Include="TypeParsers\VertexParser.cs" />
-    <Compile Include="TypeParsers\VertexParserTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
