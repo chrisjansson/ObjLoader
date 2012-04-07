@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ObjLoader.Loader</RootNamespace>
-    <AssemblyName>ObjLoader.Loader</AssemblyName>
+    <AssemblyName>CjClutter.ObjLoader.Loader</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,26 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\FileGateway.cs" />
-    <Compile Include="Common\IFileGateway.cs" />
-    <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\DataStore\DataStore.cs" />
     <Compile Include="Data\Elements\Face.cs" />
-    <Compile Include="Data\IElementGroup.cs" />
+    <Compile Include="Data\DataStore\IElementGroup.cs" />
     <Compile Include="Data\Material.cs" />
-    <Compile Include="Data\Group.cs" />
-    <Compile Include="Data\IFaceGroup.cs" />
-    <Compile Include="Data\IGroupDataStore.cs" />
-    <Compile Include="Data\INormalDataStore.cs" />
-    <Compile Include="Data\ITextureDataStore.cs" />
-    <Compile Include="Data\IVertexDataStore.cs" />
+    <Compile Include="Data\Elements\Group.cs" />
+    <Compile Include="Data\DataStore\IFaceGroup.cs" />
+    <Compile Include="Data\DataStore\IGroupDataStore.cs" />
+    <Compile Include="Data\DataStore\INormalDataStore.cs" />
+    <Compile Include="Data\DataStore\ITextureDataStore.cs" />
+    <Compile Include="Data\DataStore\IVertexDataStore.cs" />
     <Compile Include="Data\Vec3.cs" />
     <Compile Include="Data\VertexData\Normal.cs" />
     <Compile Include="Data\VertexData\Texture.cs" />
     <Compile Include="Data\VertexData\Vertex.cs" />
-    <Compile Include="Data\IMaterialLibrary.cs" />
-    <Compile Include="Data\IDataStore.cs" />
+    <Compile Include="Data\DataStore\IMaterialLibrary.cs" />
+    <Compile Include="Data\DataStore\IDataStore.cs" />
     <Compile Include="Loaders\IMaterialLibraryLoader.cs" />
     <Compile Include="Loaders\IObjLoader.cs" />
+    <Compile Include="Loaders\IObjLoaderFactory.cs" />
     <Compile Include="Loaders\LoaderBase.cs" />
     <Compile Include="Loaders\MaterialLibraryLoader.cs" />
     <Compile Include="Loaders\ObjLoader.cs" />

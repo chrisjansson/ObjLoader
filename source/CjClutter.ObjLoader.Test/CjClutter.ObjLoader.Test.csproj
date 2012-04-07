@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ObjLoader.Test</RootNamespace>
-    <AssemblyName>ObjLoader.Test</AssemblyName>
+    <AssemblyName>CjClutter.ObjLoader.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
@@ -66,9 +66,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObjLoader.Loader\ObjLoader.Loader.csproj">
+    <ProjectReference Include="..\ObjLoader.Loader\CjClutter.ObjLoader.Loader.csproj">
       <Project>{1FD37682-98D6-442F-8E15-646247C690DC}</Project>
-      <Name>ObjLoader.Loader</Name>
+      <Name>CjClutter.ObjLoader.Loader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ObjLoader.Test")]
+[assembly: AssemblyTitle("CjClutter.ObjLoader.Loader")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ObjLoader.Test")]
+[assembly: AssemblyProduct("ObjLoader.Loader")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("03c44a93-0fd9-4341-a4e9-0d6bc431cb92")]
+[assembly: Guid("4152f7e8-f638-4ae8-919d-f9f16849d146")]
 
 // Version information for an assembly consists of the following four values:
 //
