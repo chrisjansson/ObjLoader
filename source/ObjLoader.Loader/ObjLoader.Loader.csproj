@@ -67,7 +67,7 @@
     <Compile Include="Data\VertexData\Texture.cs" />
     <Compile Include="Data\VertexData\Vertex.cs" />
     <Compile Include="Data\IMaterialLibrary.cs" />
-    <Compile Include="Loaders\IDataStore.cs" />
+    <Compile Include="Data\IDataStore.cs" />
     <Compile Include="Loaders\IMaterialLibraryLoader.cs" />
     <Compile Include="Loaders\IObjLoader.cs" />
     <Compile Include="Loaders\LoaderBase.cs" />
@@ -75,7 +75,8 @@
     <Compile Include="Loaders\MaterialLibraryLoaderTests.cs" />
     <Compile Include="Loaders\ObjLoader.cs" />
     <Compile Include="Loaders\ObjLoaderFactory.cs" />
-    <Compile Include="Loaders\ObjLoaderLoaderResult.cs" />
+    <Compile Include="Loaders\LoadResult.cs" />
+    <Compile Include="Loaders\ObjLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeParsers\FaceParser.cs" />
     <Compile Include="TypeParsers\FaceParserTests.cs" />

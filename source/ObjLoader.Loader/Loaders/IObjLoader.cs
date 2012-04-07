@@ -4,6 +4,6 @@ namespace ObjLoader.Loader.Loaders
 {
     public interface IObjLoader
     {
-        ObjLoaderLoaderResult Load(Stream lineStream);
+        LoadResult Load(Stream lineStream);
     }
 }

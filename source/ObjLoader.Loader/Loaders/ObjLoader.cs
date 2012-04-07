@@ -52,16 +52,16 @@ namespace ObjLoader.Loader.Loaders
             _unrecognizedLines.Add(keyword + " " + data);
         }
 
-        public ObjLoaderLoaderResult Load(Stream lineStream)
+        public LoadResult Load(Stream lineStream)
         {
             StartLoad(lineStream);
 
             return CreateResult();
         }
 
-        private ObjLoaderLoaderResult CreateResult()
+        private LoadResult CreateResult()
         {
-            var result = new ObjLoaderLoaderResult
+            var result = new LoadResult
                              {
                                  Vertices = _dataStore.Vertices,
                                  Textures = _dataStore.Textures,

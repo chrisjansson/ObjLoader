@@ -25,7 +25,6 @@ namespace ObjLoader.Test
             int read = fileStream.Read(buffer, 0, (int)fileStream.Length);
             var memoryStream = new MemoryStream(buffer, 0, read);
 
-
             var result = objLoader.Load(memoryStream);
 
             stopwatch.Stop();
@@ -33,7 +32,7 @@ namespace ObjLoader.Test
             PrintResult(result);
         }
 
-        private static void PrintResult(ObjLoaderLoaderResult result)
+        private static void PrintResult(LoadResult result)
         {
             var sb = new StringBuilder();
 
