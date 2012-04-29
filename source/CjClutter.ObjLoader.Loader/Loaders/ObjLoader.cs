@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.DataStore;
-using ObjLoader.Loader.TypeParsers;
 using ObjLoader.Loader.TypeParsers.Interfaces;
 
 namespace ObjLoader.Loader.Loaders
@@ -22,7 +20,7 @@ namespace ObjLoader.Loader.Loaders
             ITextureParser textureParser, 
             IVertexParser vertexParser,
             IMaterialLibraryParser materialLibraryParser, 
-            UseMaterialParser useMaterialParser)
+            IUseMaterialParser useMaterialParser)
         {
             _dataStore = dataStore;
             SetupTypeParsers(
