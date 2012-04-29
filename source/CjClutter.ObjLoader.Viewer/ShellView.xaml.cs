@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using CjClutter.ObjLoader.Viewer.test;
-using ObjLoader.Loader.Data.Elements;
-using ObjLoader.Loader.Data.VertexData;
 using ObjLoader.Loader.Loaders;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using System.Linq;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public partial class MainWindow
+    public partial class ShellView
     {
         private bool _glControlLoaded;
         private double _angle;
-        private Camera _camera;
-        private Random _random;
+        private readonly Camera _camera;
+        private readonly Random _random;
         private LoadResult _loadResult;
-
-        public MainWindow()
+        
+        public ShellView()
         {
             InitializeComponent();
 
@@ -70,16 +66,16 @@ namespace CjClutter.ObjLoader.Viewer
             var ySquared = coordinate.Y * coordinate.Y;
             var zSquared = coordinate.Z * coordinate.Z;
 
-            var xBelowSqrt = 1 - ySquared/2 - zSquared/2 + (ySquared*zSquared)/3;
-            var x = coordinate.X*Math.Sqrt(xBelowSqrt);
+            var xBelowSqrt = 1 - ySquared / 2 - zSquared / 2 + (ySquared * zSquared) / 3;
+            var x = coordinate.X * Math.Sqrt(xBelowSqrt);
 
-            var yBelowSqrt = 1 - zSquared/2 - xSquared/2 + (zSquared*xSquared)/3;
-            var y = coordinate.Y*Math.Sqrt(yBelowSqrt);
+            var yBelowSqrt = 1 - zSquared / 2 - xSquared / 2 + (zSquared * xSquared) / 3;
+            var y = coordinate.Y * Math.Sqrt(yBelowSqrt);
 
-            var zBelowSqrt = 1 - xSquared/2 - ySquared/2 + (xSquared*ySquared)/3;
-            var z = coordinate.Z*Math.Sqrt(zBelowSqrt);
+            var zBelowSqrt = 1 - xSquared / 2 - ySquared / 2 + (xSquared * ySquared) / 3;
+            var z = coordinate.Z * Math.Sqrt(zBelowSqrt);
 
-            return new Vector3((float) x, (float) y, (float) z);
+            return new Vector3((float)x, (float)y, (float)z);
         }
 
         private void Render()
@@ -157,14 +153,12 @@ namespace CjClutter.ObjLoader.Viewer
             _glControlLoaded = true;
             GL.ClearColor(Color.Aqua);
 
-            //Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(Update));
-
             var dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += (o, args) =>
-                                        {
-                                            _angle += 1.0;
-                                            Render();
-                                        };
+            {
+                _angle += 1.0;
+                Render();
+            };
 
             dispatcherTimer.Interval = TimeSpan.FromSeconds(1 / 60.0);
             dispatcherTimer.Start();
@@ -173,10 +167,6 @@ namespace CjClutter.ObjLoader.Viewer
             var objLoader = objLoaderFactory.Create();
 
             _loadResult = objLoader.Load(File.OpenRead("buddha.obj"));
-
-            var x = _loadResult.Vertices.Select(vertex => vertex.X);
-            var y = _loadResult.Vertices.Select(vertex => vertex.Y);
-            var z = _loadResult.Vertices.Select(vertex => vertex.Z);
 
             Resize();
         }
@@ -201,30 +191,6 @@ namespace CjClutter.ObjLoader.Viewer
         private void OnGlControlResize(object sender, EventArgs e)
         {
             Resize();
-        }
-
-        public class Camera
-        {
-            public Camera()
-            {
-                Position = new Vector3d(0, 1, 20);
-                Target = new Vector3d(0, 0, 0);
-                Up = new Vector3d(0, 1, 0);
-            }
-
-            public Vector3d Position { get; set; }
-            public Vector3d Target { get; set; }
-            public Vector3d Up { get; set; }
-
-            public Matrix4d GetCameraMatrix()
-            {
-                return Matrix4d.LookAt(Position, Target, Up);
-            }
-        }
-
-        private void OnBrowseButtonClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

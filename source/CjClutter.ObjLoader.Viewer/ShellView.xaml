@@ -1,15 +1,19 @@
-﻿<Window x:Class="CjClutter.ObjLoader.Viewer.MainWindow"
+﻿<Window x:Class="CjClutter.ObjLoader.Viewer.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:OpenTK="clr-namespace:OpenTK;assembly=OpenTK.GLControl" Title="MainWindow" Height="350" Width="525">
-    <DockPanel>
-        
-        <Button 
-            Content="Browse..." 
-            DockPanel.Dock="Bottom"
-            Click="OnBrowseButtonClick"/>
-        
+        xmlns:OpenTK="clr-namespace:OpenTK;assembly=OpenTK.GLControl" Title="ShellView">
+
+    <DockPanel Background="White">
+
+        <TextBlock 
+            DockPanel.Dock="Top"
+            Text="Hello Caliburn Micro!"
+		    VerticalAlignment="Center"
+	        HorizontalAlignment="Center"
+		    FontSize="20" />
+
         <WindowsFormsHost
+            DockPanel.Dock="Bottom"
             Margin="10">
             <OpenTK:GLControl 
                 x:Name="glControl"
@@ -17,5 +21,7 @@
                 Paint="OnGlControlPaint"
                 Resize="OnGlControlResize" />
         </WindowsFormsHost>
+
     </DockPanel>
+
 </Window>
