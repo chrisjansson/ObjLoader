@@ -1,0 +1,1934 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ninject.Extensions.Conventions</name>
+    </assembly>
+    <members>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder">
+            <summary>
+            Provides functionality to detect assemblies.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.IAssemblyFinder">
+            <summary>
+            Provides functionality to detect assemblies.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IAssemblyFinder.FindAssemblies(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Finds assemblies using filenames or assembly names.
+            </summary>
+            <param name="assemblies">The assemblies to search.</param>
+            <param name="filter">A filter to filter certain assemblies.</param>
+            <returns>The matching assemblies.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IAssemblyFinder.FindAssembliesInPath(System.String)">
+            <summary>
+            Searches for assemblies in the given path.
+            </summary>
+            <param name="path">The path to search.</param>
+            <returns>The names of the detected assemblies.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IAssemblyFinder.FindAssembliesMatching(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Searches for assemblies that match one of the given pattern.
+            </summary>
+            <param name="patterns">The patterns.</param>
+            <returns>The names of the detected assemblies.</returns>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder.assemblyNameRetriever">
+            <summary>
+            Retrieves the name of an assembly form its file name.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder.#ctor(Ninject.Modules.IAssemblyNameRetriever)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder"/> class.
+            </summary>
+            <param name="assemblyNameRetriever">The assembly name retriever.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder.FindAssemblies(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Finds assemblies using filenames or assembly names.
+            </summary>
+            <param name="assemblies">The assemblies to search.</param>
+            <param name="filter">A filter to filter certain assemblies.</param>
+            <returns>The matching assemblies.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder.FindAssembliesInPath(System.String)">
+            <summary>
+            Searches for assemblies in the given path.
+            </summary>
+            <param name="path">The path to search.</param>
+            <returns>The names of the detected assemblies.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.AssemblyFinder.FindAssembliesMatching(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Searches for assemblies that match one of the given pattern.
+            </summary>
+            <param name="patterns">The patterns.</param>
+            <returns>The names of the detected assemblies.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory">
+            <summary>
+            Factory for binding generators.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory">
+            <summary>
+            Factory for binding generators.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateRegexBindingGenerator(System.String)">
+            <summary>
+            Creates a regex binding generator.
+            </summary>
+            <param name="pattern">The regex pattern.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateRegexBindingGenerator(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Creates a regex binding generator.
+            </summary>
+            <param name="pattern">The regex pattern.</param>
+            <param name="options">The regex options.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateAllInterfacesBindingGenerator">
+            <summary>
+            Creates an all interfaces binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateBaseBindingGenerator">
+            <summary>
+            Creates a base binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateDefaultInterfaceBindingGenerator">
+            <summary>
+            Creates a default interface binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateDefaultInterfacesBindingGenerator">
+            <summary>
+            Creates a default interfaces binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateSingleInterfaceBindingGenerator">
+            <summary>
+            Creates a single interface binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateSelfBindingGenerator">
+            <summary>
+            Creates a self binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.CreateSelectorBindingGenerator(Ninject.Extensions.Conventions.Syntax.ServiceSelector)">
+            <summary>
+            Creates a selector binding generator.
+            </summary>
+            <param name="selector">The selector.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory.FactoryBindingGenerator(System.Func{Ninject.Extensions.Factory.IInstanceProvider})">
+            <summary>
+            Creates a new FactoryBindingGenerator instance.
+            </summary>
+            <param name="instanceProvider">The instance provider passed to the new instance.</param>
+            <returns>The newly created FactoryBindingGenerator.</returns>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.bindableTypeSelector">
+            <summary>
+            Evaluator for base types nad interfaces.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateRegexBindingGenerator(System.String)">
+            <summary>
+            Creates a regex binding generator.
+            </summary>
+            <param name="pattern">The regex pattern.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateRegexBindingGenerator(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Creates a regex binding generator.
+            </summary>
+            <param name="pattern">The regex pattern.</param>
+            <param name="options">The regex options.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateAllInterfacesBindingGenerator">
+            <summary>
+            Creates an all interfaces binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateBaseBindingGenerator">
+            <summary>
+            Creates a base binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateDefaultInterfaceBindingGenerator">
+            <summary>
+            Creates a default interface binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateDefaultInterfacesBindingGenerator">
+            <summary>
+            Creates a default interfaces binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateSingleInterfaceBindingGenerator">
+            <summary>
+            Creates a single interface binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateSelfBindingGenerator">
+            <summary>
+            Creates a self binding generator.
+            </summary>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateSelectorBindingGenerator(Ninject.Extensions.Conventions.Syntax.ServiceSelector)">
+            <summary>
+            Creates a selector binding generator.
+            </summary>
+            <param name="selector">The selector.</param>
+            <returns>The newly created generator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.FactoryBindingGenerator(System.Func{Ninject.Extensions.Factory.IInstanceProvider})">
+            <summary>
+            Creates a new FactoryBindingGenerator instance.
+            </summary>
+            <param name="instanceProvider">The instance provider passed to the new instance.</param>
+            <returns>The newly created FactoryBindingGenerator.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.BindingGeneratorFactory.CreateSingleBindingCreator">
+            <summary>
+            Creates the multi binding creator.
+            </summary>
+            <returns>The newly created IMultiBindingCreator</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder">
+            <summary>
+            Builder for conventions configurations.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder">
+            <summary>
+            Builder for conventions configurations.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.SelectAllTypesFrom(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Defines that types are selectes from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies from which the types are selected.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.Where(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Selects the types matching the specified filter from the current selected types.
+            </summary>
+            <param name="filter">The filter used to select the types.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.Including(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Includes the specified types.
+            </summary>
+            <param name="includedTypes">The types to be included.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.Excluding(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Excludes the specified types.
+            </summary>
+            <param name="excludedTypes">The types to be excluded.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.BindWith(Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator)">
+            <summary>
+            Creates the bindings using the specified generator.
+            </summary>
+            <param name="generator">The generator to use to create the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings using the specified configuration.
+            </summary>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings using the specified configuration.
+            </summary>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.IncludingNonePublicTypes">
+            <summary>
+            Includes none public types.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the binding of the specified type using the specified configuration.
+            </summary>
+            <typeparam name="T">The type to be configured.</typeparam>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the binding of the specified type using the specified configuration.
+            </summary>
+            <typeparam name="T">The type to be configured.</typeparam>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.#ctor(Ninject.Syntax.IBindingRoot,Ninject.Extensions.Conventions.BindingBuilder.ITypeSelector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder"/> class.
+            </summary>
+            <param name="bindingRoot">The binding root.</param>
+            <param name="typeSelector">The type selector.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.SelectAllTypesFrom(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Defines that types are selectes from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies from which the types are selected.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.IncludingNonePublicTypes">
+            <summary>
+            Includes none public types.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.Where(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Selects the types matching the specified filter from the current selected types.
+            </summary>
+            <param name="filter">The filter used to select the types.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.Including(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Includes the specified types.
+            </summary>
+            <param name="includedTypes">The types to be included.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.Excluding(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Excludes the specified types.
+            </summary>
+            <param name="excludedTypes">The types to be excluded.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.BindWith(Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator)">
+            <summary>
+            Creates the bindings using the specified generator.
+            </summary>
+            <param name="generator">The generator to use to create the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings using the specified configuration.
+            </summary>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings using the specified configuration.
+            </summary>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the binding of the specified type using the specified configuration.
+            </summary>
+            <typeparam name="T">The type to be configured.</typeparam>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionBindingBuilder.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the binding of the specified type using the specified configuration.
+            </summary>
+            <typeparam name="T">The type to be configured.</typeparam>
+            <param name="configuration">The configuration that is applies to the bindings.</param>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax">
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IConfigureSyntax">
+            <summary>
+            Syntax to configure the binding.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IConfigureForSyntax">
+            <summary>
+            The syntax to configure special instances
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IConfigureForSyntax.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IConfigureForSyntax.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IConfigureSyntax.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IConfigureSyntax.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IJoinFilterWhereExcludeIncludeBindSyntax">
+            <summary>
+            Syntax to filter types, exculde or include types or bind the currently selected types.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IJoinWhereExcludeIncludeBindSyntax">
+            <summary>
+            From, Where, Exclude, Include, Bind syntax
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IJoinExcludeIncludeBindSyntax">
+            <summary>
+            From, exclude, include, bind syntax
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IExcludeIncludeBindSyntax">
+            <summary>
+            The syntax for exclude, include and binding definition.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IExcludeSyntax">
+            <summary>
+            The syntax to define types that are excluded.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IExcludeSyntax.Excluding``1">
+            <summary>
+            Excludes the given type
+            </summary>
+            <typeparam name="T">The type to be excluded</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IExcludeSyntax.Excluding(System.Type[])">
+            <summary>
+            Excludes the given types
+            </summary>
+            <param name="types">The types to be excluded.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IExcludeSyntax.Excluding(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Excludes the given types
+            </summary>
+            <param name="types">The types to be excluded.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IIncludeSyntax">
+            <summary>
+            The fluent syntax to include some types
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IIncludeSyntax.Including``1">
+            <summary>
+            Includes the given type
+            </summary>
+            <typeparam name="T">The type to be included</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IIncludeSyntax.Including(System.Type[])">
+            <summary>
+            Includes the given types
+            </summary>
+            <param name="types">The types to be included.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IIncludeSyntax.Including(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Includes the given types
+            </summary>
+            <param name="types">The types to be included.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IBindSyntax">
+            <summary>
+            The syntax to define how the types are bound.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindWith``1">
+            <summary>
+            Bind using a custom binding generator.
+            </summary>
+            <typeparam name="T">The type of the binding generator</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindWith(Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator)">
+            <summary>
+            Bind using a custom binding generator.
+            </summary>
+            <param name="generator">The generator used to create the bindings.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindAllInterfaces">
+            <summary>
+            Binds all interfaces of the given types to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindBase">
+            <summary>
+            Binds the base type of the given types to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindDefaultInterface">
+            <summary>
+            Binds the default interface of the given types to the type.
+            e.g. Foo : IFoo 
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindDefaultInterfaces">
+            <summary>
+             Binds the default interface of the given types to the type.
+            e.g. MyFoo matches IFoo, and SuperCrazyFoo matches ICrazyFoo and IFoo
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindSingleInterface">
+            <summary>
+            Expects that the given type has a single interface.
+            In this case the interface is bound to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindToSelf">
+            <summary>
+            Binds the type to itself.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindSelection(Ninject.Extensions.Conventions.Syntax.ServiceSelector)">
+            <summary>
+            Binds the selected interfaces to the type.
+            </summary>
+            <param name="selector">The selector of the interfaces.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindUsingRegex(System.String)">
+            <summary>
+            Bind the type to its interfaces matching the given regular expression.
+            </summary>
+            <param name="pattern">The regular expression.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindUsingRegex(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Bind the type to its interfaces matching the given regular expression.
+            </summary>
+            <param name="pattern">The regular expression.</param>
+            <param name="options">The regex options.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindToFactory">
+            <summary>
+            Binds interfaces to factory implementations using the factory extension.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IBindSyntax.BindToFactory(System.Func{Ninject.Extensions.Factory.IInstanceProvider})">
+            <summary>
+            Binds interfaces to factory implementations using the factory extension.
+            </summary>
+            <param name="instanceProvider">The instance provider.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IJoinSyntax">
+            <summary>
+            Syntax to allow multiple From.Select statements
+            </summary>
+        </member>
+        <member name="P:Ninject.Extensions.Conventions.Syntax.IJoinSyntax.Join">
+            <summary>
+            Gets the from syntax to select additional types from different assemblies
+            </summary>
+            <value>The fluent syntax.</value>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IWhereSyntax">
+            <summary>
+            Fluent syntax to filter the selected types
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IWhereSyntax.Where(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Filters the selected types.
+            </summary>
+            <param name="filter">The filter used to filter the selected types.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IFilterSyntax">
+            <summary>
+            Syntax for the selection of the types.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InNamespaces(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Selects the types in the specified namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InNamespaces(System.String[])">
+            <summary>
+            Selects the types in the specified namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InNamespaceOf``1">
+            <summary>
+            Selects the types in the same namespace as the given type.
+            </summary>
+            <typeparam name="T">The type defining the namespace.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InNamespaceOf(System.Type[])">
+            <summary>
+            Selects the types in the same namespaces as the given types.
+            </summary>
+            <param name="types">The types defining the namespaces.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.NotInNamespaces(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Selects all types not in the given namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are not selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.NotInNamespaces(System.String[])">
+            <summary>
+            Selects all types not in the given namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are not selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.NotInNamespaceOf``1">
+            <summary>
+            Selects all types not in same namespaces as the given type.
+            </summary>
+            <typeparam name="T">The type defining the namespace.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.NotInNamespaceOf(System.Type[])">
+            <summary>
+            Selects all types not in same namespaces as the given types.
+            </summary>
+            <param name="types">The types defining the namespace.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InheritedFromAny(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Selects the types inherited from any of the given types.
+            </summary>
+            <param name="types">The ancestor types.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InheritedFromAny(System.Type[])">
+            <summary>
+            Selects the types inherited from any of the given types.
+            </summary>
+            <param name="types">The ancestor types.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InheritedFrom(System.Type)">
+            <summary>
+            Selects the types inherited from the given types.
+            </summary>
+            <param name="type">The ancestor type.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.InheritedFrom``1">
+            <summary>
+            Selects the types inherited from the given types.
+            </summary>
+            <typeparam name="T">The ancestor type.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithAttribute``1">
+            <summary>
+            Selects the types with the specified attribute.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithAttribute``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Selects the types that matches the specified attribute predicate.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithAttribute(System.Type)">
+            <summary>
+            Selects the types with the specified attribute.
+            </summary>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithoutAttribute``1">
+            <summary>
+            Selects the types without the specified attribute.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithoutAttribute``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Selects the types that do not match the specified attribute predicate.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WithoutAttribute(System.Type)">
+            <summary>
+            Selects the types without the specified attribute.
+            </summary>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WhichAreGeneric">
+            <summary>
+            Selects the types that are generic.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.WhichAreNotGeneric">
+            <summary>
+            Selects the types that are not generic.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.EndingWith(System.String)">
+            <summary>
+            Selects all types that have the specified postfix.
+            </summary>
+            <param name="postfix">The postfix.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFilterSyntax.StartingWith(System.String)">
+            <summary>
+            Selects all types that have the specified prefix.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IIncludingNonePublicTypesSelectSyntax">
+            <summary>
+            IncludingNonPublicTypes, Select syntax
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IIncludingNonePublicTypesSyntax">
+            <summary>
+            The syntax to specify that none public types shall be included.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IIncludingNonePublicTypesSyntax.IncludingNonePublicTypes">
+            <summary>
+            Specifies that none public types shall be included.
+            </summary>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.ISelectSyntax">
+            <summary>
+            Syntax to select the types
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.Select(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Selects the types using the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.SelectAllTypes">
+            <summary>
+            Selects all types.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.SelectAllClasses">
+            <summary>
+            Selects all none abstract classes.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.SelectAllIncludingAbstractClasses">
+            <summary>
+            Selects all calsses including abstract ones.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.SelectAllAbstractClasses">
+            <summary>
+            Selects all abstract classes.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.ISelectSyntax.SelectAllInterfaces">
+            <summary>
+            Selects all interfaces.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.IFromSyntax">
+            <summary>
+            The fluent syntax to select assemblies
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.From(System.Reflection.Assembly[])">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.From(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromThisAssembly">
+            <summary>
+            Scans the calling assembly.
+            </summary>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssemblyContaining``1">
+            <summary>
+            Scans the assembly containing the specified type.
+            </summary>
+            <typeparam name="T">The type that specifies the assembly.</typeparam>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssemblyContaining(System.Type[])">
+            <summary>
+            Scans the assembly containing the specified type..
+            </summary>
+            <param name="types">The types that specify the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssemblyContaining(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Scans the assembly containing the specified type..
+            </summary>
+            <param name="types">The types that specify the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.From(System.String[])">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.From(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.From(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <param name="filter">The filter for filtering the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssembliesInPath(System.String)">
+            <summary>
+            Scans the assemblies in the given path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssembliesInPath(System.String,System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Scans the assemblies in the given path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="filter">The filter used to filter the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssembliesMatching(System.String[])">
+            <summary>
+            Scans the assemblies that matching one of the given assembly name pattern.
+            </summary>
+            <param name="patterns">The patterns to match the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Syntax.IFromSyntax.FromAssembliesMatching(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Scans the assemblies that matching one of the given assembly name pattern.
+            </summary>
+            <param name="patterns">The patterns to match the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindWith``1">
+            <summary>
+            Bind using a custom binding generator.
+            </summary>
+            <typeparam name="T">The type of the binding generator</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindWith(Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator)">
+            <summary>
+            Bind using a custom binding generator.
+            </summary>
+            <param name="generator">The generator used to create the bindings.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindAllInterfaces">
+            <summary>
+            Binds all interfaces of the given types to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindBase">
+            <summary>
+            Binds the base type of the given types to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindDefaultInterface">
+            <summary>
+            Binds the default interface of the given types to the type.
+            e.g. Foo : IFoo 
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindDefaultInterfaces">
+            <summary>
+             Binds the default interface of the given types to the type.
+            e.g. MyFoo matches IFoo, and SuperCrazyFoo matches ICrazyFoo and IFoo
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindSingleInterface">
+            <summary>
+            Expects that the given type has a single interface.
+            In this case the interface is bound to the type.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindToSelf">
+            <summary>
+            Binds the type to itself.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindSelection(Ninject.Extensions.Conventions.Syntax.ServiceSelector)">
+            <summary>
+            Binds the selected interfaces to the type.
+            </summary>
+            <param name="selector">The selector of the interfaces.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindUsingRegex(System.String)">
+            <summary>
+            Bind the type to its interfaces matching the given regular expression.
+            </summary>
+            <param name="pattern">The regular expression.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindUsingRegex(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Bind the type to its interfaces matching the given regular expression.
+            </summary>
+            <param name="pattern">The regular expression.</param>
+            <param name="options">The regex options.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindToFactory">
+            <summary>
+            Binds interfaces to factory implementations using the factory extension.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.BindToFactory(System.Func{Ninject.Extensions.Factory.IInstanceProvider})">
+            <summary>
+            Binds interfaces to factory implementations using the factory extension.
+            </summary>
+            <param name="instanceProvider">The instance provider.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.ConfigureFor``1(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationAction)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Configure(Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService)">
+            <summary>
+            Configures the bindings with the specified configuration.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.bindingBuilder">
+            <summary>
+            Builder for conventions
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.assemblyFinder">
+            <summary>
+            Finder for assemblies.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.typeFilter">
+            <summary>
+            Filter for types.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.bindingGeneratorFactory">
+            <summary>
+            Factory to create binding generators.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.#ctor(Ninject.Extensions.Conventions.BindingBuilder.IConventionBindingBuilder,Ninject.Extensions.Conventions.BindingBuilder.IAssemblyFinder,Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter,Ninject.Extensions.Conventions.BindingBuilder.IBindingGeneratorFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax"/> class.
+            </summary>
+            <param name="bindingBuilder">The binding builder.</param>
+            <param name="assemblyFinder">The assembly finder.</param>
+            <param name="typeFilter">The type filter.</param>
+            <param name="bindingGeneratorFactory">The binding generator factory.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Where(System.Func{System.Type,System.Boolean})">
+            <inheritdoc />
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.IncludingNonePublicTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InNamespaces(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Selects the types in the specified namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InNamespaces(System.String[])">
+            <summary>
+            Selects the types in the specified namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InNamespaceOf(System.Type[])">
+            <summary>
+            Selects the types in the same namespaces as the given types.
+            </summary>
+            <param name="types">The types defining the namespaces.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InNamespaceOf``1">
+            <summary>
+            Selects the types in the same namespace as the given type.
+            </summary>
+            <typeparam name="T">The type defining the namespace.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.NotInNamespaces(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Selects all types not in the given namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are not selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.NotInNamespaces(System.String[])">
+            <summary>
+            Selects all types not in the given namespaces.
+            </summary>
+            <param name="namespaces">The namespaces from which the types are not selected.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.NotInNamespaceOf(System.Type[])">
+            <summary>
+            Selects all types not in same namespaces as the given types.
+            </summary>
+            <param name="types">The types defining the namespace.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.NotInNamespaceOf``1">
+            <summary>
+            Selects all types not in same namespaces as the given type.
+            </summary>
+            <typeparam name="T">The type defining the namespace.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InheritedFromAny(System.Type[])">
+            <summary>
+            Selects the types inherited from any of the given types.
+            </summary>
+            <param name="types">The ancestor types.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InheritedFromAny(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Selects the types inherited from any of the given types.
+            </summary>
+            <param name="types">The ancestor types.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InheritedFrom(System.Type)">
+            <summary>
+            Selects the types inherited from the given types.
+            </summary>
+            <param name="type">The ancestor type.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.InheritedFrom``1">
+            <summary>
+            Selects the types inherited from the given types.
+            </summary>
+            <typeparam name="T">The ancestor type.</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithAttribute``1">
+            <summary>
+            Selects the types with the specified attribute.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithAttribute``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Selects the types that matches the specified attribute predicate.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithAttribute(System.Type)">
+            <summary>
+            Selects the types with the specified attribute.
+            </summary>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithoutAttribute``1">
+            <summary>
+            Selects the types without the specified attribute.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithoutAttribute``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Selects the types that do not match the specified attribute predicate.
+            </summary>
+            <typeparam name="T">The type of the attribute</typeparam>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WithoutAttribute(System.Type)">
+            <summary>
+            Selects the types without the specified attribute.
+            </summary>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WhichAreGeneric">
+            <summary>
+            Selects the types that are generic.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.WhichAreNotGeneric">
+            <summary>
+            Selects the types that are not generic.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.EndingWith(System.String)">
+            <summary>
+            Selects all types that have the specified postfix.
+            </summary>
+            <param name="postfix">The postfix.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.StartingWith(System.String)">
+            <summary>
+            Selects all types that have the specified prefix.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.From(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.From(System.Reflection.Assembly[])">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromThisAssembly">
+            <summary>
+            Scans the calling assembly.
+            </summary>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssemblyContaining``1">
+            <summary>
+            Scans the assembly containing the specified type.
+            </summary>
+            <typeparam name="T">The type that specifies the assembly.</typeparam>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssemblyContaining(System.Type[])">
+            <summary>
+            Scans the assembly containing the specified type..
+            </summary>
+            <param name="types">The types that specify the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssemblyContaining(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Scans the assembly containing the specified type..
+            </summary>
+            <param name="types">The types that specify the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.From(System.String[])">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.From(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.From(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Scans the specified assemblies.
+            </summary>
+            <param name="assemblies">The name of the assemblies to be scanned.</param>
+            <param name="filter">The filter for filtering the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssembliesInPath(System.String)">
+            <summary>
+            Scans the assemblies in the given path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssembliesInPath(System.String,System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Scans the assemblies in the given path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="filter">The filter used to filter the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssembliesMatching(System.String[])">
+            <summary>
+            Scans the assemblies matching the given pattern.
+            </summary>
+            <param name="patterns">The patterns to match the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.FromAssembliesMatching(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Scans the assemblies matching the given pattern.
+            </summary>
+            <param name="patterns">The patterns to match the assemblies.</param>
+            <returns>The fluent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Including``1">
+            <summary>
+            Includes the given type
+            </summary>
+            <typeparam name="T">The type to be included</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Including(System.Type[])">
+            <summary>
+            Includes the given types
+            </summary>
+            <param name="types">The types to be included.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Including(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Includes the given types
+            </summary>
+            <param name="types">The types to be included.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Excluding``1">
+            <summary>
+            Excludes the given type
+            </summary>
+            <typeparam name="T">The type to be excluded</typeparam>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Excluding(System.Type[])">
+            <summary>
+            Excludes the given types
+            </summary>
+            <param name="types">The types to be excluded.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Excluding(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Excludes the given types
+            </summary>
+            <param name="types">The types to be excluded.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Select(System.Func{System.Type,System.Boolean})">
+            <summary>
+            Selects the types using the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.SelectAllTypes">
+            <summary>
+            Selects all types.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.SelectAllClasses">
+            <summary>
+            Selects all none abstract classes.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.SelectAllIncludingAbstractClasses">
+            <summary>
+            Selects all calsses including abstract ones.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.SelectAllAbstractClasses">
+            <summary>
+            Selects all abstract classes.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.SelectAllInterfaces">
+            <summary>
+            Selects all interfaces.
+            </summary>
+            <returns>The fluent syntax</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Ninject#Syntax#IFluentSyntax#GetType">
+            <summary>
+            The syntax to configure the conventions
+            </summary>
+        </member>
+        <member name="P:Ninject.Extensions.Conventions.BindingBuilder.ConventionSyntax.Join">
+            <inheritdoc />
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator">
+            <summary>
+            Creates bindings.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator.CreateBindings(Ninject.Syntax.IBindingRoot,System.Collections.Generic.IEnumerable{System.Type},System.Type)">
+            <summary>
+            Creates the bindings for the specified services.
+            </summary>
+            <param name="bindingRoot">The binding root.</param>
+            <param name="serviceTypes">The service types.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The syntax of the created bindings.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter">
+            <summary>
+            Decides if some criteria apply to a type.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter.IsTypeInNamespace(System.Type,System.String)">
+            <summary>
+            Determines whether the type is in the given namespace.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="namespace">The name space.</param>
+            <returns>
+            <c>true</c> if the type is in the given namespace; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter.IsTypeInheritedFromAny(System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Determines whether the type is inherited from any of the specified types.
+            </summary>
+            <param name="type">The checked type.</param>
+            <param name="types">The possible base types.</param>
+            <returns>
+                <c>true</c> if the given type is inherited from any of the specified types; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter.HasAttribute(System.Type,System.Type)">
+            <summary>
+            Determines whether the specified type has the specified attribute.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>
+                <c>true</c> if the specified type has the attribute; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeFilter.HasAttribute``1(System.Type,System.Func{``0,System.Boolean})">
+            <summary>
+            Determines whether the specified type has an attribute matching the predicate.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <param name="type">The type.</param>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>
+                <c>true</c> if the specified type has an attribute that matches the predicate; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.ITypeSelector">
+            <summary>
+            Selects types from the given assemblies
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeSelector.GetExportedTypes(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets all exported types from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies to search for types.</param>
+            <returns>All exported types from the specified assemblies.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.ITypeSelector.GetAllTypes(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets all types from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies to search for types.</param>
+            <returns>All types from the specified assemblies.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.MultipleConfigurationBindingCreator">
+            <summary>
+            Creates bindings that have all their own configuration.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.MultipleConfigurationBindingCreator.CreateBindings(Ninject.Syntax.IBindingRoot,System.Collections.Generic.IEnumerable{System.Type},System.Type)">
+            <summary>
+            Creates the bindings for the specified services.
+            </summary>
+            <param name="bindingRoot">The binding root.</param>
+            <param name="serviceTypes">The service types.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The syntax of the created bindings.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.SingleConfigurationBindingCreator">
+            <summary>
+            Creates bindings that share the configuration.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.SingleConfigurationBindingCreator.CreateBindings(Ninject.Syntax.IBindingRoot,System.Collections.Generic.IEnumerable{System.Type},System.Type)">
+            <summary>
+            Creates the bindings for the specified services.
+            </summary>
+            <param name="bindingRoot">The binding root.</param>
+            <param name="serviceTypes">The service types.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The syntax of the created bindings.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.TypeFilter">
+            <summary>
+            Decides if some criteria apply to a type.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeFilter.IsTypeInNamespace(System.Type,System.String)">
+            <summary>
+            Determines whether the type is in the given namespace.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="namespace">The name space.</param>
+            <returns>
+                <c>true</c> if the type is in the given namespace; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeFilter.IsTypeInheritedFromAny(System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Determines whether the type is inherited from any of the specified types.
+            </summary>
+            <param name="type">The checked type.</param>
+            <param name="types">The possible base types.</param>
+            <returns>
+                <c>true</c> if the given type is inherited from any of the specified types; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeFilter.HasAttribute(System.Type,System.Type)">
+            <summary>
+            Determines whether the specified type has the specified attribute.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>
+                <c>true</c> if the specified type has the attribute; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeFilter.HasAttribute``1(System.Type,System.Func{``0,System.Boolean})">
+            <summary>
+            Determines whether the specified type has an attribute matching the predicate.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <param name="type">The type.</param>
+            <param name="predicate">A function to test if an attribute matches.</param>
+            <returns>
+                <c>true</c> if the specified type has an attribute that matches the predicate; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingBuilder.TypeSelector">
+            <summary>
+            Selects types from the given assemblies.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeSelector.GetExportedTypes(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets all exported types from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies to search for types.</param>
+            <returns>
+            All exported types from the specified assemblies.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingBuilder.TypeSelector.GetAllTypes(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets all types from the specified assemblies.
+            </summary>
+            <param name="assemblies">The assemblies to search for types.</param>
+            <returns>All types from the specified assemblies.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator">
+            <summary>
+            An abstract implementation of a binding generator that binds the interfaces of a type to the type.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator">
+            <summary>
+            Creates the bindings for a type using some convention.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.IBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>The syntaxes for the created bindings to configure more options.</returns>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.bindableTypeSelector">
+            <summary>
+            Gets the types that are binddabe to a given type.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.bindingCreator">
+            <summary>
+            Creator for multiple bindins for one type.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.filter">
+            <summary>
+            The filter used to decide if a binding for the interface type is created.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector,Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator,System.Func{System.Type,System.Type,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+            <param name="bindingCreator">Creator for multiple bindins for one type.</param>
+            <param name="filter">The filter used to decide if a binding for the interface type is created.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes for the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.AbstractInterfaceBindingGenerator.GetNameWithoutGenericPart(System.Type)">
+            <summary>
+            Gets the name of a type without the generic part.
+            </summary>
+            <param name="type">The type for which the name is returned.</param>
+            <returns>The name of the given type without the generic type post fix in case of a generic type.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.AllInterfacesBindingGenerator">
+            <summary>
+            Creates bindings for all interfaces of a type.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.AllInterfacesBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector,Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.AllInterfacesBindingGenerator"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+            <param name="bindingCreator">Creator for multiple bindins for one type.</param>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.BaseBindingGenerator">
+            <summary>
+            Binds a type to ists base type.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BaseBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes for the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector">
+            <summary>
+            Returns the interfaces and base types for which a binding to the given type can be created.
+            </summary>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector">
+            <summary>
+            Returns the interfaces and base types for which a binding to the given type can be created.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector.GetBindableInterfaces(System.Type)">
+            <summary>
+            Gets interfaces for which a binding can be created.
+            e.g. an open generic type requires an open generic interface.
+            </summary>
+            <param name="type">The type for which the bindable interfaces shall be returned.</param>
+            <returns>The interfaces for which a binding to the given type can be created.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector.GetBindableBaseTypes(System.Type)">
+            <summary>
+            Gets base types for which a binding can be created.
+            e.g. an open generic type requires an open generic base type.
+            </summary>
+            <param name="type">The type for which the bindable base types shall be returned.</param>
+            <returns>The base types for which a binding to the given type can be created.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector.GetBindableInterfaces(System.Type)">
+            <summary>
+            Gets interfaces for which a binding can be created.
+            e.g. an open generic type requires an open generic interface.
+            </summary>
+            <param name="type">The type for which the bindable interfaces shall be returned.</param>
+            <returns>
+            The interfaces for which a binding to the given type can be created.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector.GetBindableBaseTypes(System.Type)">
+            <summary>
+            Gets base types for which a binding can be created.
+            e.g. an open generic type requires an open generic base type.
+            </summary>
+            <param name="type">The type for which the bindable base types shall be returned.</param>
+            <returns>
+            The base types for which a binding to the given type can be created.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector.GetAllBaseClasses(System.Type)">
+            <summary>
+            Gets all base classes of a type.
+            </summary>
+            <param name="type">The type of which the base classes are returned.</param>
+            <returns>All base classes of a type.</returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector.IsEqualOpenGeneric(System.Type,System.Type)">
+            <summary>
+            Determines whether the given interface is a generic with the same generic parameters.
+            </summary>
+            <param name="i">The i.</param>
+            <param name="type">The type.</param>
+            <returns>
+                <c>true</c> if [is equal open generic] [the specified i]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.BindableTypeSelector.GetMatchingGenericBaseClasses(System.Type)">
+            <summary>
+            Gets the base classes that have the same generic arguments as the given type.
+            </summary>
+            <param name="type">The type for which the base calsses are returned.</param>
+            <returns>The base classes that have the same generic arguments as the given type.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfaceBindingGenerator">
+            <summary>
+            Binds the type its interface with the same Name
+            e.g. IFoo to Foo
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfaceBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector,Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfaceBindingGenerator"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+            <param name="bindingCreator">Creator for multiple bindins for one type.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfaceBindingGenerator.HaveSameName(System.Type,System.Type)">
+            <summary>
+            Checks if the given interface and implementation type have the same name.
+            </summary>
+            <param name="implementationType">The type of the implementation.</param>
+            <param name="interfaceType">The type of the interface.</param>
+            <returns>True if the names match.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfacesBindingGenerator">
+            <summary>
+            Binds all interfaces 
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfacesBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector,Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfacesBindingGenerator"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+            <param name="bindingCreator">Creator for multiple bindins for one type.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.DefaultInterfacesBindingGenerator.ImplementationTypeContainsinterfaceName(System.Type,System.Type)">
+            <summary>
+            Checks if the implementation type contains the name of the interface.
+            </summary>
+            <param name="implementationType">The type of the implementation.</param>
+            <param name="interfaceType">The type of the interface.</param>
+            <returns>True if the name of the interface is contained in the name of the implementation type.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.FactoryBindingGenerator">
+            <summary>
+            Binds interfaces to factories using the factory extension.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.FactoryBindingGenerator.#ctor(System.Func{Ninject.Extensions.Factory.IInstanceProvider})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.FactoryBindingGenerator"/> class.
+            </summary>
+            <param name="instanceProvider">The instance provider.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.FactoryBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes for the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator">
+            <summary>
+            Creates bindings of the selected interfaces and base types of the given type.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator.bindableTypeSelector">
+            <summary>
+            Evaluates the base type and interfaces of a type.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingBuilder.IBindingCreator,Ninject.Extensions.Conventions.Syntax.ServiceSelector,Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator"/> class.
+            </summary>
+            <param name="bindingCreator">The binding creator.</param>
+            <param name="selector">The selection delegate.</param>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes for the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="P:Ninject.Extensions.Conventions.BindingGenerators.SelectorBindingGenerator.Selector">
+            <summary>
+            Gets the selection delegate.
+            </summary>
+            <value>The selector.</value>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.SelfBindingGenerator">
+            <summary>
+            Binds the type to itsself.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.SelfBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes for the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.BindingGenerators.SingleInterfaceBindingGenerator">
+            <summary>
+            Binds the type to its single interface.
+            </summary>
+        </member>
+        <member name="F:Ninject.Extensions.Conventions.BindingGenerators.SingleInterfaceBindingGenerator.bindableTypeSelector">
+            <summary>
+            Evaluates the bindabe types.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.SingleInterfaceBindingGenerator.#ctor(Ninject.Extensions.Conventions.BindingGenerators.IBindableTypeSelector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Extensions.Conventions.BindingGenerators.SingleInterfaceBindingGenerator"/> class.
+            </summary>
+            <param name="bindableTypeSelector">The bindable type selector.</param>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.BindingGenerators.SingleInterfaceBindingGenerator.CreateBindings(System.Type,Ninject.Syntax.IBindingRoot)">
+            <summary>
+            Creates the bindings for a type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="bindingRoot">The binding root that is used to create the bindings.</param>
+            <returns>
+            The syntaxes of the created bindings to configure more options.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Extensions.ExtensionsForAssembly">
+            <summary>
+            The extensions for assembly.
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.Extensions.ExtensionsForAssembly.GetExportedTypesPlatformSafe(System.Reflection.Assembly)">
+            <summary>
+            Gets all exported types of the specified assembly.
+            Plattform independent.
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <returns>
+            All exported types of the specified assembly.
+            </returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.ExtensionsForIKernel">
+            <summary>
+            Provides extensions for the IKernel interface
+            </summary>
+        </member>
+        <member name="M:Ninject.Extensions.Conventions.ExtensionsForIKernel.Bind(Ninject.Syntax.IBindingRoot,System.Action{Ninject.Extensions.Conventions.Syntax.IFromSyntax})">
+            <summary>
+            Creates bindings using conventions
+            </summary>
+            <param name="kernel">The kernel for which the bindings are created.</param>
+            <param name="configure">The binding convention configuration.</param>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.ServiceSelector">
+            <summary>
+            Delegate to select the types for which a binding is created to the given type.
+            </summary>
+            <param name="type">The type for which the bindings are created.</param>
+            <param name="baseTypes">The base types of the given type.</param>
+            <returns>The types for which a binding is created to the given type.</returns>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.ConfigurationAction">
+            <summary>
+            The action to perform to configure the bindings.
+            </summary>
+            <param name="syntax">The binding syntax.</param>
+        </member>
+        <member name="T:Ninject.Extensions.Conventions.Syntax.ConfigurationActionWithService">
+            <summary>
+            The action to perform to confugure the bindings.
+            </summary>
+            <param name="syntax">The binding syntax.</param>
+            <param name="serviceType">The type of the service.</param>
+        </member>
+    </members>
+</doc>

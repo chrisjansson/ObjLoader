@@ -2,7 +2,7 @@
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public class ViewModelBase<TView> : Screen
+    public class Screen<TView> : Screen
     {
         protected TView View { get; set; }
 

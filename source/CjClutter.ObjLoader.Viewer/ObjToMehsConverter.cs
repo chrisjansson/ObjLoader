@@ -6,7 +6,7 @@ using OpenTK;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public class ObjToMehsConverter
+    public class ObjToMehsConverter : IObjToMehsConverter
     {
         private LoadResult _loadResult;
         private Group _modelGroup;
@@ -14,7 +14,7 @@ namespace CjClutter.ObjLoader.Viewer
         private Mesh _mesh;
         private global::ObjLoader.Loader.Data.Elements.Face _face;
 
-        public List<Mesh> Convert(LoadResult loadResult)
+        public IList<Mesh> Convert(LoadResult loadResult)
         {
             _loadResult = loadResult;
 

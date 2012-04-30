@@ -1,17 +1,25 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.IO;
-using Caliburn.Micro;
 using Microsoft.Win32;
 using ObjLoader.Loader.Loaders;
-using OpenTK;
+using System.Linq;
 
 namespace CjClutter.ObjLoader.Viewer
 {
     [Export(typeof(IShell))]
-    public class ShellViewModel : ViewModelBase<ShellView>, IShell
+    public class ShellViewModel : Screen<ShellView>, IShell
     {
+        private readonly IObjLoaderFactory _objLoaderFactory;
+        private readonly IObjToMehsConverter _converter;
+
         private LoadResult _loadResult;
+
+        [ImportingConstructor]
+        public ShellViewModel(IObjLoaderFactory objLoaderFactory, IObjToMehsConverter converter)
+        {
+            _converter = converter;
+            _objLoaderFactory = objLoaderFactory;
+        }
 
         public void Browse()
         {
@@ -32,25 +40,11 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void LoadModel(Stream modelStream)
         {
-            var objLoaderFactory = new ObjLoaderFactory();
-            var objLoader = objLoaderFactory.Create(x => null);
+            var objLoader = _objLoaderFactory.Create(x => null);
 
             _loadResult = objLoader.Load(modelStream);
 
-            var objToMehsConverter = new ObjToMehsConverter();
-            View.Meshes = objToMehsConverter.Convert(_loadResult);
+            View.Meshes = _converter.Convert(_loadResult).ToList();
         }
-    }
-
-    public class Mesh
-    {
-        public Mesh()
-        {
-            Triangles = new List<Vector3>();
-            Normals = new List<Vector3>();
-        }
-
-        public List<Vector3> Triangles { get; set; }
-        public List<Vector3> Normals { get; set; }
     }
 }
