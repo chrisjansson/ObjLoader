@@ -5,6 +5,11 @@
 
     <DockPanel Background="White">
 
+        <Button
+            x:Name="Browse"
+            Content="Browse..."
+            DockPanel.Dock="Top" />
+        
         <TextBlock 
             DockPanel.Dock="Top"
             Text="Hello Caliburn Micro!"
