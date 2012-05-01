@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void OnGlControlLoad(object sender, EventArgs e)
         {
-            _glControlLoaded = true;
+            _glControlLoaded = !DesignerProperties.GetIsInDesignMode(this);
 
             var stopwatch = new Stopwatch();
 
@@ -37,7 +38,7 @@ namespace CjClutter.ObjLoader.Viewer
                 stopwatch.Restart();
                 Render();
             };
-            
+
             dispatcherTimer.Interval = TimeSpan.FromSeconds(1 / 60.0);
             stopwatch.Start();
             dispatcherTimer.Start();
@@ -50,26 +51,52 @@ namespace CjClutter.ObjLoader.Viewer
             Render();
         }
 
+        private void OnGlControlResize(object sender, EventArgs e)
+        {
+            Resize();
+        }
+
         private void Resize()
+        {
+            if(!_glControlLoaded)
+            {
+                return;
+            }
+
+            ResizeViewport();
+
+            SetPerspectiveMatrix();
+        }
+
+        private void ResizeViewport()
         {
             var width = glControl.Width;
             var height = glControl.Height;
 
             GL.Viewport(0, 0, width, height);
+        }
 
-            var aspect = (float)width / height;
-            var fovy = (float)((Math.PI / 180.0) * 50);
-            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView(fovy, aspect, 1, 1000);
+        private void SetPerspectiveMatrix()
+        {
+            var perspectiveMatrix = CreatePerspectiveMatrix();
 
             GL.MatrixMode(MatrixMode.Projection);
+
             GL.LoadMatrix(ref perspectiveMatrix);
 
             GL.MatrixMode(MatrixMode.Modelview);
         }
 
-        private void OnGlControlResize(object sender, EventArgs e)
+        private Matrix4 CreatePerspectiveMatrix()
         {
-            Resize();
+            var width = glControl.Width;
+            var height = glControl.Height;
+
+            var aspect = (float)width / height;
+            const float fovy = (float)((Math.PI / 180.0) * 50);
+            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView(fovy, aspect, 1, 1000);
+
+            return perspectiveMatrix;
         }
 
         private void Render()
@@ -79,50 +106,36 @@ namespace CjClutter.ObjLoader.Viewer
                 return;
             }
 
-            GL.ClearColor(Color.Aqua);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            var cameraMatrix = _camera.GetCameraMatrix();
-            GL.LoadMatrix(ref cameraMatrix);
+            SetupScene();
 
             GL.Rotate(_angle, 0f, 1f, 0f);
-            GL.Disable(EnableCap.CullFace);
-            GL.Enable(EnableCap.DepthTest);
-            //GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-
+            
             GL.Begin(BeginMode.Triangles);
 
             if (Meshes != null)
             {
                 foreach (var mesh in Meshes)
                 {
-                    Render(mesh);
+                    RenderMesh(mesh);
                 }
             }
 
             GL.End();
-            //foreach (var modelGroup in _loadResult.Groups)
-            //{
-            //    foreach (var face in modelGroup.Faces)
-            //    {
-            //        Render(face);
-            //    }
-            //}
-
-            //var catmull = new Catmull();
-            //var cubeMesh = catmull.CreateCubeMesh().ToList();
-
-            //List<Face> newFaces = SubdivideQuadMesh(cubeMesh, 6);
-
-            //foreach (var face in newFaces)
-            //{
-            //    Render(face);
-            //}
 
             glControl.SwapBuffers();
         }
 
-        private void Render(Mesh mesh)
+        private void SetupScene()
+        {
+            GL.ClearColor(Color.Aqua);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.Enable(EnableCap.DepthTest);
+
+            var cameraMatrix = _camera.GetCameraMatrix();
+            GL.LoadMatrix(ref cameraMatrix);
+        }
+
+        private void RenderMesh(Mesh mesh)
         {
             for (int index = 0; index < mesh.Triangles.Count; index++)
             {
