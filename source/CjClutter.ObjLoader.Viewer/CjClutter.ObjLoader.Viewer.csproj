@@ -97,8 +97,12 @@
     <Compile Include="IObjToMehsConverter.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="Mesh.cs" />
+    <Compile Include="MeshViewModel.cs" />
     <Compile Include="NinjectBootstrapper.cs" />
     <Compile Include="ObjToMehsConverter.cs" />
+    <Compile Include="OpenGlUserControl.xaml.cs">
+      <DependentUpon>OpenGlUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +119,10 @@
     <Compile Include="FaceExtensions.cs" />
     <Compile Include="FaceTests.cs" />
     <Compile Include="Screen.cs" />
+    <Page Include="OpenGlUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

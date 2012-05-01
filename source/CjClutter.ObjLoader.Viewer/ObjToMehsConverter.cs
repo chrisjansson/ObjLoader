@@ -40,6 +40,7 @@ namespace CjClutter.ObjLoader.Viewer
         {
             //Group faces by material later or something
             _mesh = new Mesh();
+            _mesh.Name = _modelGroup.Name;
 
             foreach (var face in _modelGroup.Faces)
             {

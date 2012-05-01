@@ -1,90 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Windows.Threading;
-using OpenTK;
-using OpenTK.Graphics.OpenGL;
-
-namespace CjClutter.ObjLoader.Viewer
+﻿namespace CjClutter.ObjLoader.Viewer
 {
     public partial class ShellView
     {
-        private bool _glControlLoaded;
-        private Camera _camera;
-
         public ShellView()
         {
             InitializeComponent();
-
-            _camera = new Camera();
-        }
-
-        private void OnGlControlPaint(object sender, PaintEventArgs e)
-        {
-            if (!_glControlLoaded)
-            {
-                return;
-            }
-
-            Render();
-        }
-
-        private void Render()
-        {
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            var cameraMatrix = _camera.GetCameraMatrix();
-            GL.LoadMatrix(ref cameraMatrix);
-
-            GL.Rotate(_angle, 0f, 1f, 0f);
-            GL.Disable(EnableCap.CullFace);
-            GL.Enable(EnableCap.DepthTest);
-            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-
-            GL.Begin(BeginMode.Triangles);
-
-            if(Meshes != null)
-            {
-                foreach (var mesh in Meshes)
-                {
-                    Render(mesh);
-                }
-            }
-
-            //foreach (var modelGroup in _loadResult.Groups)
-            //{
-            //    foreach (var face in modelGroup.Faces)
-            //    {
-            //        Render(face);
-            //    }
-            //}
-            GL.End();
-
-            //var catmull = new Catmull();
-            //var cubeMesh = catmull.CreateCubeMesh().ToList();
-
-            //List<Face> newFaces = SubdivideQuadMesh(cubeMesh, 6);
-
-            //foreach (var face in newFaces)
-            //{
-            //    Render(face);
-            //}
-
-            glControl.SwapBuffers();
-        }
-
-        private void Render(Mesh mesh)
-        {
-            for (int index   = 0; index < mesh.Triangles.Count; index++)
-            {
-                var vertex = mesh.Triangles[index];
-                var normal = mesh.Normals[index];
-
-                GL.Normal3(normal);
-                GL.Vertex3(vertex);
-            }
         }
 
         //private void Render(Face face)
@@ -164,63 +84,5 @@ namespace CjClutter.ObjLoader.Viewer
         //    _angle += 1.0;
         //    Render();
         //}
-
-        private void OnGlControlLoad(object sender, EventArgs e)
-        {
-            _glControlLoaded = true;
-            GL.ClearColor(Color.Aqua);
-
-            _stopwatch = new Stopwatch();
-
-            var dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += (o, args) =>
-            {
-                _angle += _stopwatch.Elapsed.TotalSeconds * 10;
-                _stopwatch.Restart();
-                Render();
-            };
-
-            dispatcherTimer.Interval = TimeSpan.FromSeconds(1 / 60.0);
-            _stopwatch.Start();            
-            dispatcherTimer.Start();
-
-            Resize();
-        }
-
-        private void Resize()
-        {
-            var width = glControl.Width;
-            var height = glControl.Height;
-
-            GL.Viewport(0, 0, width, height);
-
-            var aspect = (float)width / height;
-            var fovy = (float)((Math.PI / 180.0) * 50);
-            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView(fovy, aspect, 1, 1000);
-
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadMatrix(ref perspectiveMatrix);
-
-            GL.MatrixMode(MatrixMode.Modelview);
-        }
-
-        private void OnGlControlResize(object sender, EventArgs e)
-        {
-            Resize();
-        }
-
-        private List<Mesh> _meshes;
-        private double _angle;
-        private Stopwatch _stopwatch;
-
-        public List<Mesh> Meshes
-        {
-            get { return _meshes; }
-            set
-            {
-                _meshes = value;
-                Render();
-            }
-        }
     }
 }
