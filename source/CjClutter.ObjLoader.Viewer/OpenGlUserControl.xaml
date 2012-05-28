@@ -5,11 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:OpenTK="clr-namespace:OpenTK;assembly=OpenTK.GLControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <WindowsFormsHost>
+    <WindowsFormsHost
+        MaxWidth="400"
+        MaxHeight="400">
         <OpenTK:GLControl 
-                x:Name="glControl"
-                Load="OnGlControlLoad"
-                Paint="OnGlControlPaint"
-                Resize="OnGlControlResize" />
+            
+            x:Name="glControl"
+            Load="OnGlControlLoad"
+            Paint="OnGlControlPaint"
+            Resize="OnGlControlResize"
+            MouseMove="OnGlControlMouseMove"
+            MouseWheel="OnGlControlMouseWheel"
+            MouseDown="OnGlControlMouseDown"
+            MouseUp="OnGlControlMouseUp"/>
     </WindowsFormsHost>
 </UserControl>

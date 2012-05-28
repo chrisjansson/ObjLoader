@@ -6,7 +6,7 @@ namespace CjClutter.ObjLoader.Viewer
     {
         public Camera()
         {
-            Position = new Vector3d(0, 1, 20);
+            Position = new Vector3d(0, 0, 20);
             Target = new Vector3d(0, 0, 0);
             Up = new Vector3d(0, 1, 0);
         }
@@ -17,6 +17,14 @@ namespace CjClutter.ObjLoader.Viewer
 
         public Matrix4d GetCameraMatrix()
         {
+            Position.Normalize();
+            Target.Normalize();
+            Up.Normalize();
+
+            var look = Position - Target;
+            look.Normalize();
+            var right = Vector3d.Cross(Up, look);
+
             return Matrix4d.LookAt(Position, Target, Up);
         }
     }
