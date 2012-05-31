@@ -27,6 +27,8 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
             }
 
             _source.MouseMove -= OnMouseMove;
+            _source.MouseDown -= OnMouseDown;
+            _source.MouseUp -= OnMouseUp;
         }
 
         private void SubscribeToNewSource()
@@ -37,12 +39,32 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
             }
 
             _source.MouseMove += OnMouseMove;
+            _source.MouseDown += OnMouseDown;
+            _source.MouseUp += OnMouseUp;
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            var eventArgument = new MouseInputEvent(new Vector2d(e.X, e.Y));
+            var eventArgument = new Vector2d(e.X, e.Y);
             Target.OnMouseMove(eventArgument);
+        }
+
+        private void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                var position = new Vector2d(e.X, e.Y);
+                Target.OnLeftMouseButtonDown(position);    
+            }
+        }
+
+        private void OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                var position = new Vector2d(e.X, e.Y);
+                Target.OnLeftMouseButtonUp(position);    
+            }
         }
     }
 }

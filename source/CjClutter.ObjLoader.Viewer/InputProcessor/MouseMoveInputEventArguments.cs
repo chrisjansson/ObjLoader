@@ -2,9 +2,9 @@ using OpenTK;
 
 namespace CjClutter.ObjLoader.Viewer.InputProcessor
 {
-    public struct MouseInputEvent
+    public struct MouseMoveInputEventArguments
     {
-        public MouseInputEvent(Vector2d position)
+        public MouseMoveInputEventArguments(Vector2d position)
         {
             Position = position;
         }

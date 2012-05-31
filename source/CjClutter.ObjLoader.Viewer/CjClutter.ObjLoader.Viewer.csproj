@@ -100,7 +100,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="InputProcessor\IMouseInputTarget.cs" />
     <Compile Include="InputProcessor\MouseInputAdapterTests.cs" />
-    <Compile Include="InputProcessor\MouseInputEvent.cs" />
+    <Compile Include="InputProcessor\MouseMoveInputEventArguments.cs" />
     <Compile Include="InputProcessor\MouseInputAdapter.cs" />
     <Compile Include="InputProcessor\NumericAssertionsExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />

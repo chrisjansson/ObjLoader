@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using NUnit.Framework;
 using FluentAssertions;
+using OpenTK;
 using Rhino.Mocks;
 using System.Linq;
 
@@ -31,8 +32,10 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
             _mouseInputAdapter.Source = null;
 
             RaiseMouseMoveEvent(MouseEventArgsExtensions.Empty());
+            RaiseMouseDownEvent(MouseEventArgsExtensions.WithButtons(MouseButtons.Left));
 
-            _mouseInputTarget.AssertWasNotCalled(x => x.OnMouseMove(Arg<MouseInputEvent>.Is.Anything));
+            _mouseInputTarget.AssertWasNotCalled(x => x.OnMouseMove(Arg<Vector2d>.Is.Anything));
+            _mouseInputTarget.AssertWasNotCalled(x => x.OnLeftMouseButtonDown(Arg<Vector2d>.Is.Anything));
         }
 
         [Test]
@@ -41,8 +44,10 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
             _mouseInputAdapter.Source = _sourceControl;
 
             RaiseMouseMoveEvent(MouseEventArgsExtensions.Empty());
+            RaiseMouseDownEvent(MouseEventArgsExtensions.WithButtons(MouseButtons.Left));
 
-            _mouseInputTarget.AssertWasCalled(x => x.OnMouseMove(Arg<MouseInputEvent>.Is.Anything));
+            _mouseInputTarget.AssertWasCalled(x => x.OnMouseMove(Arg<Vector2d>.Is.Anything));
+            _mouseInputTarget.AssertWasCalled(x => x.OnLeftMouseButtonDown(Arg<Vector2d>.Is.Anything));
         }
 
         [Test]
@@ -56,9 +61,44 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
 
             RaiseMouseMoveEvent(expectedEvent);
 
-            var arguments = _mouseInputTarget.GetArgumentsForCallsMadeOn(x => x.OnMouseMove(new MouseInputEvent())).First();
-            var actualEventArgs = (MouseInputEvent)arguments[0];
-            var actualPosition = actualEventArgs.Position;
+            var arguments = _mouseInputTarget.GetArgumentsForCallsMadeOn(x => x.OnMouseMove(new Vector2d())).First();
+            var actualPosition = (Vector2d)arguments[0];
+
+            actualPosition.X.Should().BeApproximately(expectedX);
+            actualPosition.Y.Should().BeApproximately(expectedY);
+        }
+
+        [Test]
+        public void Raises_left_mouse_button_down_with_correct_parameters_on_mouse_down_event_in_control()
+        {
+            _mouseInputAdapter.Source = _sourceControl;
+
+            const int expectedX = 10;
+            const int expectedY = 20;
+            var expectedArguments = new MouseEventArgs(MouseButtons.Left, 0, expectedX, expectedY, 0);
+
+            RaiseMouseDownEvent(expectedArguments);
+
+            var arguments = _mouseInputTarget.GetArgumentsForCallsMadeOn(x => x.OnLeftMouseButtonDown(new Vector2d())).First();
+            var actualPosition = (Vector2d)arguments[0];
+
+            actualPosition.X.Should().BeApproximately(expectedX);
+            actualPosition.Y.Should().BeApproximately(expectedY);
+        }
+
+        [Test]
+        public void Raises_left_mouse_button_up_with_correct_parameters_on_mouse_up_event_in_control()
+        {
+            _mouseInputAdapter.Source = _sourceControl;
+
+            const int expectedX = 30;
+            const int expectedY = 40;
+            var expectedArguments = new MouseEventArgs(MouseButtons.Left, 0, expectedX, expectedY, 0);
+
+            RaiseMouseUpEvent(expectedArguments);
+
+            var arguments = _mouseInputTarget.GetArgumentsForCallsMadeOn(x => x.OnLeftMouseButtonUp(new Vector2d())).First();
+            var actualPosition = (Vector2d)arguments[0];
 
             actualPosition.X.Should().BeApproximately(expectedX);
             actualPosition.Y.Should().BeApproximately(expectedY);
@@ -68,6 +108,16 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
         {
             _sourceControl.Raise(x => x.MouseMove += null, _sourceControl, arguments);
         }
+
+        private void RaiseMouseDownEvent(MouseEventArgs arguments)
+        {
+            _sourceControl.Raise(x => x.MouseDown += null, _sourceControl, arguments);
+        }
+
+        private void RaiseMouseUpEvent(MouseEventArgs arguments)
+        {
+            _sourceControl.Raise(x => x.MouseUp += null, _sourceControl, arguments);
+        }
     }
 
     public static class MouseEventArgsExtensions
@@ -76,15 +126,20 @@ namespace CjClutter.ObjLoader.Viewer.InputProcessor
         {
             return new MouseEventArgs(0, 0, 0, 0, 0);
         }
+
+        public static MouseEventArgs WithButtons(MouseButtons buttons)
+        {
+            return new MouseEventArgs(buttons, 0, 0, 0, 0);
+        }
     }
     
     public class MouseInputAdapterSpy
     {
-        public MouseInputEvent CapturedMouseMoveArguments { get; private set; }
+        public MouseMoveInputEventArguments CapturedMouseMoveMoveArguments { get; private set; }
 
-        public virtual void OnMouseMove(MouseInputEvent eventArgs)
+        public virtual void OnMouseMove(MouseMoveInputEventArguments eventArgumentsArgs)
         {
-            CapturedMouseMoveArguments = eventArgs;
+            CapturedMouseMoveMoveArguments = eventArgumentsArgs;
         }
     }
 }
