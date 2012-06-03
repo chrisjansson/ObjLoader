@@ -159,8 +159,6 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void OnGlControlMouseMove(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Mouse move: " + (e.Button == MouseButtons.Left));
-
             var mouseDelta = GetMouseDelta(e);
 
             if(e.Button == MouseButtons.Left)
@@ -249,8 +247,6 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void OnGlControlMouseDown(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Mouse down: " + (e.Button == MouseButtons.Left));
-
             _isPressed = e.Button == MouseButtons.Left;
             _mouseDownPosition = e.Location;
         }

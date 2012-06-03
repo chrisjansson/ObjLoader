@@ -5,9 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:OpenTK="clr-namespace:OpenTK;assembly=OpenTK.GLControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <WindowsFormsHost
-        MaxWidth="400"
-        MaxHeight="400">
+    <WindowsFormsHost>
         <OpenTK:GLControl 
             
             x:Name="glControl"
