@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 using CjClutter.ObjLoader.Viewer.Extensions;
 
 namespace CjClutter.ObjLoader.Viewer.Camera
@@ -25,15 +26,13 @@ namespace CjClutter.ObjLoader.Viewer.Camera
 
         private Matrix4d GetOrientationMatrix()
         {
-            //return _cameraOrientation.Multiply(_tempCameraOrientation);
-            return _tempCameraOrientation;
+            return _cameraOrientation.Multiply(_tempCameraOrientation);
         }
 
         public void Rotate(Vector2d startPoint, Vector2d endPoint)
         {
             var rotation = CalculateRotation(startPoint, endPoint);
-            var rotationMatrix = rotation.GetRotationMatrix();
-            _tempCameraOrientation = _cameraOrientation.Multiply(rotationMatrix);
+            _tempCameraOrientation = rotation.GetRotationMatrix();
 
             FireCameraChanged();
         }
@@ -44,7 +43,7 @@ namespace CjClutter.ObjLoader.Viewer.Camera
             var rotationMatrix = rotation.GetRotationMatrix();
 
             _cameraOrientation = _cameraOrientation.Multiply(rotationMatrix);
-            _tempCameraOrientation = _cameraOrientation;
+            _tempCameraOrientation = Matrix4d.Identity;
 
             FireCameraChanged();
         }
