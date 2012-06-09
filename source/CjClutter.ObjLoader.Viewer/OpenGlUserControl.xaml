@@ -12,9 +12,6 @@
             Load="OnGlControlLoad"
             Paint="OnGlControlPaint"
             Resize="OnGlControlResize"
-            MouseMove="OnGlControlMouseMove"
-            MouseWheel="OnGlControlMouseWheel"
-            MouseDown="OnGlControlMouseDown"
-            MouseUp="OnGlControlMouseUp"/>
+            MouseWheel="OnGlControlMouseWheel"/>
     </WindowsFormsHost>
 </UserControl>

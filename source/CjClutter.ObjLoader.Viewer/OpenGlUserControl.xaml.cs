@@ -3,25 +3,37 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
+using CjClutter.ObjLoader.Viewer.Camera;
+using CjClutter.ObjLoader.Viewer.CoordinateSystems;
+using CjClutter.ObjLoader.Viewer.InputProcessor;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Color = System.Drawing.Color;
-using Point = System.Drawing.Point;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public partial class OpenGlUserControl
+    public partial class OpenGlUserControl : IMouseInputTarget
     {
         private float _fovy = 50;
         private bool _glControlLoaded;
 
-        private readonly Camera _camera;
+        private MouseInputAdapter _mouseInputAdapter;
+        private readonly GuiToRelativeCoordinateTransformer _guiToRelativeCoordinateTransformer;
+        private readonly ITrackballCamera _camera;
 
         public OpenGlUserControl()
         {
             InitializeComponent();
 
-            _camera = new Camera();
+            _mouseInputAdapter = new MouseInputAdapter
+                                     {
+                                         Source = glControl,
+                                         Target = this
+                                     };
+
+            _camera = new TrackballCamera(new TrackballCameraRotationCalculator());
+            _camera.CameraChanged += Render;
+            _guiToRelativeCoordinateTransformer = new GuiToRelativeCoordinateTransformer {Control = glControl};
         }
 
         private void OnGlControlLoad(object sender, EventArgs e)
@@ -44,7 +56,7 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void Resize()
         {
-            if(!_glControlLoaded)
+            if (!_glControlLoaded)
             {
                 return;
             }
@@ -79,8 +91,8 @@ namespace CjClutter.ObjLoader.Viewer
             var height = glControl.Height;
 
             var aspect = (float)width / height;
-            var fovyRadians = (Math.PI/180)*_fovy;
-            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView((float) fovyRadians, aspect, 1, 1000);
+            var fovyRadians = (Math.PI / 180) * _fovy;
+            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView((float)fovyRadians, aspect, 1, 1000);
 
             return perspectiveMatrix;
         }
@@ -94,10 +106,6 @@ namespace CjClutter.ObjLoader.Viewer
 
             SetupScene();
 
-            GL.Rotate(_angle, _axis);
-
-            //GL.Rotate(_horizontalAngle, 0f, 1f, 0f);
-            
             GL.Begin(BeginMode.Triangles);
 
             if (Meshes != null)
@@ -136,94 +144,21 @@ namespace CjClutter.ObjLoader.Viewer
         }
 
         public static readonly DependencyProperty MeshesProperty =
-            DependencyProperty.Register("Meshes", typeof (List<Mesh>), typeof (OpenGlUserControl), new PropertyMetadata(default(List<Mesh>), PropertyChangedCallback));
+            DependencyProperty.Register("Meshes", typeof(List<Mesh>), typeof(OpenGlUserControl), new PropertyMetadata(default(List<Mesh>), PropertyChangedCallback));
 
         private static void PropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var openGlUserControl = (OpenGlUserControl) dependencyObject;
+            var openGlUserControl = (OpenGlUserControl)dependencyObject;
             openGlUserControl.Render();
         }
 
-        private Vector2 _oldMousePosition;
-        private bool _isPressed;
-        private Point _mouseDownPosition;
-        private Vector3 _axis;
-        private float _angle;
-
         public List<Mesh> Meshes
         {
-            get { return (List<Mesh>) GetValue(MeshesProperty); }
-            set { SetValue(MeshesProperty, value);
-            }
-        }
-
-        private void OnGlControlMouseMove(object sender, MouseEventArgs e)
-        {
-            var mouseDelta = GetMouseDelta(e);
-
-            if(e.Button == MouseButtons.Left)
+            get { return (List<Mesh>)GetValue(MeshesProperty); }
+            set
             {
-                Transform(e.Location);
-                Render();
+                SetValue(MeshesProperty, value);
             }
-
-
-            if(_isPressed)
-            {
-                var v1 = TransformToSphere(_mouseDownPosition);
-                var v2 = TransformToSphere(e.Location);
-
-                _axis = Vector3.Cross(v1, v2);
-                _angle = (float) (Vector3.CalculateAngle(v1, v2) * (180/Math.PI));
-
-                //var delta = new Quaternion(axis, angle);
-                //var q = new Quaternion(_axis, (float)_angle);
-
-                Render();
-            }
-            else
-            {
-                _axis = new Vector3(0, 0, 1);
-                _angle = 0;
-                Render();
-            }
-        }
-
-        private Vector3 TransformToSphere(Point location)
-        {
-            var x = location.X / (glControl.Width / 2.0);
-            var y = location.Y / (glControl.Height / 2.0);
-
-            x = x - 1;
-            y = 1 - y;
-
-            double z2 = 1 - x * x - y * y;
-            double z = z2 > 0 ? Math.Sqrt(z2) : 0;
-
-            var vector3 = new Vector3((float)x, (float)y, (float)z);
-            vector3.Normalize();
-
-            return vector3;
-        }
-
-        private void Transform(Point location)
-        {
-
-
-            //var axis = Vector3.Cross(_oldSpherePosition, vector3);
-            //var angle = Vector3.CalculateAngle(_oldSpherePosition, vector3);
-
-            //var delta = new Quaternion(axis, angle);
-            //var q = new Quaternion(_axis, (float) _angle);
-
-            //q *= delta;
-
-            //_axis = q.Xyz;
-            //_angle = q.W;
-
-            //_oldSpherePosition = vector3;
-            ////Vector3D p = new Vector3D(x, y, z);
-            ////p.Normalize();
         }
 
         private void OnGlControlMouseWheel(object sender, MouseEventArgs e)
@@ -236,24 +171,32 @@ namespace CjClutter.ObjLoader.Viewer
             }
         }
 
-        private Vector2 GetMouseDelta(MouseEventArgs e)
+        public void OnMouseMove(Vector2d position)
         {
-            var newMousePosition = new Vector2(e.X, e.Y);
-            var mouseDelta = newMousePosition - _oldMousePosition;
-
-            _oldMousePosition = newMousePosition;
-            return mouseDelta;
         }
 
-        private void OnGlControlMouseDown(object sender, MouseEventArgs e)
+        public void OnLeftMouseButtonDown(Vector2d position)
         {
-            _isPressed = e.Button == MouseButtons.Left;
-            _mouseDownPosition = e.Location;
         }
 
-        private void OnGlControlMouseUp(object sender, MouseEventArgs e)
+        public void OnLeftMouseButtonUp(Vector2d position)
         {
-            _isPressed = !(_isPressed && e.Button == MouseButtons.Left);
+        }
+
+        public void OnMouseDrag(MouseDragEventArgs mouseDragEventArgs)
+        {
+            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
+            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
+
+            _camera.Rotate(startPoint, endPoint);
+        }
+
+        public void OnMouseDragEnd(MouseDragEventArgs mouseDragEventArgs)
+        {
+            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
+            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
+
+            _camera.CommitRotation(startPoint, endPoint);
         }
     }
 }

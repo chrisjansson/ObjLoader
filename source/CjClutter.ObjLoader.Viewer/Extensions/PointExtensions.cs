@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer.InputProcessor
+namespace CjClutter.ObjLoader.Viewer.Extensions
 {
     public static class PointExtensions
     {

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CjClutter.ObjLoader.Viewer.Extensions;
 
 namespace CjClutter.ObjLoader.Viewer
 {
