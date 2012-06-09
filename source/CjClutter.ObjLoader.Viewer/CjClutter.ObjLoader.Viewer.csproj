@@ -108,12 +108,12 @@
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="CoordinateSystems\GuiToRelativeCoordinateTransformer.cs" />
     <Compile Include="Extensions\Matrix4dExtensions.cs" />
-    <Compile Include="InputProcessor\IMouseInputAdapter.cs" />
-    <Compile Include="InputProcessor\IMouseInputTarget.cs" />
-    <Compile Include="InputProcessor\MouseDragEventArgs.cs" />
-    <Compile Include="InputProcessor\MouseInputAdapterTests.cs" />
-    <Compile Include="InputProcessor\MouseMoveInputEventArguments.cs" />
-    <Compile Include="InputProcessor\MouseInputAdapter.cs" />
+    <Compile Include="InputAdapters\IMouseInputAdapter.cs" />
+    <Compile Include="InputAdapters\IMouseInputTarget.cs" />
+    <Compile Include="InputAdapters\MouseDragEventArgs.cs" />
+    <Compile Include="InputAdapters\MouseInputAdapterTests.cs" />
+    <Compile Include="InputAdapters\MouseMoveInputEventArguments.cs" />
+    <Compile Include="InputAdapters\MouseInputAdapter.cs" />
     <Compile Include="Extensions\NumericAssertionsExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />
@@ -139,7 +139,7 @@
     <Compile Include="Edge.cs" />
     <Compile Include="Extensions\EdgeExtensions.cs" />
     <Compile Include="Face.cs" />
-    <Compile Include="FaceExtensions.cs" />
+    <Compile Include="Extensions\FaceExtensions.cs" />
     <Compile Include="FaceTests.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="Camera\TrackballCamera.cs" />

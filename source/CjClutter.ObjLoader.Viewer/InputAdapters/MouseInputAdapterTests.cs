@@ -6,7 +6,7 @@ using OpenTK;
 using Rhino.Mocks;
 using System.Linq;
 
-namespace CjClutter.ObjLoader.Viewer.InputProcessor
+namespace CjClutter.ObjLoader.Viewer.InputAdapters
 {
     [TestFixture]
     public class MouseInputAdapterTests

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using CjClutter.ObjLoader.Viewer.Camera;
 using CjClutter.ObjLoader.Viewer.CoordinateSystems;
-using CjClutter.ObjLoader.Viewer.InputProcessor;
+using CjClutter.ObjLoader.Viewer.InputAdapters;
 using Microsoft.Win32;
 using ObjLoader.Loader.Loaders;
 using System.Linq;

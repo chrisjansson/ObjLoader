@@ -1,6 +1,6 @@
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer.InputProcessor
+namespace CjClutter.ObjLoader.Viewer.InputAdapters
 {
     public struct MouseDragEventArgs
     {
