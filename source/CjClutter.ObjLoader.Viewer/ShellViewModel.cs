@@ -1,23 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using CjClutter.ObjLoader.Viewer.Camera;
+using CjClutter.ObjLoader.Viewer.CoordinateSystems;
+using CjClutter.ObjLoader.Viewer.InputProcessor;
 using Microsoft.Win32;
 using ObjLoader.Loader.Loaders;
 using System.Linq;
+using OpenTK;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public class ShellViewModel : Screen<ShellView>, IShell
+    public class ShellViewModel : Screen<ShellView>, IShell, IMouseInputTarget
     {
         private readonly IObjLoaderFactory _objLoaderFactory;
         private readonly IObjToMehsConverter _converter;
+        private readonly IMouseInputAdapter _mouseInputAdapter;
+        private readonly IGuiToRelativeCoordinateTransformer _guiToRelativeCoordinateTransformer;
 
         private LoadResult _loadResult;
 
-        public ShellViewModel(IObjLoaderFactory objLoaderFactory, IObjToMehsConverter converter)
+        public ShellViewModel(
+            IObjLoaderFactory objLoaderFactory, 
+            IObjToMehsConverter converter,
+            IMouseInputAdapter mouseInputAdapter,
+            ITrackballCamera camera,
+            IGuiToRelativeCoordinateTransformer guiToRelativeCoordinateTransformer)
         {
             _converter = converter;
+            _mouseInputAdapter = mouseInputAdapter;
+            _camera = camera;
+            _guiToRelativeCoordinateTransformer = guiToRelativeCoordinateTransformer;
             _objLoaderFactory = objLoaderFactory;
+        }
+
+        protected override void OnViewAttached(ShellView view)
+        {
+            _mouseInputAdapter.Target = this;
+            _mouseInputAdapter.Source = view.openGlUserControl.glControl;
+
+            _guiToRelativeCoordinateTransformer.Control = view.openGlUserControl.glControl;
         }
 
         public void Browse()
@@ -85,6 +107,41 @@ namespace CjClutter.ObjLoader.Viewer
         {
             get { return _selectedMeshes; }
             set { Set(x => _selectedMeshes = x, () => SelectedMeshes, value); }
+        }
+
+        private ITrackballCamera _camera;
+        public ITrackballCamera Camera
+        {
+            get { return _camera; }
+            set { Set(x => _camera = x, () => Camera, value); }
+        }
+
+        public void OnMouseDrag(MouseDragEventArgs mouseDragEventArgs)
+        {
+            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
+            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
+
+            Camera.Rotate(startPoint, endPoint);
+        }
+
+        public void OnMouseDragEnd(MouseDragEventArgs mouseDragEventArgs)
+        {
+            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
+            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
+
+            Camera.CommitRotation(startPoint, endPoint);
+        }
+
+        public void OnMouseMove(Vector2d position)
+        {
+        }
+
+        public void OnLeftMouseButtonDown(Vector2d position)
+        {
+        }
+
+        public void OnLeftMouseButtonUp(Vector2d position)
+        {
         }
     }
 }

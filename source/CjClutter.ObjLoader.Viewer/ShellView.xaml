@@ -1,7 +1,6 @@
 ﻿<Window x:Class="CjClutter.ObjLoader.Viewer.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:OpenTK="clr-namespace:OpenTK;assembly=OpenTK.GLControl" xmlns:cal="http://www.caliburnproject.org"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cal="http://www.caliburnproject.org"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Viewer="clr-namespace:CjClutter.ObjLoader.Viewer" Title="ShellView">
 
@@ -65,10 +64,24 @@
             </Grid>
             
         </Grid>
-        
-        <Viewer:OpenGlUserControl 
-            Meshes="{Binding SelectedMeshes}"/>
-
+        <Border
+            BorderBrush="#FF828790"
+            Margin="5 0 0 0"
+            FocusManager.FocusedElement="{Binding ElementName=openGlUserControl}">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=openGlUserControl, Path=IsFocused, Mode=OneWay}" Value="True">
+                            <Setter Property="BorderThickness" Value="1" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Viewer:OpenGlUserControl 
+                x:Name="openGlUserControl"
+                Meshes="{Binding SelectedMeshes}"
+                Camera="{Binding Camera}" />
+        </Border>
     </DockPanel>
 
 </Window>

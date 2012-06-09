@@ -7,11 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <WindowsFormsHost>
         <OpenTK:GLControl 
-            
             x:Name="glControl"
             Load="OnGlControlLoad"
             Paint="OnGlControlPaint"
-            Resize="OnGlControlResize"
-            MouseWheel="OnGlControlMouseWheel"/>
+            Resize="OnGlControlResize" />
     </WindowsFormsHost>
 </UserControl>

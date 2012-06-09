@@ -4,36 +4,21 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
 using CjClutter.ObjLoader.Viewer.Camera;
-using CjClutter.ObjLoader.Viewer.CoordinateSystems;
-using CjClutter.ObjLoader.Viewer.InputProcessor;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Color = System.Drawing.Color;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public partial class OpenGlUserControl : IMouseInputTarget
+    public partial class OpenGlUserControl
     {
-        private float _fovy = 50;
-        private bool _glControlLoaded;
+        private const float FovY = 50;
 
-        private MouseInputAdapter _mouseInputAdapter;
-        private readonly GuiToRelativeCoordinateTransformer _guiToRelativeCoordinateTransformer;
-        private readonly ITrackballCamera _camera;
+        private bool _glControlLoaded;
 
         public OpenGlUserControl()
         {
             InitializeComponent();
-
-            _mouseInputAdapter = new MouseInputAdapter
-                                     {
-                                         Source = glControl,
-                                         Target = this
-                                     };
-
-            _camera = new TrackballCamera(new TrackballCameraRotationCalculator());
-            _camera.CameraChanged += Render;
-            _guiToRelativeCoordinateTransformer = new GuiToRelativeCoordinateTransformer {Control = glControl};
         }
 
         private void OnGlControlLoad(object sender, EventArgs e)
@@ -91,7 +76,7 @@ namespace CjClutter.ObjLoader.Viewer
             var height = glControl.Height;
 
             var aspect = (float)width / height;
-            var fovyRadians = (Math.PI / 180) * _fovy;
+            const double fovyRadians = (Math.PI / 180) * FovY;
             var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView((float)fovyRadians, aspect, 1, 1000);
 
             return perspectiveMatrix;
@@ -127,7 +112,7 @@ namespace CjClutter.ObjLoader.Viewer
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.Enable(EnableCap.DepthTest);
 
-            var cameraMatrix = _camera.GetCameraMatrix();
+            var cameraMatrix = Camera.GetCameraMatrix();
             GL.LoadMatrix(ref cameraMatrix);
         }
 
@@ -144,9 +129,9 @@ namespace CjClutter.ObjLoader.Viewer
         }
 
         public static readonly DependencyProperty MeshesProperty =
-            DependencyProperty.Register("Meshes", typeof(List<Mesh>), typeof(OpenGlUserControl), new PropertyMetadata(default(List<Mesh>), PropertyChangedCallback));
+            DependencyProperty.Register("Meshes", typeof(List<Mesh>), typeof(OpenGlUserControl), new PropertyMetadata(default(List<Mesh>), OnMeshesPropertyChanged));
 
-        private static void PropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private static void OnMeshesPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var openGlUserControl = (OpenGlUserControl)dependencyObject;
             openGlUserControl.Render();
@@ -155,48 +140,35 @@ namespace CjClutter.ObjLoader.Viewer
         public List<Mesh> Meshes
         {
             get { return (List<Mesh>)GetValue(MeshesProperty); }
-            set
+            set { SetValue(MeshesProperty, value); }
+        }
+
+        public static readonly DependencyProperty CameraProperty =
+            DependencyProperty.Register("Camera", typeof (ICamera), typeof (OpenGlUserControl), new PropertyMetadata(default(ICamera), OnCameraChanged));
+
+        private static void OnCameraChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            var openGlUserControl = (OpenGlUserControl)dependencyObject;
+
+            var oldCamera = (ICamera)e.OldValue;
+            if(oldCamera != null)
             {
-                SetValue(MeshesProperty, value);
+                oldCamera.CameraChanged -= openGlUserControl.Render;
             }
-        }
 
-        private void OnGlControlMouseWheel(object sender, MouseEventArgs e)
-        {
-            if (e.Delta != 0)
+            var newCamera = (ICamera) e.NewValue;
+            if(newCamera != null)
             {
-                _fovy += -(float)(e.Delta / 100.0);
-                SetPerspectiveMatrix();
-                Render();
+                newCamera.CameraChanged += openGlUserControl.Render;
             }
+
+            openGlUserControl.Render();
         }
 
-        public void OnMouseMove(Vector2d position)
+        public ICamera Camera
         {
-        }
-
-        public void OnLeftMouseButtonDown(Vector2d position)
-        {
-        }
-
-        public void OnLeftMouseButtonUp(Vector2d position)
-        {
-        }
-
-        public void OnMouseDrag(MouseDragEventArgs mouseDragEventArgs)
-        {
-            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
-            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
-
-            _camera.Rotate(startPoint, endPoint);
-        }
-
-        public void OnMouseDragEnd(MouseDragEventArgs mouseDragEventArgs)
-        {
-            var startPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.StartPosition);
-            var endPoint = _guiToRelativeCoordinateTransformer.TransformToRelative(mouseDragEventArgs.EndPosition);
-
-            _camera.CommitRotation(startPoint, endPoint);
+            get { return (ICamera) GetValue(CameraProperty); }
+            set { SetValue(CameraProperty, value); }
         }
     }
 }

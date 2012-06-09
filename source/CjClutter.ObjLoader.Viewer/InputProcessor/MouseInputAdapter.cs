@@ -5,7 +5,7 @@ using OpenTK;
 
 namespace CjClutter.ObjLoader.Viewer.InputProcessor
 {
-    public class MouseInputAdapter
+    public class MouseInputAdapter : IMouseInputAdapter
     {
         private Control _source;
         private Vector2d _mouseDownPosition;

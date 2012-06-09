@@ -6,12 +6,13 @@ namespace CjClutter.ObjLoader.Viewer
 {
     public class Screen<TView> : Screen
     {
-        protected TView View { get; set; }
-
         protected override void OnViewAttached(object view, object context)
         {
-            View = (TView) view;
+            var tView = (TView) view;
+            OnViewAttached(tView);
         }
+
+        protected virtual void OnViewAttached(TView view) {}
 
         protected void Set<T>(Action<T> setter, Expression<Func<T>> getter, T value)
         {

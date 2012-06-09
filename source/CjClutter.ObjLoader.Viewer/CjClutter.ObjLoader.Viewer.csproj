@@ -108,6 +108,7 @@
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="CoordinateSystems\GuiToRelativeCoordinateTransformer.cs" />
     <Compile Include="Extensions\Matrix4dExtensions.cs" />
+    <Compile Include="InputProcessor\IMouseInputAdapter.cs" />
     <Compile Include="InputProcessor\IMouseInputTarget.cs" />
     <Compile Include="InputProcessor\MouseDragEventArgs.cs" />
     <Compile Include="InputProcessor\MouseInputAdapterTests.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="IShellView.cs" />
     <Compile Include="Mesh.cs" />
     <Compile Include="MeshViewModel.cs" />
     <Compile Include="NinjectBootstrapper.cs" />
