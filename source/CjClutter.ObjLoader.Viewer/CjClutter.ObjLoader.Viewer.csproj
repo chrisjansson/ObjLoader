@@ -117,7 +117,7 @@
     <Compile Include="Extensions\NumericAssertionsExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />
-    <Compile Include="IShell.cs" />
+    <Compile Include="IShellViewModel.cs" />
     <Compile Include="IShellView.cs" />
     <Compile Include="Mesh.cs" />
     <Compile Include="MeshViewModel.cs" />

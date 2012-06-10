@@ -11,7 +11,7 @@ using OpenTK;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public class ShellViewModel : Screen<ShellView>, IShell, IMouseInputTarget
+    public class ShellViewModel : Screen<IShellView>, IShellViewModel 
     {
         private readonly IObjLoaderFactory _objLoaderFactory;
         private readonly IObjToMehsConverter _converter;
@@ -34,12 +34,12 @@ namespace CjClutter.ObjLoader.Viewer
             _objLoaderFactory = objLoaderFactory;
         }
 
-        protected override void OnViewAttached(ShellView view)
+        protected override void OnViewAttached(IShellView view)
         {
             _mouseInputAdapter.Target = this;
-            _mouseInputAdapter.Source = view.openGlUserControl.glControl;
+            _mouseInputAdapter.Source = view.GlControl;
 
-            _guiToRelativeCoordinateTransformer.Control = view.openGlUserControl.glControl;
+            _guiToRelativeCoordinateTransformer.Control = view.GlControl;
         }
 
         public void Browse()

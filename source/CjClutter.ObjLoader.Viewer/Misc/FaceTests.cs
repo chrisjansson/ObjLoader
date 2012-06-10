@@ -5,7 +5,7 @@ using OpenTK;
 using FluentAssertions;
 using FluentAssertions.Assertions;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Misc
 {
     [TestFixture]
     public class FaceTests

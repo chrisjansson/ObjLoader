@@ -144,7 +144,7 @@ namespace CjClutter.ObjLoader.Viewer
         }
 
         public static readonly DependencyProperty CameraProperty =
-            DependencyProperty.Register("Camera", typeof (ICamera), typeof (OpenGlUserControl), new PropertyMetadata(default(ICamera), OnCameraChanged));
+            DependencyProperty.Register("Camera", typeof (ICamera), typeof (OpenGlUserControl), new PropertyMetadata(new PerspectiveCamera(), OnCameraChanged));
 
         private static void OnCameraChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {

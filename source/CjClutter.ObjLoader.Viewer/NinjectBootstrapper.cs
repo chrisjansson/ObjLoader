@@ -5,7 +5,7 @@ using ObjLoader.Loader.Loaders;
 
 namespace CjClutter.ObjLoader.Viewer
 {
-    public class NinjectBootstrapper : Bootstrapper<IShell>
+    public class NinjectBootstrapper : Bootstrapper<IShellViewModel>
     {
         private StandardKernel _kernel;
 
