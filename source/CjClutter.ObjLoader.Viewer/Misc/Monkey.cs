@@ -2,7 +2,7 @@
 using System.Linq;
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer.test
+namespace CjClutter.ObjLoader.Viewer.Misc
 {
     public class Monkey
     {

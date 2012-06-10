@@ -1,26 +1,23 @@
-using System;
-using System.IO;
-
 namespace ObjLoader.Loader.Loaders
 {
     public class MaterialLibraryLoaderFacade : IMaterialLibraryLoaderFacade
     {
         private readonly IMaterialLibraryLoader _loader;
-        private readonly Func<string, Stream> _openStream;
+        private readonly IMaterialStreamProvider _materialStreamProvider;
 
-        public MaterialLibraryLoaderFacade(IMaterialLibraryLoader loader, Func<string, Stream> openStream)
+        public MaterialLibraryLoaderFacade(IMaterialLibraryLoader loader, IMaterialStreamProvider materialStreamProvider)
         {
             _loader = loader;
-            _openStream = openStream;
+            _materialStreamProvider = materialStreamProvider;
         }
 
         public void Load(string materialFileName)
         {
-            using (var fileStream = _openStream(materialFileName))
+            using (var stream = _materialStreamProvider.Open(materialFileName))
             {
-                if (fileStream != null)
+                if (stream != null)
                 {
-                    _loader.Load(fileStream);    
+                    _loader.Load(stream);    
                 }
             }
         }

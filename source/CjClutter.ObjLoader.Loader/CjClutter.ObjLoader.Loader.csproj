@@ -70,6 +70,7 @@
     <Compile Include="Loaders\IObjLoaderFactory.cs" />
     <Compile Include="Loaders\LoaderBase.cs" />
     <Compile Include="Loaders\MaterialLibraryLoader.cs" />
+    <Compile Include="Loaders\MaterialStreamProvider.cs" />
     <Compile Include="Loaders\ObjLoader.cs" />
     <Compile Include="Loaders\ObjLoaderFactory.cs" />
     <Compile Include="Loaders\LoadResult.cs" />

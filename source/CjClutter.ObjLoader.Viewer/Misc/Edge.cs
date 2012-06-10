@@ -1,6 +1,6 @@
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Misc
 {
     public struct Edge
     {

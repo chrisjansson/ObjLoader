@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
 using System.Linq;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Misc
 {
     public class Catmull
     {

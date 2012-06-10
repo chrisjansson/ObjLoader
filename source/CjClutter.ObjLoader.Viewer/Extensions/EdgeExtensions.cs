@@ -1,3 +1,5 @@
+using CjClutter.ObjLoader.Viewer.Misc;
+
 namespace CjClutter.ObjLoader.Viewer.Extensions
 {
     public static class EdgeExtensions

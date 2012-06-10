@@ -130,17 +130,17 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShellViewModel.cs" />
-    <Compile Include="test\Monkey.cs" />
+    <Compile Include="Misc\Monkey.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Catmull.cs" />
-    <Compile Include="Edge.cs" />
+    <Compile Include="Misc\Catmull.cs" />
+    <Compile Include="Misc\Edge.cs" />
     <Compile Include="Extensions\EdgeExtensions.cs" />
-    <Compile Include="Face.cs" />
+    <Compile Include="Misc\Face.cs" />
     <Compile Include="Extensions\FaceExtensions.cs" />
-    <Compile Include="FaceTests.cs" />
+    <Compile Include="Misc\FaceTests.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="Camera\TrackballCamera.cs" />
     <Compile Include="Camera\TrackballCameraRotationCalculator.cs" />

@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text;
 using NUnit.Framework;
-using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.DataStore;
 using ObjLoader.Loader.Loaders;
 using ObjLoader.Loader.TypeParsers;
@@ -13,9 +12,20 @@ namespace ObjLoader.Test.Loaders
     [TestFixture]
     public class ObjLoaderTests
     {
+        private class MaterialStreamProviderSpy : IMaterialStreamProvider
+        {
+            public string RequestedMaterialFilePath { get; private set; }
+            public Stream StreamToReturn { get; set; }
+
+            public Stream Open(string materialFilePath)
+            {
+                RequestedMaterialFilePath = materialFilePath;
+                return StreamToReturn;
+            }
+        }
+
         private Loader.Loaders.ObjLoader _loader;
 
-        private string _requestedMaterialLibraryFile;
         private LoadResult _loadResult;
         private DataStore _textureDataStore;
         private FaceParser _faceParser;
@@ -27,6 +37,7 @@ namespace ObjLoader.Test.Loaders
         private MaterialLibraryParser _materialLibraryParser;
         private UseMaterialParser _useMaterialParser;
         private MaterialLibraryLoaderFacade _materialLibraryLoaderFacade;
+        private MaterialStreamProviderSpy _materialStreamProviderSpy;
 
         [SetUp]
         public void SetUp()
@@ -38,9 +49,11 @@ namespace ObjLoader.Test.Loaders
             _normalParser = new NormalParser(_textureDataStore);
             _textureParser = new TextureParser(_textureDataStore);
             _vertexParser = new VertexParser(_textureDataStore);
+            _materialStreamProviderSpy = new MaterialStreamProviderSpy();
+            _materialStreamProviderSpy.StreamToReturn = CreateMemoryStreamFromString(MaterialLibraryString);
 
             _materialLibraryLoader = new MaterialLibraryLoader(_textureDataStore);
-            _materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, OpenMaterialCallbackSpy);
+            _materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, _materialStreamProviderSpy);
             _materialLibraryParser = new MaterialLibraryParser(_materialLibraryLoaderFacade);
             _useMaterialParser = new UseMaterialParser(_textureDataStore);
 
@@ -57,7 +70,7 @@ namespace ObjLoader.Test.Loaders
             _loadResult.Normals.Should().HaveCount(8);
             _loadResult.Materials.Should().HaveCount(1);
 
-            _requestedMaterialLibraryFile.Should().BeEquivalentTo("cube.mtl");
+            _materialStreamProviderSpy.RequestedMaterialFilePath.Should().BeEquivalentTo("cube.mtl");
 
             _loadResult.Groups.Should().HaveCount(1);
 
@@ -69,7 +82,8 @@ namespace ObjLoader.Test.Loaders
         [Test]
         public void Loads_object_correctly_when_material_is_not_found()
         {
-            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, x => (Stream) null);
+            _materialStreamProviderSpy.StreamToReturn = null;
+            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(_materialLibraryLoader, _materialStreamProviderSpy);
             var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
 
             _loader = new Loader.Loaders.ObjLoader(_textureDataStore, _faceParser, _groupParser, _normalParser, _textureParser, _vertexParser, materialLibraryParser, _useMaterialParser);
@@ -93,12 +107,6 @@ namespace ObjLoader.Test.Loaders
             var objectStream = CreateMemoryStreamFromString(ObjectFileString);
 
             _loadResult = _loader.Load(objectStream);
-        }
-
-        private Stream OpenMaterialCallbackSpy(string arg)
-        {
-            _requestedMaterialLibraryFile = arg;
-            return CreateMemoryStreamFromString(MaterialLibraryString);
         }
 
         private Stream CreateMemoryStreamFromString(string str)

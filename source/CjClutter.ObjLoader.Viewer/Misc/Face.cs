@@ -2,7 +2,7 @@
 using OpenTK;
 using System.Linq;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Misc
 {
     public class Face
     {

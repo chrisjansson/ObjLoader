@@ -1,18 +1,22 @@
-using System;
 using System.IO;
 using ObjLoader.Loader.Data.DataStore;
 using ObjLoader.Loader.TypeParsers;
 
 namespace ObjLoader.Loader.Loaders
 {
+    public interface IMaterialStreamProvider
+    {
+        Stream Open(string materialFilePath);
+    }
+
     public class ObjLoaderFactory : IObjLoaderFactory
     {
         public IObjLoader Create()
         {
-            return Create(File.OpenRead);
+            return Create(new MaterialStreamProvider());
         }
 
-        public IObjLoader Create(Func<string, Stream> openMaterialStreamFunc)
+        public IObjLoader Create(IMaterialStreamProvider materialStreamProvider)
         {
             var dataStore = new DataStore();
             
@@ -23,7 +27,7 @@ namespace ObjLoader.Loader.Loaders
             var vertexParser = new VertexParser(dataStore);
 
             var materialLibraryLoader = new MaterialLibraryLoader(dataStore);
-            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, openMaterialStreamFunc);
+            var materialLibraryLoaderFacade = new MaterialLibraryLoaderFacade(materialLibraryLoader, materialStreamProvider);
             var materialLibraryParser = new MaterialLibraryParser(materialLibraryLoaderFacade);
             var useMaterialParser = new UseMaterialParser(dataStore);
 

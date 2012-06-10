@@ -15,7 +15,7 @@ namespace ObjLoader.Test
             stopwatch.Start();
 
             var objLoaderFactory = new ObjLoaderFactory();
-            var objLoader = objLoaderFactory.Create(fileName => File.Open(fileName, FileMode.Open, FileAccess.Read));
+            var objLoader = objLoaderFactory.Create(new MaterialStreamProvider());
 
             var fileStream = new FileStream(args[0], FileMode.Open, FileAccess.Read);
 

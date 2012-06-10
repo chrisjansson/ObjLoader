@@ -58,7 +58,7 @@ namespace CjClutter.ObjLoader.Viewer
 
         private void LoadModel(Stream modelStream)
         {
-            var objLoader = _objLoaderFactory.Create(x => null);
+            var objLoader = _objLoaderFactory.Create(new MaterialNullStreamProvider());
 
             _loadResult = objLoader.Load(modelStream);
             
