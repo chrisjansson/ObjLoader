@@ -10,13 +10,13 @@ using OpenTK.Graphics.OpenGL;
 
 namespace CjClutter.ObjLoader.Viewer.Views.OpenGl
 {
-    public partial class OpenGlUserControl
+    public partial class OpenGlView
     {
         private const float FovY = 50;
 
         private bool _glControlLoaded;
 
-        public OpenGlUserControl()
+        public OpenGlView()
         {
             InitializeComponent();
         }
@@ -129,11 +129,11 @@ namespace CjClutter.ObjLoader.Viewer.Views.OpenGl
         }
 
         public static readonly DependencyProperty MeshesProperty =
-            DependencyProperty.Register("Meshes", typeof(List<Mesh>), typeof(OpenGlUserControl), new PropertyMetadata(default(List<Mesh>), OnMeshesPropertyChanged));
+            DependencyProperty.Register("Meshes", typeof(List<Mesh>), typeof(OpenGlView), new PropertyMetadata(default(List<Mesh>), OnMeshesPropertyChanged));
 
         private static void OnMeshesPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var openGlUserControl = (OpenGlUserControl)dependencyObject;
+            var openGlUserControl = (OpenGlView)dependencyObject;
             openGlUserControl.Render();
         }
 
@@ -144,11 +144,11 @@ namespace CjClutter.ObjLoader.Viewer.Views.OpenGl
         }
 
         public static readonly DependencyProperty CameraProperty =
-            DependencyProperty.Register("Camera", typeof (ICamera), typeof (OpenGlUserControl), new PropertyMetadata(new PerspectiveCamera(), OnCameraChanged));
+            DependencyProperty.Register("Camera", typeof (ICamera), typeof (OpenGlView), new PropertyMetadata(new PerspectiveCamera(), OnCameraChanged));
 
         private static void OnCameraChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var openGlUserControl = (OpenGlUserControl)dependencyObject;
+            var openGlUserControl = (OpenGlView)dependencyObject;
 
             var oldCamera = (ICamera)e.OldValue;
             if(oldCamera != null)

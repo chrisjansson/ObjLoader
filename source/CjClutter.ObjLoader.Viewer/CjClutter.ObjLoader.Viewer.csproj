@@ -127,8 +127,8 @@
     <Compile Include="MeshViewModel.cs" />
     <Compile Include="NinjectBootstrapper.cs" />
     <Compile Include="ObjToMehsConverter.cs" />
-    <Compile Include="Views\OpenGl\OpenGlUserControl.xaml.cs">
-      <DependentUpon>OpenGlUserControl.xaml</DependentUpon>
+    <Compile Include="Views\OpenGl\OpenGlView.xaml.cs">
+      <DependentUpon>OpenGlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shell\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -148,7 +148,7 @@
     <Compile Include="Screen.cs" />
     <Compile Include="Camera\TrackballCamera.cs" />
     <Compile Include="Camera\TrackballCameraRotationCalculator.cs" />
-    <Page Include="Views\OpenGl\OpenGlUserControl.xaml">
+    <Page Include="Views\OpenGl\OpenGlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
