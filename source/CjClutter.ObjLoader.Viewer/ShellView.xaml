@@ -68,8 +68,7 @@
         </Grid>
         <Border
             BorderBrush="#FF828790"
-            Margin="5 0 0 0"
-            FocusManager.FocusedElement="{Binding ElementName=openGlUserControl}">
+            Margin="5 0 0 0">
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>
@@ -79,7 +78,8 @@
                     </Style.Triggers>
                 </Style>
             </Border.Style>
-            <Viewer:OpenGlUserControl 
+            <Viewer:OpenGlUserControl
+                FocusManager.FocusedElement="{Binding ElementName=openGlUserControl}"
                 x:Name="openGlUserControl"
                 Meshes="{Binding SelectedMeshes}"
                 Camera="{Binding Camera}" />

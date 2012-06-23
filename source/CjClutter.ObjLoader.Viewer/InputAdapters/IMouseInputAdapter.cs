@@ -1,10 +1,10 @@
-using System.Windows.Forms;
+using System.Windows;
 
 namespace CjClutter.ObjLoader.Viewer.InputAdapters
 {
     public interface IMouseInputAdapter
     {
-        Control Source { get; set; }
+        UIElement Source { get; set; }
         IMouseInputTarget Target { get; set; }
     }
 }

@@ -97,6 +97,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adapters\ISizeAdapter.cs" />
+    <Compile Include="Adapters\WinFormsSizeAdapter.cs" />
+    <Compile Include="Adapters\WpfSizeAdapter.cs" />
     <Compile Include="Camera\CameraBase.cs" />
     <Compile Include="Camera\ICamera.cs" />
     <Compile Include="Camera\ITrackballCamera.cs" />

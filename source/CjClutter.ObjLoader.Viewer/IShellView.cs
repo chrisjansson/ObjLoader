@@ -1,9 +1,9 @@
-using System.Windows.Forms;
+using System.Windows;
 
 namespace CjClutter.ObjLoader.Viewer
 {
     public interface IShellView
     {
-        Control GlControl { get; }
+        FrameworkElement GlControl { get; }
     }
 }

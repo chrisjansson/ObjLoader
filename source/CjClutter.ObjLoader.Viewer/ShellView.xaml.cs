@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+﻿using System.Windows;
 
 namespace CjClutter.ObjLoader.Viewer
 {
@@ -9,9 +9,9 @@ namespace CjClutter.ObjLoader.Viewer
             InitializeComponent();
         }
 
-        public Control GlControl
+        public FrameworkElement GlControl
         {
-            get { return openGlUserControl.glControl; }
+            get { return openGlUserControl; }
         }
     }
 }

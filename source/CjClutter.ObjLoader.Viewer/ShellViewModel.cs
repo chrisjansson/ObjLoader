@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
+using CjClutter.ObjLoader.Viewer.Adapters;
 using CjClutter.ObjLoader.Viewer.Camera;
 using CjClutter.ObjLoader.Viewer.CoordinateSystems;
 using CjClutter.ObjLoader.Viewer.InputAdapters;
@@ -39,7 +41,8 @@ namespace CjClutter.ObjLoader.Viewer
             _mouseInputAdapter.Target = this;
             _mouseInputAdapter.Source = view.GlControl;
 
-            _guiToRelativeCoordinateTransformer.Control = view.GlControl;
+            var wpfSizeAdapter = new WpfSizeAdapter {Source = (FrameworkElement) view};
+            _guiToRelativeCoordinateTransformer.Source = wpfSizeAdapter; 
         }
 
         public void Browse()
