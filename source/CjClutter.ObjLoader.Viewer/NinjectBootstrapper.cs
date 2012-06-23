@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using CjClutter.ObjLoader.Viewer.Views.Shell;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using ObjLoader.Loader.Loaders;

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using CjClutter.ObjLoader.Viewer.Camera;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using Color = System.Drawing.Color;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Views.OpenGl
 {
     public partial class OpenGlUserControl
     {

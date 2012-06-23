@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Views.Shell
 {
     public partial class ShellView : IShellView
     {

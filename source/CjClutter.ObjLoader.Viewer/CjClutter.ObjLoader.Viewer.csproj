@@ -121,19 +121,19 @@
     <Compile Include="Extensions\NumericAssertionsExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />
-    <Compile Include="IShellViewModel.cs" />
-    <Compile Include="IShellView.cs" />
+    <Compile Include="Views\Shell\IShellViewModel.cs" />
+    <Compile Include="Views\Shell\IShellView.cs" />
     <Compile Include="Mesh.cs" />
     <Compile Include="MeshViewModel.cs" />
     <Compile Include="NinjectBootstrapper.cs" />
     <Compile Include="ObjToMehsConverter.cs" />
-    <Compile Include="OpenGlUserControl.xaml.cs">
+    <Compile Include="Views\OpenGl\OpenGlUserControl.xaml.cs">
       <DependentUpon>OpenGlUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShellView.xaml.cs">
+    <Compile Include="Views\Shell\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShellViewModel.cs" />
+    <Compile Include="Views\Shell\ShellViewModel.cs" />
     <Compile Include="Misc\Monkey.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -148,11 +148,11 @@
     <Compile Include="Screen.cs" />
     <Compile Include="Camera\TrackballCamera.cs" />
     <Compile Include="Camera\TrackballCameraRotationCalculator.cs" />
-    <Page Include="OpenGlUserControl.xaml">
+    <Page Include="Views\OpenGl\OpenGlUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShellView.xaml">
+    <Page Include="Views\Shell\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

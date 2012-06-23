@@ -11,7 +11,7 @@ using ObjLoader.Loader.Loaders;
 using System.Linq;
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer
+namespace CjClutter.ObjLoader.Viewer.Views.Shell
 {
     public class ShellViewModel : Screen<IShellView>, IShellViewModel 
     {
