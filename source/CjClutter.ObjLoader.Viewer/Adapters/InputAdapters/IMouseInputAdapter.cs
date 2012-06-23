@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace CjClutter.ObjLoader.Viewer.InputAdapters
+namespace CjClutter.ObjLoader.Viewer.Adapters.InputAdapters
 {
     public interface IMouseInputAdapter
     {

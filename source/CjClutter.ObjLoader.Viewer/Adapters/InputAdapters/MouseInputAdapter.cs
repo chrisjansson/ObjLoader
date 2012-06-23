@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Input;
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer.InputAdapters
+namespace CjClutter.ObjLoader.Viewer.Adapters.InputAdapters
 {
     public class MouseInputAdapter : IMouseInputAdapter
     {

@@ -6,7 +6,7 @@ using OpenTK;
 using Rhino.Mocks;
 using System.Linq;
 
-namespace CjClutter.ObjLoader.Viewer.InputAdapters
+namespace CjClutter.ObjLoader.Viewer.Adapters.InputAdapters
 {
     [Ignore]
     [TestFixture]

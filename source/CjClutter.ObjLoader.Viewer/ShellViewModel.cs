@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using CjClutter.ObjLoader.Viewer.Adapters;
+using CjClutter.ObjLoader.Viewer.Adapters.InputAdapters;
 using CjClutter.ObjLoader.Viewer.Camera;
 using CjClutter.ObjLoader.Viewer.CoordinateSystems;
-using CjClutter.ObjLoader.Viewer.InputAdapters;
 using Microsoft.Win32;
 using ObjLoader.Loader.Loaders;
 using System.Linq;
@@ -17,7 +17,6 @@ namespace CjClutter.ObjLoader.Viewer
     {
         private readonly IObjLoaderFactory _objLoaderFactory;
         private readonly IObjToMehsConverter _converter;
-        private readonly IMouseInputAdapter _mouseInputAdapter;
         private readonly IGuiToRelativeCoordinateTransformer _guiToRelativeCoordinateTransformer;
 
         private LoadResult _loadResult;
@@ -25,12 +24,10 @@ namespace CjClutter.ObjLoader.Viewer
         public ShellViewModel(
             IObjLoaderFactory objLoaderFactory, 
             IObjToMehsConverter converter,
-            IMouseInputAdapter mouseInputAdapter,
             ITrackballCamera camera,
             IGuiToRelativeCoordinateTransformer guiToRelativeCoordinateTransformer)
         {
             _converter = converter;
-            _mouseInputAdapter = mouseInputAdapter;
             _camera = camera;
             _guiToRelativeCoordinateTransformer = guiToRelativeCoordinateTransformer;
             _objLoaderFactory = objLoaderFactory;
@@ -38,9 +35,6 @@ namespace CjClutter.ObjLoader.Viewer
 
         protected override void OnViewAttached(IShellView view)
         {
-            _mouseInputAdapter.Target = this;
-            _mouseInputAdapter.Source = view.GlControl;
-
             var wpfSizeAdapter = new WpfSizeAdapter {Source = (FrameworkElement) view};
             _guiToRelativeCoordinateTransformer.Source = wpfSizeAdapter; 
         }

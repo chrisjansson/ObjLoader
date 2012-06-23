@@ -1,4 +1,4 @@
-﻿using CjClutter.ObjLoader.Viewer.InputAdapters;
+﻿using CjClutter.ObjLoader.Viewer.Adapters.InputAdapters;
 
 namespace CjClutter.ObjLoader.Viewer 
 {

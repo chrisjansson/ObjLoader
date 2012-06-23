@@ -100,6 +100,7 @@
     <Compile Include="Adapters\ISizeAdapter.cs" />
     <Compile Include="Adapters\WinFormsSizeAdapter.cs" />
     <Compile Include="Adapters\WpfSizeAdapter.cs" />
+    <Compile Include="Behaviors\AdapterBinder.cs" />
     <Compile Include="Camera\CameraBase.cs" />
     <Compile Include="Camera\ICamera.cs" />
     <Compile Include="Camera\ITrackballCamera.cs" />
@@ -111,12 +112,12 @@
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="CoordinateSystems\GuiToRelativeCoordinateTransformer.cs" />
     <Compile Include="Extensions\Matrix4dExtensions.cs" />
-    <Compile Include="InputAdapters\IMouseInputAdapter.cs" />
-    <Compile Include="InputAdapters\IMouseInputTarget.cs" />
-    <Compile Include="InputAdapters\MouseDragEventArgs.cs" />
-    <Compile Include="InputAdapters\MouseInputAdapterTests.cs" />
-    <Compile Include="InputAdapters\MouseMoveInputEventArguments.cs" />
-    <Compile Include="InputAdapters\MouseInputAdapter.cs" />
+    <Compile Include="Adapters\InputAdapters\IMouseInputAdapter.cs" />
+    <Compile Include="Adapters\InputAdapters\IMouseInputTarget.cs" />
+    <Compile Include="Adapters\InputAdapters\MouseDragEventArgs.cs" />
+    <Compile Include="Adapters\InputAdapters\MouseInputAdapterTests.cs" />
+    <Compile Include="Adapters\InputAdapters\MouseMoveInputEventArguments.cs" />
+    <Compile Include="Adapters\InputAdapters\MouseInputAdapter.cs" />
     <Compile Include="Extensions\NumericAssertionsExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="IObjToMehsConverter.cs" />

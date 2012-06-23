@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:Viewer="clr-namespace:CjClutter.ObjLoader.Viewer" 
-        Title="ShellView">
+        xmlns:Viewer="clr-namespace:CjClutter.ObjLoader.Viewer"
+        xmlns:Behaviors="clr-namespace:CjClutter.ObjLoader.Viewer.Behaviors" Title="ShellView">
 
     <DockPanel 
         Margin="10">
@@ -79,6 +79,7 @@
                 </Style>
             </Border.Style>
             <Viewer:OpenGlUserControl
+                Behaviors:AdapterBinder.InputTarget="{Binding}"
                 FocusManager.FocusedElement="{Binding ElementName=openGlUserControl}"
                 x:Name="openGlUserControl"
                 Meshes="{Binding SelectedMeshes}"
