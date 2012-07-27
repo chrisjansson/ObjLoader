@@ -124,7 +124,7 @@
     <Compile Include="Views\Shell\IShellViewModel.cs" />
     <Compile Include="Views\Shell\IShellView.cs" />
     <Compile Include="Mesh.cs" />
-    <Compile Include="MeshViewModel.cs" />
+    <Compile Include="Views\Shell\MeshViewModel.cs" />
     <Compile Include="NinjectBootstrapper.cs" />
     <Compile Include="ObjToMehsConverter.cs" />
     <Compile Include="Views\OpenGl\OpenGlView.xaml.cs">
