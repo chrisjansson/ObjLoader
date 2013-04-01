@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 
 namespace ObjLoader.Loader.Loaders
@@ -21,14 +20,14 @@ namespace ObjLoader.Loader.Loaders
         {
             var currentLine = _lineStreamReader.ReadLine();
 
-            if (string.IsNullOrEmpty(currentLine) || currentLine[0] == '#')
+            if (string.IsNullOrWhiteSpace(currentLine) || currentLine[0] == '#')
             {
                 return;
             }
 
-            var fields = currentLine.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
-            var keyword = fields[0];
-            var data = fields[1];
+            var fields = currentLine.Split(null, 2);
+            var keyword = fields[0].Trim();
+            var data = fields[1].Trim();
 
             ParseLine(keyword, data);
         }

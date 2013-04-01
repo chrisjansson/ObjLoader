@@ -112,9 +112,9 @@ namespace ObjLoader.Test.Loaders
         }
 
         private const string MaterialLibrary = 
-    @"newmtl wire_134110008
-Ns 32
-Tr 0.5
+    "newmtl wire_134110008\r\n" +
+"Ns\t32\r\n" +
+@"Tr 0.5
 illum 2
 Ka 1.0000 2.0000 3.0000
 Kd 0.5255 0.4314 0.0314
