@@ -25,7 +25,7 @@ namespace ObjLoader.Loader.Loaders
                 return;
             }
 
-            var fields = currentLine.Split(null, 2);
+            var fields = currentLine.Trim().Split(null, 2);
             var keyword = fields[0].Trim();
             var data = fields[1].Trim();
 
