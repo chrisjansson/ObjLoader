@@ -1,17 +1,16 @@
-using System.Drawing;
-using System.Windows.Forms;
-using CjClutter.ObjLoader.Viewer.Extensions;
+using System.Windows;
+using System.Windows.Input;
 using OpenTK;
 
-namespace CjClutter.ObjLoader.Viewer.InputAdapters
+namespace CjClutter.ObjLoader.Viewer.Adapters.InputAdapters
 {
     public class MouseInputAdapter : IMouseInputAdapter
     {
-        private Control _source;
+        private UIElement _source;
         private Vector2d _mouseDownPosition;
         private bool _isDragging;
 
-        public Control Source
+        public UIElement Source
         {
             get { return _source; }
             set
@@ -48,12 +47,18 @@ namespace CjClutter.ObjLoader.Viewer.InputAdapters
             _source.MouseUp += OnMouseUp;
         }
 
-        private void OnMouseMove(object sender, MouseEventArgs e)
+        private void OnMouseMove(object sender, MouseEventArgs mouseEventArgs)
         {
-            var position = CreateVector2dFrom(e.Location);
+            var location = GetPosition(mouseEventArgs);
+            var position = CreateVector2dFrom(location);
             Target.OnMouseMove(position);
 
-            FireMouseDrag(_mouseDownPosition, CreateVector2dFrom(e.Location));
+            FireMouseDrag(_mouseDownPosition, CreateVector2dFrom(location));
+        }
+
+        private Point GetPosition(MouseEventArgs mouseEventArgs)
+        {
+            return mouseEventArgs.GetPosition(Source);
         }
 
         private void FireMouseDrag(Vector2d startPoint, Vector2d endPoint)
@@ -65,11 +70,13 @@ namespace CjClutter.ObjLoader.Viewer.InputAdapters
             }
         }
 
-        private void OnMouseDown(object sender, MouseEventArgs e)
+        private void OnMouseDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            if(e.Button == MouseButtons.Left)
+            var location = GetPosition(mouseButtonEventArgs);
+
+            if(mouseButtonEventArgs.ChangedButton == MouseButton.Left)
             {
-                var position = CreateVector2dFrom(e.Location);
+                var position = CreateVector2dFrom(location);
                 Target.OnLeftMouseButtonDown(position);
 
                 BeginMouseDrag(position);
@@ -82,14 +89,15 @@ namespace CjClutter.ObjLoader.Viewer.InputAdapters
             _mouseDownPosition = position;
         }
 
-        private void OnMouseUp(object sender, MouseEventArgs e)
+        private void OnMouseUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            if(e.Button == MouseButtons.Left)
+            var location = GetPosition(mouseButtonEventArgs);
+            if (mouseButtonEventArgs.ChangedButton == MouseButton.Left)
             {
-                var position = CreateVector2dFrom(e.Location);
+                var position = CreateVector2dFrom(location);
                 Target.OnLeftMouseButtonUp(position);
 
-                EndMouseDrag(e.Location);
+                EndMouseDrag(location);
             }
         }
 
@@ -113,7 +121,7 @@ namespace CjClutter.ObjLoader.Viewer.InputAdapters
 
         private Vector2d CreateVector2dFrom(Point location)
         {
-            return location.ToVector();
+            return new Vector2d(location.X, location.Y);
         }
     }
 }
