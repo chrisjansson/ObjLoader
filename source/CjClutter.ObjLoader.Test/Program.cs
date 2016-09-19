@@ -25,6 +25,7 @@ namespace ObjLoader.Test
             Console.WriteLine(stopwatch.Elapsed);
             
             PrintResult(result);
+            Console.Read();
         }
 
         private static void PrintResult(LoadResult result)
