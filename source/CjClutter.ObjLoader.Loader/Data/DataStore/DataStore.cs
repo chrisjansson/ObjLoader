@@ -86,7 +86,7 @@ namespace ObjLoader.Loader.Data.DataStore
 
         public void SetMaterial(string materialName)
         {
-            var material = _materials.SingleOrDefault(x => x.Name.EqualsInvariantCultureIgnoreCase(materialName));
+            var material = _materials.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(materialName));
             PushGroupIfNeeded();
             _currentGroup.Material = material;
         }

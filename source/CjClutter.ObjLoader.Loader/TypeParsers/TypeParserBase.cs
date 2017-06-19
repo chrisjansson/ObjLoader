@@ -9,7 +9,7 @@ namespace ObjLoader.Loader.TypeParsers
 
         public bool CanParse(string keyword)
         {
-            return keyword.EqualsInvariantCultureIgnoreCase(Keyword);
+            return keyword.EqualsOrdinalIgnoreCase(Keyword);
         }
 
         public abstract void Parse(string line);

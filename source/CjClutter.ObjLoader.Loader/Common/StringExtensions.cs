@@ -15,9 +15,9 @@ namespace ObjLoader.Loader.Common
             return int.Parse(intString, CultureInfo.InvariantCulture.NumberFormat);
         }
 
-        public static bool EqualsInvariantCultureIgnoreCase(this string str, string s)
+        public static bool EqualsOrdinalIgnoreCase(this string str, string s)
         {
-            return str.Equals(s, StringComparison.InvariantCultureIgnoreCase);
+            return str.Equals(s, StringComparison.OrdinalIgnoreCase);
         }
 
         public static bool IsNullOrEmpty(this string str)

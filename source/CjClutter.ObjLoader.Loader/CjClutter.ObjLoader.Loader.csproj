@@ -1,107 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1FD37682-98D6-442F-8E15-646247C690DC}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ObjLoader.Loader</RootNamespace>
-    <AssemblyName>CjClutter.ObjLoader.Loader</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+
+  <PropertyGroup>
+    <PackageId>CjClutter.ObjLoader.Loader</PackageId>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Copyright>Copyright ©  2017</Copyright>
+    <Product>ObjLoader.Loader</Product>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Release\</OutputPath>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Data\DataStore\DataStore.cs" />
-    <Compile Include="Data\Elements\Face.cs" />
-    <Compile Include="Data\DataStore\IElementGroup.cs" />
-    <Compile Include="Data\Material.cs" />
-    <Compile Include="Data\Elements\Group.cs" />
-    <Compile Include="Data\DataStore\IFaceGroup.cs" />
-    <Compile Include="Data\DataStore\IGroupDataStore.cs" />
-    <Compile Include="Data\DataStore\INormalDataStore.cs" />
-    <Compile Include="Data\DataStore\ITextureDataStore.cs" />
-    <Compile Include="Data\DataStore\IVertexDataStore.cs" />
-    <Compile Include="Data\Vec3.cs" />
-    <Compile Include="Data\VertexData\Normal.cs" />
-    <Compile Include="Data\VertexData\Texture.cs" />
-    <Compile Include="Data\VertexData\Vertex.cs" />
-    <Compile Include="Data\DataStore\IMaterialLibrary.cs" />
-    <Compile Include="Data\DataStore\IDataStore.cs" />
-    <Compile Include="Loaders\IMaterialLibraryLoader.cs" />
-    <Compile Include="Loaders\IObjLoader.cs" />
-    <Compile Include="Loaders\IObjLoaderFactory.cs" />
-    <Compile Include="Loaders\LoaderBase.cs" />
-    <Compile Include="Loaders\MaterialLibraryLoader.cs" />
-    <Compile Include="Loaders\MaterialStreamProvider.cs" />
-    <Compile Include="Loaders\ObjLoader.cs" />
-    <Compile Include="Loaders\ObjLoaderFactory.cs" />
-    <Compile Include="Loaders\LoadResult.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeParsers\FaceParser.cs" />
-    <Compile Include="TypeParsers\GroupParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\IFaceParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\IGroupParser.cs" />
-    <Compile Include="Loaders\IMaterialLibraryLoaderFacade.cs" />
-    <Compile Include="TypeParsers\Interfaces\IMaterialLibraryParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\INormalParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\ITextureParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\ITypeParser.cs" />
-    <Compile Include="TypeParsers\Interfaces\IVertexParser.cs" />
-    <Compile Include="Loaders\MaterialLibraryLoaderFacade.cs" />
-    <Compile Include="TypeParsers\Interfaces\IUseMaterialParser.cs" />
-    <Compile Include="TypeParsers\MaterialLibraryParser.cs" />
-    <Compile Include="TypeParsers\NormalParser.cs" />
-    <Compile Include="Common\StringExtensions.cs" />
-    <Compile Include="TypeParsers\TextureParser.cs" />
-    <Compile Include="TypeParsers\TypeParserBase.cs" />
-    <Compile Include="TypeParsers\UseMaterialParser.cs" />
-    <Compile Include="TypeParsers\VertexParser.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
