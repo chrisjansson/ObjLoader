@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using FluentAssertions.Assertions;
 using NUnit.Framework;
 using ObjLoader.Loader.Data;
 using ObjLoader.Loader.Data.DataStore;
