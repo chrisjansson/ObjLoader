@@ -1,0 +1,20 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+init:
+- cmd: 
+environment:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+build_script:
+- cmd: >-
+    dotnet restore -v m "source\CjClutter.ObjLoader.sln"
+
+    dotnet build -c release "source\CjClutter.ObjLoader.sln"
+test_script:
+- ps: >-
+    dotnet test -c release --logger:"trx;LogFileName=results.xml" "source\CjClutter.ObjLoader.Test\CjClutter.ObjLoader.Test.csproj"
+
+
+
+    $wc = New-Object 'System.Net.WebClient'
+
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/mstest/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\source\CjClutter.ObjLoader.Test\TestResults\results.xml))
