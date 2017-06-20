@@ -1,4 +1,4 @@
-ObjLoader
+ObjLoader [![Build status](https://ci.appveyor.com/api/projects/status/5dbqtlt7gxninwyn?svg=true)](https://ci.appveyor.com/project/ChrisJansson/objloader)
 ========
 
 Objloader is a simple Wavefront .obj and .mtl loader
