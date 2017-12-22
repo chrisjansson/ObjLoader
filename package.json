@@ -1,0 +1,27 @@
+{
+  "name": "net-objloader",
+  "version": "1.0.0",
+  "description": "Objloader is a simple Wavefront .obj and .mtl loader",
+  "main": "no-entry",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisjansson/ObjLoader.git"
+  },
+  "keywords": [
+    "wavefront",
+    "obj",
+    "c#",
+    ".net",
+    "loader",
+    "mtl"
+  ],
+  "author": "Chris Jansson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisjansson/ObjLoader/issues"
+  },
+  "homepage": "https://github.com/chrisjansson/ObjLoader#readme"
+}
