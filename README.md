@@ -1,4 +1,4 @@
-ObjLoader [![Build status](https://ci.appveyor.com/api/projects/status/5dbqtlt7gxninwyn?svg=true)](https://ci.appveyor.com/project/ChrisJansson/objloader)
+ObjLoader [![Build status](https://ci.appveyor.com/api/projects/status/5dbqtlt7gxninwyn?svg=true)](https://ci.appveyor.com/project/ChrisJansson/objloader)[![NuGet version](https://badge.fury.io/nu/CjClutter.ObjLoader.svg)](https://badge.fury.io/nu/CjClutter.ObjLoader)
 ========
 
 Objloader is a simple Wavefront .obj and .mtl loader
