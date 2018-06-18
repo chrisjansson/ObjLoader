@@ -5,10 +5,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CjClutter.ObjLoader.Loader</PackageId>
+    <PackageId>CjClutter.ObjLoader</PackageId>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <Copyright>Copyright ©  2017</Copyright>
-    <Product>ObjLoader.Loader</Product>
+    <Copyright>Copyright ©  2018</Copyright>
+    <Product>CjClutter.ObjLoader</Product>
+    <Authors>Chris Jansson</Authors>
+    <RepositoryUrl>https://github.com/chrisjansson/ObjLoader</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Company></Company>
+    <Description>A simple Wavefront .obj and .mtl loader</Description>
+    <PackageLicenseUrl>https://github.com/chrisjansson/ObjLoader/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/chrisjansson/ObjLoader</PackageProjectUrl>
+    <PackageTags>obj wavefront 3d</PackageTags>
+    <Title>CjClutter.ObjLoader</Title>
   </PropertyGroup>
 </Project>
