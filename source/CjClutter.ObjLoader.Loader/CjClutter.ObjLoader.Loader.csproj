@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>CjClutter.ObjLoader</PackageId>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
     <Copyright>Copyright ©  2018</Copyright>
     <Product>CjClutter.ObjLoader</Product>
@@ -19,5 +19,6 @@
     <PackageProjectUrl>https://github.com/chrisjansson/ObjLoader</PackageProjectUrl>
     <PackageTags>obj wavefront 3d</PackageTags>
     <Title>CjClutter.ObjLoader</Title>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 </Project>

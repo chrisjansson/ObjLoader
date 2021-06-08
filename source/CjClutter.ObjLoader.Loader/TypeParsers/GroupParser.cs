@@ -20,6 +20,9 @@ namespace ObjLoader.Loader.TypeParsers
 
         public override void Parse(string line)
         {
+            if (string.IsNullOrWhiteSpace(line))
+                line = "default";
+
             _groupDataStore.PushGroup(line);
         }
     }

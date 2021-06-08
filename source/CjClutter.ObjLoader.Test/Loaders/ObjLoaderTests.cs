@@ -75,6 +75,7 @@ namespace ObjLoader.Test.Loaders
             _loadResult.Groups.Should().HaveCount(1);
 
             var group = _loadResult.Groups.First();
+            group.Name.Should().Be("default");
             group.Faces.Should().HaveCount(12);
             group.Material.Name.Should().BeEquivalentTo("cube_material");
         }
@@ -98,8 +99,31 @@ namespace ObjLoader.Test.Loaders
             _loadResult.Groups.Should().HaveCount(1);
 
             var group = _loadResult.Groups.First();
+            group.Name.Should().Be("default");
             group.Faces.Should().HaveCount(12);
             group.Material.Should().BeNull();
+        }
+
+        [Test]
+        public void Load_should_not_throw_when_group_has_no_name()
+        {
+            var objectStream = CreateMemoryStreamFromString(ObjectFileWithEmptyGroupNameString);
+
+            _loadResult = _loader.Load(objectStream);
+
+            _loadResult.Groups.Should().HaveCount(1);
+            _loadResult.Groups.First().Name.Should().Be("default");
+        }
+
+        [Test]
+        public void Loads_object_with_named_group()
+        {
+            var objectStream = CreateMemoryStreamFromString(ObjectFileWithCustomGroupNameString);
+
+            _loadResult = _loader.Load(objectStream);
+
+            _loadResult.Groups.Should().HaveCount(1);
+            _loadResult.Groups.First().Name.Should().Be("cube");
         }
 
         private void Load()
@@ -164,6 +188,33 @@ f 5/1/7 8/11/7 6/10/7
 f 8/11/7 7/12/7 6/10/7
 f 1/2/8 2/9/8 3/13/8
 f 1/2/8 3/13/8 4/14/8";
+
+        private const string ObjectFileWithCustomGroupNameString = 
+@"v 1.000000 -1.000000 -1.000000
+v  1.000000 -1.000000 1.000000
+v -1.000000 -1.000000 1.000000
+vt 0.748573 0.750412
+vt 0.749279 0.501284
+vt 0.999110 0.501077
+vn 0.000000 0.000000 -1.000000
+vn -1.000000 -0.000000 -0.000000
+vn -0.000000 -0.000000 1.000000
+g cube
+f 1/1/1 2/2/2 3/3/3";
+
+
+        private const string ObjectFileWithEmptyGroupNameString =
+@"v 1.000000 -1.000000 -1.000000
+v  1.000000 -1.000000 1.000000
+v -1.000000 -1.000000 1.000000
+vt 0.748573 0.750412
+vt 0.749279 0.501284
+vt 0.999110 0.501077
+vn 0.000000 0.000000 -1.000000
+vn -1.000000 -0.000000 -0.000000
+vn -0.000000 -0.000000 1.000000
+g
+f 1/1/1 2/2/2 3/3/3";
 
         private const string MaterialLibraryString =
 @"newmtl cube_material
