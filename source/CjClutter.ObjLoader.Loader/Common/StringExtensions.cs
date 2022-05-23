@@ -20,6 +20,11 @@ namespace ObjLoader.Loader.Common
             return str.Equals(s, StringComparison.OrdinalIgnoreCase);
         }
 
+        public static bool EqualsOrdinal(this string str, string s)
+        {
+            return str.Equals(s, StringComparison.Ordinal);
+        }
+
         public static bool IsNullOrEmpty(this string str)
         {
             return string.IsNullOrEmpty(str);
