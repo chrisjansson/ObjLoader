@@ -1,22 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFrameworks>netstandard1.4;net5.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CjClutter.ObjLoader</PackageId>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <PackageId>CjClutter.ObjLoader.Unofficial</PackageId>
+    <PackageVersion>1.1.0.0</PackageVersion>
     <Copyright>Copyright ©  2018</Copyright>
     <Product>CjClutter.ObjLoader</Product>
-    <Authors>Chris Jansson</Authors>
-    <RepositoryUrl>https://github.com/chrisjansson/ObjLoader</RepositoryUrl>
+    <Authors>Chris Jansson;Victor Ferrer</Authors>
+    <RepositoryUrl>https://github.com/vicfergar/ObjLoader</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Company></Company>
-    <Description>A simple Wavefront .obj and .mtl loader</Description>
-    <PackageLicenseUrl>https://github.com/chrisjansson/ObjLoader/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/chrisjansson/ObjLoader</PackageProjectUrl>
+    <Description>A simple Wavefront .obj and .mtl loader. Unofficial package. Looks like the original repo has no activity since a long time ago, and I need to include a fix. This package includes that fix and also adds net5.0 as target framework.</Description>
+    <PackageLicenseUrl>https://github.com/vicfergar/ObjLoader/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/vicfergar/ObjLoader</PackageProjectUrl>
     <PackageTags>obj wavefront 3d</PackageTags>
     <Title>CjClutter.ObjLoader</Title>
   </PropertyGroup>
